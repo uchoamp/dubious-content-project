@@ -1,86 +1,99 @@
 /* Conteudo*/
+
 .block {
     display: block;
-  }
-  
-  .big-center {
+}
+
+.big-center {
     min-height: 750px;
     flex-wrap: wrap;
-  }
-  .big-center > div {
+}
+
+.big-center>div {
     flex: 1 1 400px;
-  }
-  
-  .center-left {
+}
+
+.center-left {
     width: 70%;
     display: block;
-  }
-  
-  .pagination {
+}
+
+
+/* paginação */
+
+#pagination {
     display: inline-block;
     align-items: center;
     border-radius: 5px;
     border: solid;
     border-color: white;
     border-width: 0.5px;
-  }
-  
-  .pagination a {
+}
+
+#pagination a {
     color: white;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
-  }
-  
-  .pagination a.active {
+}
+
+#pagination a.active {
     background-color: #68017c;
     color: white;
     border-radius: 5px;
-  }
-  
-  .pagination a:hover:not(.active) {
+
+}
+
+#pagination a:hover:not(.active) {
     background-color: #620076;
     border-radius: 5px;
-  }
-  .div-paginate {
+}
+
+.div-paginate {
     margin-top: 3px;
     margin-bottom: 3px;
-  }
-  
-  .big-box {
+}
+
+
+/* centro da pagina */
+
+.big-box {
     flex-wrap: wrap;
     align-content: flex-start;
     justify-content: center;
     margin: 4px;
     min-height: 696px;
-  }
-  .big-box > a{
+}
+
+.big-box>a {
     margin: 10px;
     height: 300px;
     flex: 1 1 200px;
     max-width: 220px;
-  }
-  .capa {
+}
+
+.capa {
     background-color: rgb(17, 17, 17);
     display: block;
     padding: 15px;
     border-radius: 5px;
-  }
-  
-  .capa > img {
+}
+
+.capa>img {
     height: 80%;
     width: 100%;
     border-radius: 3px;
-  }
-  .legenda {
+}
+
+.legenda {
     height: 20%;
     width: 100%;
     color: white;
     padding: 4px;
     font-size: 19px;
-  }
-  
-  .legenda h4 {
+}
+
+.legenda h4 {
     font-size: 1rem;
     display: block;
     white-space: nowrap;
@@ -88,37 +101,38 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 1px;
-  }
-  .legenda p {
+}
+
+.legenda p {
     font-size: 0.8rem;
-  }
-  .center-right {
+}
+
+.center-right {
     background-color: white;
-  
     margin: 25px;
     margin-top: 0px;
     margin-bottom: 50px;
     border: solid;
     max-width: 350px;
     min-height: 550px;
-  }
-  
-  .center-right img {
+}
+
+.center-right img {
     width: 100%;
-  }
-  
-  .banner {
+}
+
+.banner {
     position: relative;
-  }
-  
-  .banner > img {
+}
+
+.banner>img {
     width: 100%;
     height: 300px;
     border-radius: 10px;
     border: double;
-  }
-  
-  footer {
+}
+
+footer {
     color: white;
     background: black;
     height: 250px;
@@ -127,5 +141,4 @@
     font-size: 30px;
     text-align: center;
     padding: 50px;
-  }
-  
+}

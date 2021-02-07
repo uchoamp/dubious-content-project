@@ -2,19 +2,7 @@
     <section class="big-center separete flex-center">
 
         <div class="center-left">
-            <div class="div-paginate flex-center">
-                <div class="pagination">
-                    <a href="#" class="active">&laquo;</a>
-                    <a href="/page/1">1</a>
-                    <a href="/page/2">2</a>
-                    <a href="/page/3">3</a>
-                    <a href="/page/4">4</a>
-                    <a href="/page/5">5</a>
-                    <a href="/page/6">6</a>
-                    <a href="#">&raquo;</a>
-                </div>
-
-            </div>
+           
             <div class="flex-center big-box">
                 {{#each hgames}}
                 <a href="/games/{{_id}}" class="block capa">
@@ -29,18 +17,9 @@
 
             </div>
 
-            <div class="div-paginate flex-center">
-                <div class="pagination">
+             <div class="div-paginate flex-center">
+                <div id="pagination"  data-pageFinal="{{totalPages}}">
                     <a href="#">&laquo;</a>
-                    <a href="#">1</a>
-                    <a href="#">...</a>
-                    <a href="#" class="active">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#">5</a>
-                    <a href="#">6</a>
-                    <a href="#">...</a>
-                    <a href="#">6</a>
                     <a href="#">&raquo;</a>
                 </div>
 
