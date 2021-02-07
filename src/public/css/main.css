@@ -1,0 +1,7 @@
+@import url("geral.css");
+@import url("header-nav.css");
+@import url("home-pages.css");
+@import url("form.css");
+@import url("hgames.css");
+
+@viewport { width: auto; }

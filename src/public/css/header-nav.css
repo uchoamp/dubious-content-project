@@ -1,0 +1,182 @@
+/* Header and Navbar */
+header,
+.header {
+  background-color: #020021;
+}
+.header {
+  padding: 20px 0px;
+  display: flex;
+  align-items: center;
+}
+.search-container button {
+  padding: 6px 10px;
+  background: rgb(80, 1, 158);
+  font-size: 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.header .search-container {
+  margin: 0 auto;
+}
+.header .search-container button:hover {
+  background: #ccc;
+}
+
+.search-container input[type="text"] {
+  width: 350px;
+  padding: 3px;
+  font-size: 20px;
+  border: solid;
+  border-radius: 3px;
+  border-color: rgb(255, 255, 255);
+}
+.header a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 15px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 35px;
+  font-weight: bold;
+  color: #9851a0;
+}
+
+.header a.active {
+  background-color: rgb(255, 0, 255);
+  color: white;
+}
+
+/* Userprofile */
+.userProfile {
+  position: relative;
+  display: inline-block;
+}
+.userProfile button {
+  font-size: 18px;
+  padding: 8px;
+  outline: none;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+.userProfile-content {
+  visibility: hidden;
+  overflow: hidden;
+  position: absolute;
+  background-color: white;
+  width: 150%;
+  margin-left: -50%;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 4px 0px 4px 4px;
+  background-color: #e6e6e6;
+  transition-delay: 0.13s; 
+}
+
+.show {
+  visibility: visible;
+  
+}
+.userProfile-content a {
+  border-radius: 0px;
+  width: 100%;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  border-bottom: 1px solid whitesmoke;
+}
+.userProfile-content a:hover {
+  background-color: #d9d9d9;
+}
+.userProfile-content #myUsername {
+  border-bottom: 1px solid whitesmoke;
+  background-color: #cccccc;
+  font-size: 18px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 12px;
+}
+
+
+
+@media screen and (max-width: 900px) {
+  .header a {
+    float: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .header-right {
+    float: none;
+  }
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .search-container,
+  .header-right {
+    display: none;
+  }
+}
+
+.navbar {
+  width: 100%;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar a {
+  padding: 12px;
+  color: black;
+  text-decoration: none;
+  line-height: 25px;
+  font-size: 20px;
+  display: inline-block;
+  text-align: center;
+}
+
+.navbar a:hover {
+  background-color: #000;
+  color: white;
+}
+
+.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #c7b9b9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

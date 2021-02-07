@@ -1,0 +1,32 @@
+<header>
+    <div class="header estatic-zoom">
+        <a href="/" class="logo">H-Natsu</a>
+
+        <div class="search-container">
+            <form action="">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        {{#if user}}
+        <div class="userProfile">
+            <button onclick="dropProfileOptions()">
+                Meu Perfil <i class="fas fa-user"></i>
+            </button>
+            <div id='userOptions' class="userProfile-content">
+                <a id='myUsername'>{{user.username}}</a>
+                <a href="#about">Settings</a>
+                <a href="/logout">Logout</a>
+            </div>
+
+        </div>
+        {{else}}
+        <div class="header-right">
+            <a class="active" href="/login">LOGIN</a>
+            <a href="/signup">REGISTRE-SE</a>
+        </div>
+        {{/if}}
+    </div>
+
+    {{> navigation}}
+</header>

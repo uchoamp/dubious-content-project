@@ -1,0 +1,49 @@
+/*  Form CSS  */
+
+.form{
+
+    background-color: #ffffff;
+    height: 80%;
+    width: 350px;
+    margin-top: 40px;
+    padding: 20px;
+    border-radius:20px ;
+  }
+  .form > form{
+    font-size: 20px;
+    width: 100%;
+    margin-top: 8 0 16 0;
+    
+  }
+  
+  .form > form > input[type="email"],input[type="text"],input[type="password"],  input[type="date"]{
+    font-size: 16px;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .form > form > input[type="date"], input[type="time"] {
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  .form > form > input[type=submit]{
+    width: 100%;
+    background-color: #860000;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px auto;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .form > form > input[type=submit]:hover{
+    background-color: #3b0202;
+  }
+  
+  
+  /*  Form CSS  */
