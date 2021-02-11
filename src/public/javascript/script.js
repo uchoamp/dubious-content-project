@@ -58,37 +58,45 @@ var pagination = document.getElementById("pagination");
 
 if (pagination) {
     const pageFinal = parseInt(pagination.getAttribute("data-pageFinal"))
+    let url = new URL(window.location.href);
+
     let pageCurrent = parseInt(location.pathname.slice(6))
+    let pathIni = "/page/"
+
+    if(url.pathname  == "/search"){
+        pageCurrent = url.searchParams.get("p")
+        pathIni = "/search?q="+url.searchParams.get("q")+"&l=9&p="
+    }
 
     if (!pageCurrent || pageCurrent == 1) {
         pageCurrent = 1;
-        tempPagination = `<a href="${pageFinal}" >&laquo;</a>`
+        tempPagination = `<a href="${pathIni}${pageFinal}" >&laquo;</a>`
     } else {
         
-        tempPagination = `<a href="/page/${pageCurrent - 1}" >&laquo;</a>`
+        tempPagination = `<a href="${pathIni}${pageCurrent - 1}" >&laquo;</a>`
     }
 
     for (let i = 1; i <= pageFinal; i++) {
         if (i != 1 && (pageCurrent - 2) - 1 > 1 && i < pageCurrent - 2) {
             i = pageCurrent - 2
-            tempPagination += `<a >...</a>`
+            tempPagination += `<a class="noHover">...</a>`
         }if(i != pageFinal && i == pageCurrent + 3 && pageFinal - (pageCurrent + 2)>1 ){
             i = pageFinal
-            tempPagination += `<a >...</a>`
+            tempPagination += `<a class="noHover">...</a>`
         }
         if(i == pageCurrent){
-            tempPagination += `<a class="active"href="/page/${i}" >${i}</a>`
+            tempPagination += `<a class="active"href="${pathIni}${i}" >${i}</a>`
         }else{
-            tempPagination += `<a href="/page/${i}" >${i}</a>`
+            tempPagination += `<a href="${pathIni}${i}" >${i}</a>`
         }
         
 
     }
 
     if(pageCurrent == pageFinal){
-        tempPagination += `<a href="/page/1">&raquo;</a>`
+        tempPagination += `<a href="${pathIni}1">&raquo;</a>`
     }else{
-        tempPagination += `<a href="/page/${pageCurrent + 1}">&raquo;</a>`    
+        tempPagination += `<a href="${pathIni}${pageCurrent + 1}">&raquo;</a>`    
     }
     
 

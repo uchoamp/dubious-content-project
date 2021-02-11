@@ -44,7 +44,7 @@
 
 }
 
-#pagination a:hover:not(.active) {
+#pagination a:hover:not(.active):not(.noHover) {
     background-color: #620076;
     border-radius: 5px;
 }

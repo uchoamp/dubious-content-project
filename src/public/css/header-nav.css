@@ -24,7 +24,7 @@ header,
   background: #ccc;
 }
 
-.search-container input[type="text"] {
+.search-container input[type="search"] {
   width: 350px;
   padding: 3px;
   font-size: 20px;
@@ -111,22 +111,18 @@ header,
 
 
 @media screen and (max-width: 900px) {
-  .header a {
-    float: none;
-    display: block;
-    margin: 0 auto;
+  .header {
+    justify-content: space-between;
+  }
+  .header a{
+    font-size: 13px;
+    padding: 10px;
+  }
+  .header a.logo{
+    font-size: 30px;
   }
 
-  .header-right {
-    float: none;
-  }
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .search-container,
-  .header-right {
+  .search-container {
     display: none;
   }
 }
