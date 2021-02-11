@@ -1,5 +1,18 @@
-//User Profile
+// reponsividade
 
+function searchResp(){
+    let searcher = document.getElementsByClassName("search-container")[0];
+    if (window.matchMedia("(max-width: 900px)").matches) {
+        searcher.parentNode.append(searcher);
+      }else{
+        searcher.parentNode.insertBefore(searcher, searcher.parentNode.childNodes[3] );
+      }
+    
+}
+searchResp()
+window.addEventListener("resize",searchResp)
+
+//User Profile
 function dropProfileOptions() {
     document.getElementById("userOptions").classList.toggle("show");
 }
@@ -104,3 +117,4 @@ if (pagination) {
 
 
 }
+
