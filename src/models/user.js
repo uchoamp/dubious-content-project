@@ -3,8 +3,11 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
-  username: { type: String, required: true },
-  password: { type: String, required: true },
+  username: { type: String, required: true, unique:true},
+  email: { type: String, required:true, unique:true},
+  password: { type: String, required: true, min: 6 },
+  birthday: {type: Date, required: true},
+  block: {type: Boolean, default: false}
 },{
   timestamps: true
 }

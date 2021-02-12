@@ -4,15 +4,14 @@ const passport = require("passport"),
 
 passport.use(
   new localStrategy(async (username, password, done) => {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({$or:[{ username}, {email:username}]});
     if (user) {
       const match = await user.matchPassword(password);
       if (match) {
         return done(null, user);
       }
-      return done(null, false, { message: "Incorrect password." });
     }
-    return done(null, false, { message: "Incorrect username or password." });
+    return done(null, false, { message: "Incorrect username, email or password." });
   })
 );
 

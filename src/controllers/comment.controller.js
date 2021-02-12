@@ -4,6 +4,7 @@ const Comment = require("../models/comment");
 commentCtrl.commentRender = async (req, res) => {
   const { hgame_id } = req.query;
   const comments = await Comment.find({ hgame_id }, '_id comment userCommenter.username createdAt reply');
+  console.log(comments)
   res.json(comments);
 };
 

@@ -1,16 +1,14 @@
 // reponsividade
-
-function searchResp(){
+function searchResp() {
     let searcher = document.getElementsByClassName("search-container")[0];
     if (window.matchMedia("(max-width: 900px)").matches) {
         searcher.parentNode.append(searcher);
-      }else{
-        searcher.parentNode.insertBefore(searcher, searcher.parentNode.childNodes[3] );
-      }
-    
+    } else {
+        searcher.parentNode.insertBefore(searcher, searcher.parentNode.childNodes[3]);
+    }
 }
 searchResp()
-window.addEventListener("resize",searchResp)
+// window.addEventListener("resize",searchResp)
 
 //User Profile
 function dropProfileOptions() {
@@ -57,12 +55,26 @@ function OnInput() {
 //Close msg
 var closeMsg = document.getElementsByClassName("closeMsg");
 if (closeMsg) {
-    for (var ele in closeMsg) {
-        closeMsg[ele].onclick = function () {
+    for (let i = 0; i < closeMsg.length; i++) {
+        closeMsg[i].onclick = function () {
             this.parentElement.remove();
         };
+        setTimeout(function () {
+            closeMsg[i].parentElement.remove();
+    
+        }, 4000)
+        
     }
+        
+   
+
+    
+
+
 }
+
+
+
 
 //Paginate
 
@@ -76,16 +88,16 @@ if (pagination) {
     let pageCurrent = parseInt(location.pathname.slice(6))
     let pathIni = "/page/"
 
-    if(url.pathname  == "/search"){
-        pageCurrent = url.searchParams.get("p")
-        pathIni = "/search?q="+url.searchParams.get("q")+"&l=9&p="
+    if (url.pathname == "/search") {
+        pageCurrent = parseInt(url.searchParams.get("p"))
+        pathIni = "/search?q=" + url.searchParams.get("q") + "&l=9&p="
     }
 
     if (!pageCurrent || pageCurrent == 1) {
         pageCurrent = 1;
         tempPagination = `<a href="${pathIni}${pageFinal}" >&laquo;</a>`
     } else {
-        
+
         tempPagination = `<a href="${pathIni}${pageCurrent - 1}" >&laquo;</a>`
     }
 
@@ -93,25 +105,25 @@ if (pagination) {
         if (i != 1 && (pageCurrent - 2) - 1 > 1 && i < pageCurrent - 2) {
             i = pageCurrent - 2
             tempPagination += `<a class="noHover">...</a>`
-        }if(i != pageFinal && i == pageCurrent + 3 && pageFinal - (pageCurrent + 2)>1 ){
+        } if (i != pageFinal && i == pageCurrent + 3 && pageFinal - (pageCurrent + 2) > 1) {
             i = pageFinal
             tempPagination += `<a class="noHover">...</a>`
         }
-        if(i == pageCurrent){
+        if (i == pageCurrent) {
             tempPagination += `<a class="active"href="${pathIni}${i}" >${i}</a>`
-        }else{
+        } else {
             tempPagination += `<a href="${pathIni}${i}" >${i}</a>`
         }
-        
+
 
     }
 
-    if(pageCurrent == pageFinal){
+    if (pageCurrent == pageFinal) {
         tempPagination += `<a href="${pathIni}1">&raquo;</a>`
-    }else{
-        tempPagination += `<a href="${pathIni}${pageCurrent + 1}">&raquo;</a>`    
+    } else {
+        tempPagination += `<a href="${pathIni}${pageCurrent + 1}">&raquo;</a>`
     }
-    
+
 
     pagination.innerHTML = tempPagination;
 

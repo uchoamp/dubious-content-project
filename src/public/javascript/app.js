@@ -85,20 +85,22 @@ function fetchComments() {
           }
         }
 
-        template += `</div>
-        <pre class="comment-text">${comment.comment}</pre>
-        <div class="comment-actions">
-            <button id='like'>
-                <i class="fa fa-thumbs-up"></i> <span>1</span>
-            </button>
-            <button style="margin-left: 4px;" id='reply'>
-                <i class="fa fa-reply"></i> <span>reply</span>
-            </button>
-          </div>
-      </div>
-      <div class="responses"></div>
-    </div>
+        template += `
+        </div>
+          <pre class="comment-text">${comment.comment}</pre>
+        
+        </div>
+            <div class="responses"></div>
+        </div>
             `;
+        // <div class="comment-actions">
+        //   <button id='like'>
+        //         <i class="fa fa-thumbs-up"></i> <span>1</span>
+        //   </button>
+        //   <button style="margin-left: 4px;" id='reply'>
+        //         <i class="fa fa-reply"></i> <span>reply</span>
+        //    </button>
+        // </div>
       });
       commentsDiv.innerHTML = template;
     }
@@ -136,3 +138,5 @@ function adicionaZero(numero) {
   if (numero <= 9) return "0" + numero;
   else return numero;
 }
+
+

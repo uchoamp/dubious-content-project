@@ -1,6 +1,6 @@
 /*  Form CSS  */
 
-.form{
+.form-container{
 
     background-color: #ffffff;
     height: 80%;
@@ -9,14 +9,17 @@
     padding: 20px;
     border-radius:20px ;
   }
-  .form > form{
-    font-size: 20px;
+  .form-container form{
+    font-size: 18px;
     width: 100%;
-    margin-top: 8 0 16 0;
+
     
   }
+  .form-container h2 {
+    text-align: center;
+  }
   
-  .form > form > input[type="email"],input[type="text"],input[type="password"],  input[type="date"]{
+  .form-container input[type="email"],input[type="text"],input[type="password"],  input[type="date"]{
     font-size: 16px;
     width: 100%;
     padding: 12px 20px;
@@ -26,24 +29,31 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
-  .form > form > input[type="date"], input[type="time"] {
+  .form-container input[type="date"], input[type="time"] {
     font-family: Arial, sans-serif;
   }
   
   
-  .form > form > input[type=submit]{
+  .form-container input[type=submit]{
     width: 100%;
     background-color: #860000;
     color: white;
+    font-size: 16px;
     padding: 14px 20px;
     margin: 8px auto;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
-  .form > form > input[type=submit]:hover{
+  .form-container input[type=submit]:hover{
     background-color: #3b0202;
+    
   }
-  
+   
+  .form-vali{
+    color: #910000;
+    font-size: 16px;
+    text-align: center;
+  }
   
   /*  Form CSS  */
