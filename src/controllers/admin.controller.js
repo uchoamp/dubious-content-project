@@ -1,10 +1,13 @@
 const adminCtrl = {}
-
+const User = require("../models/User")
+const Game = require("../models/Game")
 const Admin = require("../models/Admin")
 
 // Painel admin
 adminCtrl.panel = async (req, res) => {
-    res.render("admin/")
+    const quantUser = await User.count();
+    const quantGame = await Game.count();
+    res.render("admin/", {quantUser, quantGame})
 }
 
 // Admin login

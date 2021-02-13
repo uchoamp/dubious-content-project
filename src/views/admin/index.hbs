@@ -1,46 +1,12 @@
-<style>
-    *{
-        color:aliceblue;
-    }
-    html {
-        background-color: rgb(0, 0, 0);
-    }
-
-    h2 {
-        margin-left: 9px;
-    }
-
-    header,
-    .header {
-        background: none;
-        
-    }
-    header{
-        box-shadow: 0 2px 13px rgb(175, 175, 175);
-    }
-    table{
-        background-color: aqua;
-    }
-    .filters{
-        background-color: rgb(78, 78, 0);
-    }
-    .grid13{
-        display: grid;
-        grid-template-columns: 20% auto;
-    }
-    .grid13 *{
-        color: black;
-    }
-</style>
-
+<link rel="stylesheet" href="./css/zmin.css">
 <header>
     <div class="header estatic-zoom">
         <a href="/admin" class="logo">Admin H-Natsu</a>
 
-        <div class="header-center">            
+        <div class="header-center">
             <div class="flex-center info">
-                <span class="active">Quantidade de games:</span> <span>1</span>
-                <span class="active">Quantidade de usuários:</span> <span>1</span>
+                <span class="active">Quantidade de games:</span> <span>{{quantGame}}</span>
+                <span class="active">Quantidade de usuários:</span> <span>{{quantUser}}</span>
             </div>
         </div>
 
@@ -54,17 +20,61 @@
 <main class="estatic-zoom">
     <h2 class="separete">GAMES ADICIONADOS</h2>
     <div class="separete grid13">
-        <div class="filters">
+        {{!-- <div class="filters">
+
+        </div> --}}
+        <div class="table-container">
+            <a href="admin/game"><i class="fas fa-plus"></i> ADICI0NA GAME <i class="fas fa-plus"></i></a>
+
+            <table id="table-games">
+                <tr>
+                    <th>img</th>
+                    <th>tittle</th>
+                    <th>description</th>
+                    <th>type</th>
+                    <th>lingue</th>
+                    <th>tags</th>
+                    <th>censorship</th>
+                    <th>platform</th>
+                    <th>release_date</th>
+                    <th>options</th>
+                </tr>
+                <tr>
+                    <td><img src="https://dummyimage.com/200x270/0026ff/fff" alt=""></td>
+                    <td>Kajuu Sentai Fruits Ranger</td>
+                    <td>
+                        <div id="someDiv">
+                        Em Legado Explosivo, um ladrão de banco resolve mudar de vida e se tornar uma pessoa honesta
+                        quando se apaixona por uma mulher que trabalha em uma instalação de armazenamento, um lugar onde
+                        ele esconde todo o dinheiro que rouba. Mas fica cada vez mais difícil limpar seu nome quando ele
+                        passa a ser investigado por um agente corrupto do FBI.</td>
+                        </div>
+                    <td>Visual Novel</td>
+                    <td>Inglês</td>
+                    <td>tags, tags, ahahaha</td>
+                    <td>Censored</td>
+                    <td>Windows</td>
+                    <td>23/22/2222</td>
+                    <td><a href="">DELETA</a>
+                        <a href="">ALTERAR</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="https://dummyimage.com/200x270/0026ff/fff" alt=""></td>
+                    <td>Kajuu Sentai Fruits Ranger</td>
+                    <td>Nome</td>
+                    <td>Nome</td>
+                    <td>Nome</td>
+
+                    <td>Nome</td>
+                    <td>Nome</td>
+                    <td>Nome</td>
+                    <td>Nome</td>
+                    <td>Nome</td>
+                </tr>
+            </table>
 
         </div>
-        
-        <table id="table-games">
-            <tr>
-                <th>
-                    Nome
-                </th>
-            </tr>
-        </table>
-        
+
     </div>
 </main>

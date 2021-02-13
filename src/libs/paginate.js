@@ -2,9 +2,8 @@ const HGame = require("../models/Game");
 const modulo = {};
 modulo.paginate = async function (page, limit , query) {
     let games = {};
-    console.log(page, limit)
-    if (query) {
 
+    if (query) {
         games = await HGame.paginate({
             $or: [{ $text: { $search: `${query}` } }, {
                 tittle

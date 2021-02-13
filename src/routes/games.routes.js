@@ -1,9 +1,12 @@
 const {Router} = require('express');
 
 const router = Router();
-const {createHgame}= require('../controllers/games.controller')
+const {showGame, getGames}= require('../controllers/games.controller')
 
+// Mostrando game
+router.get('/game/:urlHgame', showGame);
 
-router.get('/games/:urlHgame', createHgame)
+// Pegando games
+router.get("/games", getGames);
 
 module.exports = router;

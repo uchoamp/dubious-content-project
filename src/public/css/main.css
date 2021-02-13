@@ -2,6 +2,9 @@
 @import url("header-nav.css");
 @import url("home-pages.css");
 @import url("form.css");
-@import url("hgames.css");
+@import url("games.css");
+@import url("media.css");
+
+
 
 @viewport { width: auto; }

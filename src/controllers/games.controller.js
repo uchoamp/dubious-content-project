@@ -1,7 +1,8 @@
-const hgamesCtrl = {};
+const gamesCtrl = {};
 const Game = require("../models/Game");
+const {paginate} = require("../libs/paginate");
 
-hgamesCtrl.createHgame = async (req, res) => {
+gamesCtrl.showGame = async (req, res) => {
   const game = await Game.findOne({ _id: req.params.urlHgame }).catch((err) => {
     console.log(err)
   });
@@ -10,7 +11,14 @@ hgamesCtrl.createHgame = async (req, res) => {
     return res.redirect("/");
   }
 
-  res.render("games/hgames-pages", {game});
+  res.render("games/game-page", { game });
 };
 
-module.exports = hgamesCtrl;
+gamesCtrl.getGames = async (req, res) => {
+  const games = await paginate(req.query.page, req.query.limit, req.query.query);
+  
+
+  res.json(games);
+}
+
+module.exports = gamesCtrl;
