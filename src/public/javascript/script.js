@@ -1,10 +1,10 @@
 // reponsividade
 function searchResp() {
-    let searcher = document.getElementsByClassName("search-container")[0];
+    let header_center = document.getElementsByClassName("header-center")[0];
     if (window.matchMedia("(max-width: 900px)").matches) {
-        searcher.parentNode.append(searcher);
+        header_center.parentNode.append(header_center );
     } else {
-        searcher.parentNode.insertBefore(searcher, searcher.parentNode.childNodes[3]);
+        header_center .parentNode.insertBefore(header_center, header_center.parentNode.childNodes[3]);
     }
 }
 searchResp()
@@ -59,10 +59,10 @@ if (closeMsg) {
         closeMsg[i].onclick = function () {
             this.parentElement.remove();
         };
-        setTimeout(function () {
-            closeMsg[i].parentElement.remove();
+        // setTimeout(function () {
+        //     closeMsg[i].parentElement.remove();
     
-        }, 4000)
+        // }, 4000)
         
     }
         

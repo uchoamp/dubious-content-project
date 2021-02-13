@@ -32,7 +32,7 @@ app.engine(
 
 app.set("view engine", "hbs");
 
-//middleware
+//middlewares
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 app.use(expSession({
@@ -40,13 +40,14 @@ app.use(expSession({
   resave: true,
   saveUninitialized: true
 }))
-app.use(flash())
-app.use(methodOverride("_method"))
-app.use(passport.initialize())
-app.use(passport.session())
+
+app.use(flash());
+app.use(methodOverride("_method"));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Golbal Varibles
-app.use((req, res, next) =>{
+app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
@@ -59,10 +60,11 @@ app.use((req, res, next) =>{
 app.use(require("./routes/index.routes"));
 app.use(require("./routes/page.routes"));
 app.use(require("./routes/user.routes"));
-app.use(require("./routes/hGames.routes"));
+app.use(require("./routes/games.routes"));
 app.use(require("./routes/comments.routes"));
 app.use(require("./routes/category.routes"));
 app.use(require("./routes/search.routes"));
+app.use(require("./routes/admin.routes"))
 
 // static files
 app.use(express.static(path.join(__dirname, "public")));

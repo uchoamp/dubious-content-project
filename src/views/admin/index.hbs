@@ -1,0 +1,70 @@
+<style>
+    *{
+        color:aliceblue;
+    }
+    html {
+        background-color: rgb(0, 0, 0);
+    }
+
+    h2 {
+        margin-left: 9px;
+    }
+
+    header,
+    .header {
+        background: none;
+        
+    }
+    header{
+        box-shadow: 0 2px 13px rgb(175, 175, 175);
+    }
+    table{
+        background-color: aqua;
+    }
+    .filters{
+        background-color: rgb(78, 78, 0);
+    }
+    .grid13{
+        display: grid;
+        grid-template-columns: 20% auto;
+    }
+    .grid13 *{
+        color: black;
+    }
+</style>
+
+<header>
+    <div class="header estatic-zoom">
+        <a href="/admin" class="logo">Admin H-Natsu</a>
+
+        <div class="header-center">            
+            <div class="flex-center info">
+                <span class="active">Quantidade de games:</span> <span>1</span>
+                <span class="active">Quantidade de usuários:</span> <span>1</span>
+            </div>
+        </div>
+
+
+        <div class="header-right">
+            <a class="logout" href="admin/logout">SAIR</a>
+        </div>
+
+    </div>
+</header>
+<main class="estatic-zoom">
+    <h2 class="separete">GAMES ADICIONADOS</h2>
+    <div class="separete grid13">
+        <div class="filters">
+
+        </div>
+        
+        <table id="table-games">
+            <tr>
+                <th>
+                    Nome
+                </th>
+            </tr>
+        </table>
+        
+    </div>
+</main>

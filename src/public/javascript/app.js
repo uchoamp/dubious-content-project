@@ -133,6 +133,13 @@ function commentsDelete(commentDel) {
   });
 }
 
+// Mostra games
+const table_games = document.getElementById("table-games");
+
+if(table_games){
+  
+}
+
 // formata data
 function adicionaZero(numero) {
   if (numero <= 9) return "0" + numero;

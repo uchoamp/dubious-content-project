@@ -1,10 +1,12 @@
+{{> header}}
+
 <main class="estatic-zoom">
     <section class="big-center separete flex-center">
 
         <div class="center-left">
            
             <div class="flex-center big-box">
-                {{#each hgames}}
+                {{#each games}}
                 <a href="/games/{{_id}}" class="block capa">
                     <img src="{{img}}">
                     <div class="legenda">
@@ -35,3 +37,5 @@
 <div class="banner estatic-zoom separete">
     <img src="/img/banner.jpg">
 </div>
+
+{{> footer}}

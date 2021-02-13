@@ -1,9 +1,11 @@
+{{> header}}
+
 <main class="estatic-zoom  separete">
 
     <section class="container">
 
         <div class="img">
-            <h1>{{hgame.tittle}}</h1>
+            <h1>{{game.tittle}}</h1>
             <img src="https://image.tmdb.org/t/p/w342/8LHNnMA9xP6sUhkma0aOv5RWtzo.jpg" alt="">
             <div>
                 <a class="btn-down" href="#"><i class="fa fa-download"></i> DOWNLOAD <span>300MB</span></a>
@@ -14,13 +16,13 @@
                 <section class="info">
                     <fieldset>
                         <legend>Informações</legend>
-                        <p><span class="">Titulo: </span> {{hgame.tittle}} </p>
-                        <p><span class="">Titulo: </span> {{hgame.tittle}} </p>
-                        <p><span class="">Titulo: </span> {{hgame.tittle}} </p>
-                        <p><span class="">Titulo: </span> {{hgame.tittle}} </p>
-                        <p><span class="">Titulo: </span> {{hgame.tittle}} </p>
-                        <p><span class="">Titulo: </span> {{hgame.tittle}} </span></p>
-                        <p><span class="">Titulo: </span> {{hgame.tittle}} </p>
+                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
+                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
+                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
+                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
+                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
+                        <p><span class="">Titulo: </span> {{game.tittle}} </span></p>
+                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
                     </fieldset>
                 </section>
                 <section class="desc">
@@ -74,47 +76,47 @@
                         <img src="" id="modalImage" alt="">
                     </div>
                 </div>
-                <h3>Mais {{hgame.type}}:</h3>
+                <h3>Mais {{game.type}}:</h3>
                 <div class="more-type">
-                    <a href="/games/{{hgame._id}}">
+                    <a href="/games/{{game._id}}">
                         <figure>
                             <figure>
-                                <img src="{{hgame.img}}" alt="Trulli" style="width:100%">
+                                <img src="{{game.img}}" alt="Trulli" style="width:100%">
                                 <figcaption>
-                                    <h4> {{hgame.tittle}}</h4>
+                                    <h4> {{game.tittle}}</h4>
                                     <p>English | <i class="fab fa-windows"></i> Windows</p>
                                 </figcaption>
                             </figure>
                         </figure>
                     </a>
-                    <a href="/games/{{hgame._id}}">
+                    <a href="/games/{{game._id}}">
                         <figure>
                             <figure>
-                                <img src="{{hgame.img}}" alt="Trulli" style="width:100%">
+                                <img src="{{game.img}}" alt="Trulli" style="width:100%">
                                 <figcaption>
-                                    <h4> {{hgame.tittle}}</h4>
+                                    <h4> {{game.tittle}}</h4>
                                     <p>English | <i class="fab fa-windows"></i> Windows</p>
                                 </figcaption>
                             </figure>
                         </figure>
                     </a>
-                    <a href="/games/{{hgame._id}}">
+                    <a href="/games/{{game._id}}">
                         <figure>
                             <figure>
-                                <img src="{{hgame.img}}" alt="Trulli" style="width:100%">
+                                <img src="{{game.img}}" alt="Trulli" style="width:100%">
                                 <figcaption>
-                                    <h4> {{hgame.tittle}}</h4>
+                                    <h4> {{game.tittle}}</h4>
                                     <p>English | <i class="fab fa-windows"></i> Windows</p>
                                 </figcaption>
                             </figure>
                         </figure>
                     </a>
-                    <a href="/games/{{hgame._id}}">
+                    <a href="/games/{{game._id}}">
                         <figure>
                             <figure>
-                                <img src="{{hgame.img}}" alt="Trulli" style="width:100%">
+                                <img src="{{game.img}}" alt="Trulli" style="width:100%">
                                 <figcaption>
-                                    <h4> {{hgame.tittle}}</h4>
+                                    <h4> {{game.tittle}}</h4>
                                     <p>English | <i class="fab fa-windows"></i> Windows</p>
                                 </figcaption>
                             </figure>
@@ -154,3 +156,5 @@
     </section>
 
 </main>
+
+{{> footer}}

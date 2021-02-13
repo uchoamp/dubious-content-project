@@ -12,14 +12,16 @@ a {
   text-decoration: none;
 }
 html {
-  background: #181329;
+  background: #0e061b;
   padding-bottom: 25px;
+  height: 100%;
 }
 
 body {
   display: block;
   overflow-x: hidden;
 }
+
 .bold {
   font-weight: bold;
 }
@@ -39,19 +41,23 @@ body {
   margin-top: 30px;
 }
 
+.no-back{
+  background: none!important;
+}
+
+
 /* Messages */
-
-
 .msg{
-  position:absolute;
+  position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 98%;
-  border-radius:6px ;
+  border-radius: 6px;
   margin-bottom: 6px;
   align-items: center;
   min-width: 400px;
-  padding: 8px;
+  padding: 13px 13px;
+  margin-top: 150px;
 }
 
 .msg span {

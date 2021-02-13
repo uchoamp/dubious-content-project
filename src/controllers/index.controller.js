@@ -3,8 +3,9 @@ const { paginate } = require("../libs/paginate");
 
 
 indexCtrl.renderIndex = async (req, res) => {
-  const {hgames, totalPages} = await paginate();
-  res.render("", { hgames, totalPages });
+  const {games, totalPages} = await paginate();
+  
+  res.render("", { games, totalPages });
 };
 
 module.exports = indexCtrl;

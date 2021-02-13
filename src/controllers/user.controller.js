@@ -1,10 +1,9 @@
 const userCtrl = {};
 const passport = require("passport");
-const User = require('../models/user')
-const noFotter = true;
+const User = require('../models/User')
 
 userCtrl.signupForm = (req, res) => {
-  res.render('user/signup', { noFotter });
+  res.render('user/signup');
 }
 
 userCtrl.signup = async (req, res) => {
@@ -54,13 +53,13 @@ userCtrl.signup = async (req, res) => {
     return res.redirect('/login');
   }
 
-  res.render("user/signup", { username, password,  email, errors, birthday, noFotter })
+  res.render("user/signup", { username, password,  email, errors, birthday})
 
 }
 
 
 userCtrl.loginForm = (req, res) => {
-  res.render('user/login', { noFotter });
+  res.render('user/login');
 }
 
 userCtrl.login = passport.authenticate("local", {
