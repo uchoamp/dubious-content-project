@@ -133,31 +133,6 @@ function commentsDelete(commentDel) {
   });
 }
 
-// Mostra games
-const table_games = document.getElementById("table-games");
-
-if (table_games) {
-  fetch("/games?page=1&limit=4&query=").then(res => {
-    // valida se a requisição falhou
-    if (!res.ok) {
-      return new Error('falhou a requisição') // cairá no catch da promise
-    }
-
-    // verificando pelo status
-    if (res.status === 404) {
-      return new Error('não encontrou qualquer resultado')
-    } 
-    return res.json()
-  })
-    .then((games) => {
-      console.log(games)
-
-
-    }).catch(console.error);
-
-  
-}
-
 // formata data
 function adicionaZero(numero) {
   if (numero <= 9) return "0" + numero;

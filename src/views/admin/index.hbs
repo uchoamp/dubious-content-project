@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="./css/zmin.css">
+<link rel="stylesheet" href="./css/admin.css">
+
 <header>
     <div class="header estatic-zoom">
         <a href="/admin" class="logo">Admin H-Natsu</a>
@@ -24,57 +25,66 @@
 
         </div> --}}
         <div class="table-container">
-            <a href="admin/game"><i class="fas fa-plus"></i> ADICI0NA GAME <i class="fas fa-plus"></i></a>
+            <a href="admin/game">NOVO GAME</i></a>
 
             <table id="table-games">
-                <tr>
-                    <th>img</th>
-                    <th>tittle</th>
-                    <th>description</th>
-                    <th>type</th>
-                    <th>lingue</th>
-                    <th>tags</th>
-                    <th>censorship</th>
-                    <th>platform</th>
-                    <th>release_date</th>
-                    <th>options</th>
-                </tr>
-                <tr>
-                    <td><img src="https://dummyimage.com/200x270/0026ff/fff" alt=""></td>
-                    <td>Kajuu Sentai Fruits Ranger</td>
-                    <td>
-                        <div id="someDiv">
-                        Em Legado Explosivo, um ladrão de banco resolve mudar de vida e se tornar uma pessoa honesta
-                        quando se apaixona por uma mulher que trabalha em uma instalação de armazenamento, um lugar onde
-                        ele esconde todo o dinheiro que rouba. Mas fica cada vez mais difícil limpar seu nome quando ele
-                        passa a ser investigado por um agente corrupto do FBI.</td>
-                        </div>
-                    <td>Visual Novel</td>
-                    <td>Inglês</td>
-                    <td>tags, tags, ahahaha</td>
-                    <td>Censored</td>
-                    <td>Windows</td>
-                    <td>23/22/2222</td>
-                    <td><a href="">DELETA</a>
-                        <a href="">ALTERAR</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img src="https://dummyimage.com/200x270/0026ff/fff" alt=""></td>
-                    <td>Kajuu Sentai Fruits Ranger</td>
-                    <td>Nome</td>
-                    <td>Nome</td>
-                    <td>Nome</td>
+                <thead>
+                    <tr>
+                        <th>img</th>
+                        <th>tittle</th>
+                        <th>description</th>
+                        <th>type</th>
+                        <th>lingue</th>
+                        <th>tags</th>
+                        <th>censorship</th>
+                        <th>platform</th>
+                        <th>release_date</th>
+                        <th>options</th>
+                    </tr>
+                </thead>
 
-                    <td>Nome</td>
-                    <td>Nome</td>
-                    <td>Nome</td>
-                    <td>Nome</td>
-                    <td>Nome</td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td><img src="https://dummyimage.com/200x270/0026ff/fff" alt=""></td>
+                        <td>Kajuu Sentai Fruits Ranger</td>
+                        <td>
+                            <div id="desc">
+                                Em Legado Explosivo, um ladrão de banco resolve mudar de vida e se tornar uma pessoa
+                                honesta
+                                quando se apaixona por uma mulher que trabalha em uma instalação de armazenamento, um
+                                lugar
+                                onde
+                                ele esconde todo o dinheiro que rouba. Mas fica cada vez mais difícil limpar seu nome
+                                quando
+                                ele
+                                passa a ser investigado por um agente corrupto do FBI.
+                            </div>
+                        </td>
+
+                        <td>Visual Novel</td>
+                        <td>Inglês</td>
+                        <td>tags, tags, ahahaha</td>
+                        <td>Censored</td>
+                        <td>Windows</td>
+                        <td>23/22/2222</td>
+                        <td>
+                            <div id="options">
+                                <button href=""><i class="fas fa-edit"></i></button>
+                                <button href=""><i class="fas fa-trash-alt"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                </div>
+               
+
+                </div>
             </table>
-
+             {{!-- <div style="width: 100%;height:100px; ">
+                
+             </div> --}}
         </div>
-
     </div>
 </main>
+
+<script src="/javascript/admin.js"></script>
