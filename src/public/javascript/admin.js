@@ -2,20 +2,28 @@
 const table_games = document.getElementById("table-games");
 const search = document.getElementById("search")
 const paginate = document.getElementById("paginate")
+const tbody = table_games.children[1];
+const clone = tbody.children[0].cloneNode(true);
 
+const searchInput = search.children[0];
 
+searchInput.addEventListener('input',()=>{
+
+  if(!searchInput.value){
+    renderGames(1)
+  }
+})
 // mostra o games quando a pagina for carregada pela primeira vez
 renderGames(1)
 
 // Funções
 search.children[1].onclick = function () {
     nextPage(1);
-  
 }
 
 function nextPage(page) {
-  console.log(page)
-  renderGames(page, search.children[0].value)
+  renderGames(page, searchInput.value);
+
 }
 
 function renderGames(page, query) {
@@ -34,9 +42,9 @@ function renderGames(page, query) {
     .then((res) => {
 
       let games = res.games
-      let tbody = table_games.children[1]
+      
 
-      let tr = tbody.children[0].cloneNode(true);
+      let tr = clone.cloneNode(true);
 
       while (tbody.lastChild) {
         tbody.removeChild(tbody.lastChild)
@@ -74,7 +82,7 @@ function renderGames(page, query) {
 
 function createPaginate(page, pageFinal) {
   page = parseInt(page)
-  console.log(page)
+  
   let template = ""
   if ((page - 2) - 1 >= 2) {
     template += `<button onclick="nextPage(this.getAttribute('data-page'))" data-page="${page-1}"><i class="fas fa-angle-double-left"></i></button>`

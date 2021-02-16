@@ -11,7 +11,7 @@ router.get("/admin/login", showLogin);
 router.post("/admin/login", login);
 
 // Adiciona, alterar e delete game
-router.get("/admin/game", newGame);
+router.get("/admin/new-game", newGame);
 router.get("/admin/game/:id", showGame);
 router.post("/admin/game", createGame);
 router.put("/admin/game", alterGame);

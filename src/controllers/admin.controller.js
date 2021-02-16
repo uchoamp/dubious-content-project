@@ -3,6 +3,7 @@ const User = require("../models/User")
 const Game = require("../models/Game")
 const Admin = require("../models/Admin")
 
+
 // Painel admin
 adminCtrl.panel = async (req, res) => {
     const quantUser = await User.count();
@@ -19,8 +20,11 @@ adminCtrl.login = async (req, res) => {
 }
 
 // Adiciona, alterar e delete game
-adminCtrl.newGame = (req, res) => {
-    res.send("novo game")
+adminCtrl.newGame = async(req, res) => {
+    const quantUser = await User.count();
+    const quantGame = await Game.count();
+    
+    res.render("admin/game", {quantUser, quantGame})
 }
 adminCtrl.showGame = (req, res) => {
     res.send("Ok")

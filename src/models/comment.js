@@ -5,7 +5,7 @@ const ObjectId = Schema.ObjectId;
 
 const commentSchema = new Schema(
     {
-        hgame_id: { type: ObjectId },
+        game_id: { type: ObjectId },
         comment: { type: String, minlength: 1, maxlength: 250 },
         userCommenter: { username: String, user_id: ObjectId },
         reply: [Object],

@@ -1,7 +1,7 @@
 var comentar = document.getElementById("comentar");
 var commentsDiv = document.getElementById("comments");
 var myUsername = document.getElementById("myUsername");
-const hgameId = location.pathname.slice(7);
+const gameId = location.pathname.slice(6);
 var xhttp = new XMLHttpRequest();
 
 // configuração do observador:
@@ -36,7 +36,7 @@ function addComment() {
   if (commentText.trim() != "") {
     xhttp.open("POST", `/comment`, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send(`comment=${commentText}&hgame_id=${hgameId}`);
+    xhttp.send(`comment=${commentText}&game_id=${gameId}`);
     xhttp.onreadystatechange = function () {
       if (this.readyState == 4) {
         if (this.status == 200) {
@@ -54,7 +54,7 @@ function addComment() {
 
 // Mostra comentario
 function fetchComments() {
-  xhttp.open("GET", `/comment?hgame_id=${hgameId}`, true);
+  xhttp.open("GET", `/comment?game_id=${gameId}`, true);
   xhttp.send();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {

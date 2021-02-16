@@ -13,7 +13,7 @@ router.post('/comment',commentCreate)
 router.delete('/comment', commentDelete)
 
 router.post('/replyComment', replyCreate)
-router.delete('replyComment', replyDelete)
+router.delete('/replyComment', replyDelete)
 
 
 

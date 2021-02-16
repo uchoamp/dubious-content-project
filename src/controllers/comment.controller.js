@@ -2,18 +2,19 @@ const commentCtrl = {};
 const Comment = require("../models/Comment");
 
 commentCtrl.commentRender = async (req, res) => {
-  const { hgame_id } = req.query;
-  const comments = await Comment.find({ hgame_id }, '_id comment userCommenter.username createdAt reply');
+  const { game_id } = req.query;
+
+  const comments = await Comment.find({ game_id }, '_id comment userCommenter.username createdAt reply');
   
   res.json(comments);
 };
 
 commentCtrl.commentCreate = async (req, res) => {
-  const { comment, hgame_id } = req.body;
+  const { comment, game_id } = req.body;
   const user = req.user;
   if (user) {
     const commentario = await new Comment({
-      hgame_id,
+      game_id,
       comment,
       userCommenter: { username: user.username, user_id: user._id },
     });
