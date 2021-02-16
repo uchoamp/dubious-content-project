@@ -82,6 +82,7 @@ var pagination = document.getElementById("pagination");
 
 
 if (pagination) {
+    
     const pageFinal = parseInt(pagination.getAttribute("data-pageFinal"))
     let url = new URL(window.location.href);
 
@@ -115,7 +116,6 @@ if (pagination) {
             tempPagination += `<a href="${pathIni}${i}" >${i}</a>`
         }
 
-
     }
 
     if (pageCurrent == pageFinal) {
@@ -124,9 +124,6 @@ if (pagination) {
         tempPagination += `<a href="${pathIni}${pageCurrent + 1}">&raquo;</a>`
     }
 
-
     pagination.innerHTML = tempPagination;
-
-
 }
 

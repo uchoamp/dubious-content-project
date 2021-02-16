@@ -34,7 +34,7 @@ modulo.paginate = async function (page, limit , query) {
     } else {
     games = await HGame.paginate({}, { limit: limit || 9, page: page || 1, sort: { createdAt: "desc" } });
     }
-    
+  
     return { games: games.docs, totalPages: games.totalPages }
 }
 

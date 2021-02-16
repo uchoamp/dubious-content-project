@@ -16,7 +16,6 @@ gamesCtrl.showGame = async (req, res) => {
 
 gamesCtrl.getGames = async (req, res) => {
   const games = await paginate(req.query.page, req.query.limit, req.query.query);
-  
 
   res.json(games);
 }

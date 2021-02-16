@@ -2,6 +2,12 @@ h2 {
     color: aliceblue;
 }
 
+button{
+    border: none;
+    margin: 0;
+    outline: none;
+}
+
 html {
     background-color: rgb(36, 36, 36);
 }
@@ -12,6 +18,7 @@ html {
 }
 main{
     padding-bottom: 50px;
+
 }
 h2 {
     margin-left: 9px;
@@ -25,10 +32,7 @@ header {
     box-shadow: 0 1px 6px rgb(175, 175, 175);
 }
 
-.filters {
-    background-color: rgb(78, 78, 0);
-}
-
+/* Corpo */
 .grid13 {
     display: grid;
     grid-template-columns: auto;
@@ -56,6 +60,93 @@ header {
 .table-container > a:hover {
     background-color: rgb(0, 0, 161);
 }
+
+/* Search e paginate */
+.paginate-search{
+    display: flex;
+    width: 100%; 
+    background-color: rgb(26, 23, 23);
+    /* margin-bottom: 16px; */
+    color: white;
+    /* align-items: center; */
+    padding: 16px 7px;
+    border-radius: 8px 8px 0 0;
+ 
+}
+.paginate-search > #search{
+    padding: 3px;
+    background-color: rgb(184, 184, 184);
+    border-radius: 4px;
+}
+.paginate-search > #search input{
+    font-size: 1.05rem;
+    padding: 4px 8px;
+    border: solid 1.5px rgb(14, 10, 17);
+    border-radius: 3px;
+    outline: none;
+    background-color: #fcfcfc;
+}
+.paginate-search > #search input[type="search"]{
+    width: 350px;
+}
+.paginate-search > #search input[type="button"]{
+    cursor: pointer;
+}
+.paginate-search > #search input[type="search"]:focus, #paginate-search > #search input[type="search"]:hover{
+    box-shadow: 0px 0px 0px 1.5px rgb(7, 4, 24);
+    background-color: #ffffff;
+}
+.paginate-search > #search input[type="button"]:hover{
+    box-shadow: 0px 0px 0px 1.5px rgb(7, 4, 24);
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+}   
+
+.paginate-search > #paginate{
+    display: flex;
+    margin-left: 8px;
+    margin-top: auto;
+    padding: 3px;
+    background-color: rgb(184, 184, 184);
+    border-radius: 4px;
+    align-items:flex-end;
+
+}
+
+
+.paginate-search > #paginate  button{
+    font-size: 1rem;
+    height: 30px;
+    width: 40px;
+    background-color:  #fcfcfc;
+    color: black;
+    border: solid 1px rgb(0, 0, 0);
+    border-radius: 2px;
+    margin: 0 3px;
+    cursor: pointer;
+}
+.paginate-search > #paginate  span{
+    font-size: 1rem;
+    color: black;
+    margin: 0 3px;
+    padding-bottom: 1px ;
+}
+
+.paginate-search > #paginate button:hover, .paginate-search > #paginate button:focus{
+    box-shadow: 0px 0px 0px 0.8px rgb(7, 4, 24);
+    background-color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+}
+.paginate-search > #paginate button:disabled{
+    box-shadow: 0px 0px 0px 0.8px rgb(7, 4, 24);
+    background-color: #ffffff;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    cursor: initial;
+}
+
+/* Tabela */
 #table-games {
     border-collapse: collapse;
     width: 100%;
@@ -107,23 +198,37 @@ header {
 
 }
 
-#table-games #desc:hover {
+
+#td-desc:hover  #desc {
     width: 350px;
     overflow: initial;
     text-overflow: initial;
     display:block;
     -webkit-line-clamp:initial; 
 
-
 }
 
-#table-games #options {
+#table-games #options, .td-center {
     display:flex;
     flex-wrap: wrap;
     margin: 0 auto;
     width: 50px;
     justify-content: center;
+    
 }
+.td-center a{
+    border: solid 1px rgb(0, 0, 216) ;
+    padding: 4px;
+    color: rgb(241, 231, 231);
+    background-color: rgb(27, 27, 27);    
+    border-radius: 2px;
+}
+
+.td-center a:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(12, 12, 12);   
+}
+
 #table-games #options > button{
     width: 100%;
     text-align: center;

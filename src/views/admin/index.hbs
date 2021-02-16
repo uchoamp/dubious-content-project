@@ -26,7 +26,19 @@
         </div> --}}
         <div class="table-container">
             <a href="admin/game">NOVO GAME</i></a>
+            <div class="paginate-search">
 
+                <div id="search">
+
+                    <input type="search" placeholder="Buscar">
+                    <input type="button" value="BUSCAR">
+
+                </div>
+                <div id="paginate">
+                    <button onclick="nextPage(this.innerText)">1</button>
+                </div>
+
+            </div>
             <table id="table-games">
                 <thead>
                     <tr>
@@ -39,6 +51,7 @@
                         <th>censorship</th>
                         <th>platform</th>
                         <th>release_date</th>
+                        <th>download</th>
                         <th>options</th>
                     </tr>
                 </thead>
@@ -47,7 +60,7 @@
                     <tr>
                         <td><img src="https://dummyimage.com/200x270/0026ff/fff" alt=""></td>
                         <td>Kajuu Sentai Fruits Ranger</td>
-                        <td>
+                        <td id="td-desc">
                             <div id="desc">
                                 Em Legado Explosivo, um ladrão de banco resolve mudar de vida e se tornar uma pessoa
                                 honesta
@@ -68,6 +81,11 @@
                         <td>Windows</td>
                         <td>23/22/2222</td>
                         <td>
+                            <div class="td-center">
+                                <a href="">download</a>
+                            </div>
+                        </td>
+                        <td>
                             <div id="options">
                                 <button href=""><i class="fas fa-edit"></i></button>
                                 <button href=""><i class="fas fa-trash-alt"></i></button>
@@ -75,15 +93,15 @@
                         </td>
                     </tr>
                 </tbody>
-                </div>
-               
-
-                </div>
-            </table>
-             {{!-- <div style="width: 100%;height:100px; ">
-                
-             </div> --}}
         </div>
+
+
+    </div>
+    </table>
+    {{!-- <div style="width: 100%;height:100px; ">
+
+    </div> --}}
+    </div>
     </div>
 </main>
 

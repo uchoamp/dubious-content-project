@@ -11,7 +11,8 @@ const hGameSchema = new Schema(
     img: String,
     censorship: String,
     platform: String,
-    release_date: Date
+    release_date: Date, 
+    donwload: String
   },
   {
     timestamps: true,
