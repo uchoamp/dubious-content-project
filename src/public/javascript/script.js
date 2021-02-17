@@ -19,10 +19,12 @@ function dropProfileOptions() {
 // Modal screenShorts
 var modal = document.getElementById("myModal");
 if (modal) {
-    document.getElementById("myImage1").onclick = clickIamge;
-    document.getElementById("myImage2").onclick = clickIamge;
-    document.getElementById("myImage3").onclick = clickIamge;
-    document.getElementById("myImage4").onclick = clickIamge;
+    let screenshorts = document.getElementsByClassName("screenshort")
+
+    for (let i = 0; i < screenshorts.length; i++) {
+        screenshorts[i].onclick = clickIamge;
+        
+    }
 
     modal.onclick = function (event) {
         if (event.target == modal) {

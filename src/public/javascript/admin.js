@@ -1,117 +1,125 @@
 // Mostra games
 const table_games = document.getElementById("table-games");
-const search = document.getElementById("search")
-const paginate = document.getElementById("paginate")
-const tbody = table_games.children[1];
-const clone = tbody.children[0].cloneNode(true);
 
-const searchInput = search.children[0];
+if (table_games) {
+  const search = document.getElementById("search")
+  const paginate = document.getElementById("paginate")
+  const tbody = table_games.children[1];
+  const clone = tbody.children[0].cloneNode(true);
 
-searchInput.addEventListener('input',()=>{
+  const searchInput = search.children[0];
 
-  if(!searchInput.value){
-    renderGames(1)
-  }
-})
-// mostra o games quando a pagina for carregada pela primeira vez
-renderGames(1)
+  searchInput.addEventListener('input', () => {
 
-// Funções
-search.children[1].onclick = function () {
-    nextPage(1);
-}
-
-function nextPage(page) {
-  renderGames(page, searchInput.value);
-
-}
-
-function renderGames(page, query) {
-  fetch(`/games?page=${page || ""}&limit=10&query=${query || ""}`).then(res => {
-
-    if (!res.ok) {
-      return new Error('falhou a requisição')
+    if (!searchInput.value) {
+      renderGames(1)
     }
-
-    if (res.status === 404) {
-      return new Error('não encontrou qualquer resultado')
-    }
-
-    return res.json()
   })
-    .then((res) => {
+  // mostra o games quando a pagina for carregada pela primeira vez
+  renderGames(1)
 
-      let games = res.games
-      
+  // Search
+  search.children[1].onclick = function () {
+    nextPage(1);
+  }
 
-      let tr = clone.cloneNode(true);
+  // Modança de página
+  function nextPage(page) {
+    renderGames(page, searchInput.value);
 
-      while (tbody.lastChild) {
-        tbody.removeChild(tbody.lastChild)
+  }
+
+  // buscar o games no backend
+  function renderGames(page, query) {
+    fetch(`/games?page=${page || ""}&limit=10&query=${query || ""}`).then(res => {
+
+      if (!res.ok) {
+        return new Error('falhou a requisição')
       }
 
+      if (res.status === 404) {
+        return new Error('não encontrou qualquer resultado')
+      }
+
+      return res.json()
+    })
+      .then((res) => {
+
+        let games = res.games
 
 
-      let td = undefined;
-      games.forEach(game => {
-        tr = tr.cloneNode(true)
+        let tr = clone.cloneNode(true);
+
+        while (tbody.lastChild) {
+          tbody.removeChild(tbody.lastChild)
+        }
 
 
-        tr.setAttribute("data-id", game._id)
-        tr.children[0].children[0].src = game.img
-        tr.children[1].innerHTML = game.tittle
-        tr.children[2].children[0].innerHTML = game.description
-        tr.children[3].innerHTML = game.type
-        tr.children[4].innerHTML = game.lingue
-        tr.children[5].innerHTML = game.tags
-        tr.children[6].innerHTML = game.censorship
-        tr.children[7].innerHTML = game.platform
-        tr.children[8].innerHTML = game.release_date
-        tr.children[9].children[0].children[0].href = game.download
 
-        tbody.appendChild(tr)
-
-      });
-
-      createPaginate(page, res.totalPages)
-
-    }).catch(console.error);
+        let td = undefined;
+        games.forEach(game => {
+          tr = tr.cloneNode(true)
 
 
-}
+          tr.setAttribute("data-id", game._id)
+          tr.children[0].children[0].src = game.img
+          tr.children[1].innerHTML = game.tittle
+          tr.children[2].children[0].innerHTML = game.description
+          tr.children[3].innerHTML = game.type
+          tr.children[4].innerHTML = game.lingue
+          tr.children[5].innerHTML = game.tags
+          tr.children[6].innerHTML = game.censorship
+          tr.children[7].innerHTML = game.platform
+          tr.children[8].innerHTML = game.release_date
+          tr.children[9].innerHTML = game.size
+          tr.children[10].children[0].children[0].href = game.download
 
-function createPaginate(page, pageFinal) {
-  page = parseInt(page)
-  
-  let template = ""
-  if ((page - 2) - 1 >= 2) {
-    template += `<button onclick="nextPage(this.getAttribute('data-page'))" data-page="${page-1}"><i class="fas fa-angle-double-left"></i></button>`
+          tbody.appendChild(tr)
+
+        });
+
+        createPaginate(page, res.totalPages)
+
+      }).catch(console.error);
+
+
   }
+  // criação do paginate
+  function createPaginate(page, pageFinal) {
+    page = parseInt(page)
 
-  for (let i = 1; i <= pageFinal; i++) {
-
-    if (i == page) {
-      template += `<button disabled>${i}</button>`
-      continue
+    let template = ""
+    if ((page - 2) - 1 >= 2) {
+      template += `<button onclick="nextPage(this.getAttribute('data-page'))" data-page="${page - 1}"><i class="fas fa-angle-double-left"></i></button>`
     }
-    
-    template += `<button onclick="nextPage(this.innerText)">${i}</button>`
-    if (i == 1 && page - 3 > 1) {
-      i = page - 3;
-      template += '<span>...</span>'
-      
-    } if (page + 4 < pageFinal && page + 2 == i) {
-      i = pageFinal-1;
-      template += '<span>...</span>';
-    } 
-    
 
+    for (let i = 1; i <= pageFinal; i++) {
+
+      if (i == page) {
+        template += `<button disabled>${i}</button>`
+        continue
+      }
+
+      template += `<button onclick="nextPage(this.innerText)">${i}</button>`
+      if (i == 1 && page - 3 > 1) {
+        i = page - 3;
+        template += '<span>...</span>'
+
+      } if (page + 4 < pageFinal && page + 2 == i) {
+        i = pageFinal - 1;
+        template += '<span>...</span>';
+      }
+
+    }
+
+    if (page < pageFinal - 4) {
+      template += `<button onclick="nextPage(this.getAttribute('data-page'))" data-page="${page + 1}"><i class="fas fa-angle-double-right"></i></button>`
+    }
+    paginate.innerHTML = template
 
   }
-
-  if (page < pageFinal - 4) {
-    template += `<button onclick="nextPage(this.getAttribute('data-page'))" data-page="${page+1}"><i class="fas fa-angle-double-right"></i></button>`
-  }
-  paginate.innerHTML = template
-
 }
+
+
+// new-game
+

@@ -2,7 +2,7 @@ h2 {
     color: aliceblue;
 }
 
-button{
+button {
     border: none;
     margin: 0;
     outline: none;
@@ -12,14 +12,12 @@ html {
     background-color: rgb(36, 36, 36);
 }
 
-.estatic-zoom {
-    max-width: 98%;
-
-}
-main{
+main {
     padding-bottom: 50px;
-
+   
 }
+
+
 h2 {
     margin-left: 9px;
 }
@@ -32,7 +30,18 @@ header {
     box-shadow: 0 1px 6px rgb(175, 175, 175);
 }
 
+.estatic-zoom {
+    max-width: 98%;
+}
+
+/* -------------------------------------------------------- */
+
+/*                            home                          */
+
+/* -------------------------------------------------------- */
+
 /* Corpo */
+
 .grid13 {
     display: grid;
     grid-template-columns: auto;
@@ -45,7 +54,7 @@ header {
     justify-content: center;
 }
 
-.table-container > a {
+.table-container>a {
     width: 24%;
     padding: 8px;
     font-size: 1.1rem;
@@ -55,30 +64,33 @@ header {
     color: rgb(241, 236, 236);
     border-radius: 3px;
     font-weight: 600;
-    border:solid 1.2px rgb(218, 204, 204);
+    border: solid 1.2px rgb(218, 204, 204);
 }
-.table-container > a:hover {
+
+.table-container>a:hover {
     background-color: rgb(0, 0, 161);
 }
 
 /* Search e paginate */
-.paginate-search{
+
+.paginate-search {
     display: flex;
-    width: 100%; 
+    width: 100%;
     background-color: rgb(26, 23, 23);
     /* margin-bottom: 16px; */
     color: white;
     /* align-items: center; */
     padding: 16px 7px;
     border-radius: 8px 8px 0 0;
- 
 }
-.paginate-search > #search{
+
+.paginate-search>#search {
     padding: 3px;
     background-color: rgb(184, 184, 184);
     border-radius: 4px;
 }
-.paginate-search > #search input{
+
+.paginate-search>#search input {
     font-size: 1.05rem;
     padding: 4px 8px;
     border: solid 1.5px rgb(14, 10, 17);
@@ -86,59 +98,63 @@ header {
     outline: none;
     background-color: #fcfcfc;
 }
-.paginate-search > #search input[type="search"]{
+
+.paginate-search>#search input[type="search"] {
     width: 350px;
 }
-.paginate-search > #search input[type="button"]{
+
+.paginate-search>#search input[type="button"] {
     cursor: pointer;
 }
-.paginate-search > #search input[type="search"]:focus, #paginate-search > #search input[type="search"]:hover{
+
+.paginate-search>#search input[type="search"]:focus, #paginate-search>#search input[type="search"]:hover {
     box-shadow: 0px 0px 0px 1.5px rgb(7, 4, 24);
     background-color: #ffffff;
 }
-.paginate-search > #search input[type="button"]:hover{
+
+.paginate-search>#search input[type="button"]:hover {
     box-shadow: 0px 0px 0px 1.5px rgb(7, 4, 24);
     background-color: rgb(0, 0, 0);
     color: #ffffff;
-}   
+}
 
-.paginate-search > #paginate{
+.paginate-search>#paginate {
     display: flex;
     margin-left: 8px;
     margin-top: auto;
     padding: 3px;
     background-color: rgb(184, 184, 184);
     border-radius: 4px;
-    align-items:flex-end;
-
+    align-items: flex-end;
 }
 
-
-.paginate-search > #paginate  button{
+.paginate-search>#paginate button {
     font-size: 1rem;
     height: 30px;
     width: 40px;
-    background-color:  #fcfcfc;
+    background-color: #fcfcfc;
     color: black;
     border: solid 1px rgb(0, 0, 0);
     border-radius: 2px;
     margin: 0 3px;
     cursor: pointer;
 }
-.paginate-search > #paginate  span{
+
+.paginate-search>#paginate span {
     font-size: 1rem;
     color: black;
     margin: 0 3px;
-    padding-bottom: 1px ;
+    padding-bottom: 1px;
 }
 
-.paginate-search > #paginate button:hover, .paginate-search > #paginate button:focus{
+.paginate-search>#paginate button:hover, .paginate-search>#paginate button:focus {
     box-shadow: 0px 0px 0px 0.8px rgb(7, 4, 24);
     background-color: #ffffff;
     background-color: rgb(0, 0, 0);
     color: #ffffff;
 }
-.paginate-search > #paginate button:disabled{
+
+.paginate-search>#paginate button:disabled {
     box-shadow: 0px 0px 0px 0.8px rgb(7, 4, 24);
     background-color: #ffffff;
     background-color: rgb(0, 0, 0);
@@ -147,6 +163,7 @@ header {
 }
 
 /* Tabela */
+
 #table-games {
     border-collapse: collapse;
     width: 100%;
@@ -161,7 +178,6 @@ header {
 
 #table-games tr:nth-child(even) {
     background-color: #f2f2f2;
-    
 }
 
 #table-games tr:hover {
@@ -185,51 +201,48 @@ header {
     margin: 0 auto;
 }
 
-
 #table-games #desc {
     overflow: hidden;
     text-overflow: ellipsis;
-    display:-webkit-box;
-    -webkit-line-clamp: 5; /* number of lines to show */
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    /* number of lines to show */
     -webkit-box-orient: vertical;
     width: 220px;
     text-align: justify;
     transition: width 1.5s;
-
 }
 
-
-#td-desc:hover  #desc {
-    width: 350px;
+#td-desc:hover #desc {
+    width: 300px;
     overflow: initial;
     text-overflow: initial;
-    display:block;
-    -webkit-line-clamp:initial; 
-
+    display: block;
+    -webkit-line-clamp: initial;
 }
 
 #table-games #options, .td-center {
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
     width: 50px;
     justify-content: center;
-    
 }
-.td-center a{
-    border: solid 1px rgb(0, 0, 216) ;
+
+.td-center a {
+    border: solid 1px rgb(0, 0, 216);
     padding: 4px;
     color: rgb(241, 231, 231);
-    background-color: rgb(27, 27, 27);    
+    background-color: rgb(27, 27, 27);
     border-radius: 2px;
 }
 
-.td-center a:hover{
+.td-center a:hover {
     color: rgb(255, 255, 255);
-    background-color: rgb(12, 12, 12);   
+    background-color: rgb(12, 12, 12);
 }
 
-#table-games #options > button{
+#table-games #options>button {
     width: 100%;
     text-align: center;
     padding: 5px;
@@ -241,18 +254,100 @@ header {
     color: rgb(19, 19, 19);
 }
 
-
-#table-games #options > button:nth-child(1){
+#table-games #options>button:nth-child(1) {
     background-color: rgb(101, 0, 196);
 }
 
-#table-games #options > button:nth-child(2){
+#table-games #options>button:nth-child(2) {
     background-color: rgb(196, 0, 0);
 }
 
-#table-games #options > button:nth-child(1):hover{
+#table-games #options>button:nth-child(1):hover {
     background-color: rgb(89, 0, 255);
 }
-#table-games #options > button:nth-child(2):hover{
+
+#table-games #options>button:nth-child(2):hover {
     background-color: rgb(235, 2, 2);
 }
+
+/* -------------------------------------------------------- */
+
+/*                            Game                          */
+
+/* -------------------------------------------------------- */
+
+form input, form textarea {
+    width: 100%;
+    font-size: 15px;
+    outline: none;
+    border: solid 2px black;
+    padding: 3px;
+    border-radius: 2.3px;
+    background-color: rgb(250, 250, 250);
+}
+
+label {
+    white-space: nowrap;
+}
+
+form input:focus, form textarea:focus {
+    box-shadow: 0px 0px 0px 1.5px rgb(3, 75, 207);
+}
+
+.info input:not([type="date"]) {
+    width: 347.97px;
+}
+
+form input[type="date"] {
+    width: 35%;
+    margin-right: auto;
+}
+
+fieldset {
+    padding: 10px 5px 10px 0;
+}
+
+fieldset textarea {
+    resize: vertical;
+    overflow: hidden;
+}
+
+.label-input-inline {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    justify-content: space-between;
+}
+
+.label-input-inline label {
+    margin-right: 3px;
+}
+
+.input-sc{
+    margin-top: 4px;
+    display: flex;
+    width: 100%;
+    background-color: #e3e3f0;
+}
+
+#screenshort{
+    margin: 2px;
+    color: rgb(15, 12, 12);
+    font-size: 14px;
+}
+main > div{
+    display: flex;
+}
+
+main > div > input{
+    background-color: rgb(36, 192, 62);
+    font-size: 20px;
+    width: auto;
+    margin: 0 auto;
+    font-weight: 600;
+    padding: 12px 26px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+

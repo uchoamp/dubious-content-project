@@ -1,101 +1,93 @@
 {{> admin/header}}
 
-<main class="estatic-zoom  separete">
+<form action="/admin/game" method="post">
+    <main class="estatic-zoom  separete">
 
-    <section class="container">
+        <section class="container">
 
-        <div class="img">
-            <h1>{{game.tittle}}</h1>
-            <img src="https://image.tmdb.org/t/p/w342/8LHNnMA9xP6sUhkma0aOv5RWtzo.jpg" alt="">
-            <div>
-                <a class="btn-down" href="#"><i class="fa fa-download"></i> DOWNLOAD <span>300MB</span></a>
+            <div class="img">
+                <h1>{{game.tittle}}</h1>
+                <img src="https://image.tmdb.org/t/p/w342/8LHNnMA9xP6sUhkma0aOv5RWtzo.jpg" alt="">
+                <div>
+                    <a class="btn-down" href="#"><i class="fa fa-download"></i> DOWNLOAD <span>300MB</span></a>
+                </div>
             </div>
-        </div>
-        <div class="info-desc-imgs-comments">
-            <div class="info-desc">
-                <section class="info">
-                    <fieldset>
-                        <legend>Informações</legend>
-                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
-                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
-                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
-                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
-                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
-                        <p><span class="">Titulo: </span> {{game.tittle}} </span></p>
-                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
-                    </fieldset>
-                </section>
-                <section class="desc">
-                    <fieldset>
-                        <legend>Sinopse</legend>
-                        <div class="texto">
-                            Em Legado Explosivo, um ladrão de banco resolve mudar de vida e se tornar uma pessoa honesta
-                            quando se apaixona por uma mulher que trabalha em uma instalação de armazenamento, um lugar
-                            onde ele esconde todo o dinheiro que rouba. Mas fica cada vez mais difícil limpar seu nome
-                            quando ele passa a ser investigado por um agente corrupto do FBI.
+            <div class="info-desc-imgs-comments">
+                <div class="info-desc">
+                    <section class="info">
+                        <fieldset>
+                            <legend>Informações</legend>
+                            <div class="label-input-inline">
+                                <label for="tittle">Tittle: <br><span class="form-vali"></span></label>
+                                <input type="text" name="tittle" placeholder="Tittle" value="" required>
+                            </div>
+                            <div class="label-input-inline">
+                                <label for="type">Type: <br><span class="form-vali"></span></label>
+                                <input type="text" name="type" placeholder="Type" value="" required>
+                            </div>
+                            <div class="label-input-inline">
+                                <label for="lingue">Language: <br><span class="form-vali"></span></label>
+                                <input type="text" name="Language" placeholder="Language" value="" required>
+                            </div>
+                            <div class="label-input-inline">
+                                <label for="censorship">Censorship: <br><span class="form-vali"></span></label>
+                                <input type="text" name="censorship" placeholder="Censorship" value="" required>
+                            </div>
+                            <div class="label-input-inline">
+                                <label for="release_date">Release Date: <br><span class="form-vali"></span></label>
+                                <input type="date" name="release_date" value="" required>
+                            </div>
+                            <div class="label-input-inline">
+                                <label for="size">Size: <br><span class="form-vali"></span></label>
+                                <input type="text" name="size" placeholder="1100MB, 1.1GB..." value="" required>
+                            </div>
+                            <div class="label-input-inline">
+                                <label for="tags">Tags: <br><span class="form-vali"></span></label>
+                                <input type="text" name="tags" placeholder="tag, tag, tag..." value="" required>
+                            </div>
+                            <div class="label-input-inline">
+                                <label for="paltform">Platform: <br><span class="form-vali"></span></label>
+                                <input type="text" name="paltform" placeholder="Windows, Android..." value="" required>
+                            </div>
+
+                        </fieldset>
+                    </section>
+                    <section class="desc">
+                        <fieldset>
+                            <legend>Sinopse</legend>
+
+                            <textarea name="description" placeholder="Description..." rows="13"></textarea>
+
+                        </fieldset>
+                    </section>
+                </div>
+
+                <div class="imgs-others">
+                    <h1>Screnshorts</h1>
+                    <div class="row-imgs">
+                        <div class="column-imgs">
+                            <img class="hover-shadow cursor screenshort" src="/img/main/screenshort-sqn.png" alt="">
                         </div>
-                    </fieldset>
-                </section>
-                {{!-- <div class="rating">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                </div> --}}
 
+                    </div>
+                    <div id="myModal" class="modal">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <div id="modal-content">
+                            <img src="" id="modalImage" alt="">
+                        </div>
+                    </div>
+                    <div class="input-sc">
+                        <input type="file" name="screenshort" class="screenshort" accept="image/png, image/jpeg">
+                      
+                    </div>
 
-            </div>
-            <div class="imgs-others">
-                <h1>Screnshorts</h1>
-                <div class="row-imgs">
-                    <div class="column-imgs">
-                        <img class="hover-shadow cursor" id="myImage1"
-                            src="https://www.w3schools.com/howto/img_nature.jpg" alt="">
-                    </div>
-                    <div class="column-imgs">
-                        <img class="hover-shadow cursor" id="myImage2"
-                            src="https://www.w3schools.com/howto/img_snow.jpg" alt="">
-                    </div>
-                    <div class="column-imgs">
-                        <img class="hover-shadow cursor" id="myImage3"
-                            src="https://www.w3schools.com/howto/img_mountains.jpg" alt="">
-                    </div>
-                    <div class="column-imgs">
-                        <img class="hover-shadow cursor" id="myImage4"
-                            src="https://www.w3schools.com/w3css/img_snowtops.jpg" alt="">
-                    </div>
                 </div>
-                <div id="myModal" class="modal">
-                    <span class="close" onclick="closeModal()">&times;</span>
-                    <div id="modal-content">
-                        <img src="" id="modalImage" alt="">
-                    </div>
-                </div>
-                <h3>Mais {{game.type}}:</h3>
-                <div class="more-type">
-                    <a href="/game/{{game._id}}">
-                        <figure>
-                            <figure>
-                                <img src="{{game.img}}" alt="Trulli" style="width:100%">
-                                <figcaption>
-                                    <h4> {{game.tittle}}</h4>
-                                    <p>English | <i class="fab fa-windows"></i> Windows</p>
-                                </figcaption>
-                            </figure>
-                        </figure>
-                    </a>
-                  
-                </div>
-            </div>
-        
+        </section>
+        <div>
+            <input type="submit" value="CRIAR NOVO GAME">
+        </div>
+    </main>
+</form>
 
-    </section>
-
-</main>
 
 <script src="/javascript/admin.js"></script>

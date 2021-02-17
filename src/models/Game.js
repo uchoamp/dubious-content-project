@@ -12,7 +12,8 @@ const hGameSchema = new Schema(
     censorship: String,
     platform: String,
     release_date: Date, 
-    donwload: String
+    link_donwload: String, 
+    size: String
   },
   {
     timestamps: true,
