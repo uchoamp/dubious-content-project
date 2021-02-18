@@ -1,15 +1,25 @@
 {{> admin/header}}
 
-<form action="/admin/game" method="post">
+<form action="/admin/game" method="post" id="form-create-game" enctype="multipart/form-data">
     <main class="estatic-zoom  separete">
 
         <section class="container">
 
             <div class="img">
-                <h1>{{game.tittle}}</h1>
-                <img src="https://image.tmdb.org/t/p/w342/8LHNnMA9xP6sUhkma0aOv5RWtzo.jpg" alt="">
+                <h1 id="tittle-here"></h1>
+                <img id="img-cover" src="/img/main/capa-exemple.png" alt="">
                 <div>
-                    <a class="btn-down" href="#"><i class="fa fa-download"></i> DOWNLOAD <span>300MB</span></a>
+                    <label for="cover">Capa: </label>
+                    <input type="file" name="cover" id="cover" accept="image/png, image/jpeg">
+                </div>
+
+                <div>
+                    <a class="btn-down inative-btn-down" id="btn-down" href="javascript:void(0)"><i class="fa fa-download"></i> DOWNLOAD <span id="here-size-game"></span></a>
+                    <div>
+                        <label for="link_download">Link para download: </label>
+                        <input type="text" name="link_download" id="link_download"
+                            placeholder="https://download.h-natsu.com/windows/game">
+                    </div>
                 </div>
             </div>
             <div class="info-desc-imgs-comments">
@@ -19,7 +29,7 @@
                             <legend>Informações</legend>
                             <div class="label-input-inline">
                                 <label for="tittle">Tittle: <br><span class="form-vali"></span></label>
-                                <input type="text" name="tittle" placeholder="Tittle" value="" required>
+                                <textarea name="tittle" id="tittle" rows="2" required></textarea>
                             </div>
                             <div class="label-input-inline">
                                 <label for="type">Type: <br><span class="form-vali"></span></label>
@@ -27,27 +37,32 @@
                             </div>
                             <div class="label-input-inline">
                                 <label for="lingue">Language: <br><span class="form-vali"></span></label>
-                                <input type="text" name="Language" placeholder="Language" value="" required>
+                                <input type="text" name="Language" placeholder="Language" value="">
                             </div>
                             <div class="label-input-inline">
                                 <label for="censorship">Censorship: <br><span class="form-vali"></span></label>
-                                <input type="text" name="censorship" placeholder="Censorship" value="" required>
+                                <input type="text" name="censorship" placeholder="Censorship" value="">
                             </div>
                             <div class="label-input-inline">
                                 <label for="release_date">Release Date: <br><span class="form-vali"></span></label>
-                                <input type="date" name="release_date" value="" required>
+                                <input type="date" name="release_date" value="">
                             </div>
                             <div class="label-input-inline">
                                 <label for="size">Size: <br><span class="form-vali"></span></label>
-                                <input type="text" name="size" placeholder="1100MB, 1.1GB..." value="" required>
+                                <input type="text" name="size" id="size-game" placeholder="100MB, 1.1GB..." value="">
                             </div>
                             <div class="label-input-inline">
                                 <label for="tags">Tags: <br><span class="form-vali"></span></label>
-                                <input type="text" name="tags" placeholder="tag, tag, tag..." value="" required>
+                                <input type="text" name="tags" placeholder="tag, tag, tag..." value="">
                             </div>
                             <div class="label-input-inline">
                                 <label for="paltform">Platform: <br><span class="form-vali"></span></label>
-                                <input type="text" name="paltform" placeholder="Windows, Android..." value="" required>
+                                <div>
+                                    <input type="radio" name="paltform" id="windows" value="Windows" checked
+                                        required><label for="windows">Windows</label>
+                                    <input type="radio" name="paltform" value="Android" id="android" required><label
+                                        for="windows">Android</label>
+                                </div>
                             </div>
 
                         </fieldset>
@@ -56,7 +71,7 @@
                         <fieldset>
                             <legend>Sinopse</legend>
 
-                            <textarea name="description" placeholder="Description..." rows="13"></textarea>
+                            <textarea name="description" placeholder="Description..." rows="13" value="" required></textarea>
 
                         </fieldset>
                     </section>
@@ -64,11 +79,19 @@
 
                 <div class="imgs-others">
                     <h1>Screnshorts</h1>
-                    <div class="row-imgs">
+                    <div class="row-imgs" id="screenshorts">
                         <div class="column-imgs">
-                            <img class="hover-shadow cursor screenshort" src="/img/main/screenshort-sqn.png" alt="">
+                            <img class="hover-shadow cursor screenshort" src="/img/main/screenshort-exemple.png" alt="">
                         </div>
-
+                        <div class="column-imgs">
+                            <img class="hover-shadow cursor screenshort" src="/img/main/screenshort-exemple.png" alt="">
+                        </div>
+                        <div class="column-imgs">
+                            <img class="hover-shadow cursor screenshort" src="/img/main/screenshort-exemple.png" alt="">
+                        </div>
+                        <div class="column-imgs">
+                            <img class="hover-shadow cursor screenshort" src="/img/main/screenshort-exemple.png" alt="">
+                        </div>
                     </div>
                     <div id="myModal" class="modal">
                         <span class="close" onclick="closeModal()">&times;</span>
@@ -76,14 +99,32 @@
                             <img src="" id="modalImage" alt="">
                         </div>
                     </div>
-                    <div class="input-sc">
-                        <input type="file" name="screenshort" class="screenshort" accept="image/png, image/jpeg">
-                      
+                    <div id="inputs-sc">
+                        <div>
+                            <input type="file" name="screenshorts" accept="image/png, image/jpeg">
+                            <button type="button" onclick="resetInFileImgs(0)"><i
+                                    class="far fa-times-circle"></i></button>
+                        </div>
+                        <div>
+                            <input type="file" name="screenshorts" accept="image/png, image/jpeg">
+                            <button type="button" onclick="resetInFileImgs(1)"><i
+                                    class="far fa-times-circle"></i></button>
+                        </div>
+                        <div>
+                            <input type="file" name="screenshorts" accept="image/png, image/jpeg">
+                            <button type="button" onclick="resetInFileImgs(2)"><i
+                                    class="far fa-times-circle"></i></button>
+                        </div>
+                        <div>
+                            <input type="file" name="screenshorts" accept="image/png, image/jpeg">
+                            <button type="button" onclick="resetInFileImgs(3)"><i
+                                    class="far fa-times-circle"></i></button>
+                        </div>
                     </div>
 
                 </div>
         </section>
-        <div>
+        <div id="submit-container">
             <input type="submit" value="CRIAR NOVO GAME">
         </div>
     </main>

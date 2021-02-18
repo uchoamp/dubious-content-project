@@ -7,8 +7,8 @@ const flash = require("connect-flash");
 const expSession = require("express-session");
 const passport = require("passport");
 
-require('./config/passport')
 
+require('./config/passport')
 
 //Init
 const app = express();

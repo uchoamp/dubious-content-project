@@ -30,6 +30,7 @@ adminCtrl.showGame = (req, res) => {
     res.send("Ok")
 }
 adminCtrl.createGame = async (req, res) => {
+    console.log(req.body)
     res.send("Ok")
 }
 adminCtrl.alterGame = async (req, res) => {

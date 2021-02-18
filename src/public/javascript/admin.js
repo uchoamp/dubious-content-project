@@ -1,5 +1,9 @@
-// Mostra games
+/////////////////////////////////
+//          HOME ADMIN        //
+////////////////////////////////
+
 const table_games = document.getElementById("table-games");
+
 
 if (table_games) {
   const search = document.getElementById("search")
@@ -10,26 +14,25 @@ if (table_games) {
   const searchInput = search.children[0];
 
   searchInput.addEventListener('input', () => {
-
     if (!searchInput.value) {
       renderGames(1)
     }
   })
-  // mostra o games quando a pagina for carregada pela primeira vez
+  // mostra o games quando a pagina for carregada pela primeira vez //
   renderGames(1)
 
-  // Search
+  // Search //
   search.children[1].onclick = function () {
     nextPage(1);
   }
 
-  // Modança de página
+  // Modança de página //
   function nextPage(page) {
     renderGames(page, searchInput.value);
 
   }
 
-  // buscar o games no backend
+  // buscar o games no backend //
   function renderGames(page, query) {
     fetch(`/games?page=${page || ""}&limit=10&query=${query || ""}`).then(res => {
 
@@ -48,13 +51,10 @@ if (table_games) {
         let games = res.games
 
 
+
+
+        removeAllChild(tbody)
         let tr = clone.cloneNode(true);
-
-        while (tbody.lastChild) {
-          tbody.removeChild(tbody.lastChild)
-        }
-
-
 
         let td = undefined;
         games.forEach(game => {
@@ -84,7 +84,7 @@ if (table_games) {
 
 
   }
-  // criação do paginate
+  // criação do paginate //
   function createPaginate(page, pageFinal) {
     page = parseInt(page)
 
@@ -120,6 +120,103 @@ if (table_games) {
   }
 }
 
+/////////////////////////////////
+//          NEW GAME          //
+////////////////////////////////
 
-// new-game
 
+
+if (document.getElementById("form-create-game")) {
+  //  Input  CAPA   //
+  const cover = document.getElementById("cover");
+  const img_cover = document.getElementById("img-cover")
+  cover.onchange = () => {
+    console.log("djalçsk")
+    let fr = new FileReader();
+    fr.onload = () => {
+      img_cover.src = fr.result;
+    }
+    fr.readAsDataURL(cover.files[0]);
+  }
+
+  // Inputs screenshorts //
+  document.getElementById("form-create-game").reset();
+
+  const inputs_sc = document.getElementById("inputs-sc")
+  if (inputs_sc) {
+    const fr = new FileReader();
+    let screenshorts = document.getElementById("screenshorts");
+
+    let inputs_file = inputs_sc.children;
+    let screenshorts_children = screenshorts.children
+
+    for (let i = 0; i < inputs_file.length; i++) {
+      inputs_file[i].children[0].onchange = () => {
+        fr.onload = () => {
+          screenshorts_children[i].children[0].src = fr.result;
+        }
+        fr.readAsDataURL(inputs_file[i].children[0].files[0])
+      }
+
+    }
+
+    function resetInFileImgs(index) {
+      inputs_file[index].children[0].type = "";
+      inputs_file[index].children[0].type = "file";
+      screenshorts_children[index].children[0].src = "/img/main/screenshort-exemple.png"
+
+    }
+
+  }
+
+
+  // Inputs events //
+  const tittle = document.getElementById("tittle");
+  tittle.addEventListener("input", () => {
+    document.getElementById("tittle-here").innerText = tittle.value;
+  })
+
+  const size_game = document.getElementById("size-game");
+  size_game.addEventListener("input", () => {
+    document.getElementById("here-size-game").innerText = size_game.value;
+  })
+
+  const link_download = document.getElementById("link_download");
+  link_download.addEventListener("input", ()=>{
+    let btn_down = document.getElementById("btn-down");
+    if(link_download.value.length > 0){
+      btn_down.classList.remove("inative-btn-down");
+      btn_down.href = link_download.value;
+    }else{
+      btn_down.classList.add("inative-btn-down");
+      btn_down.href = "javascript:void(0)"
+    }
+  })
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Funções
+function removeAllChild(parent) {
+  while (parent.lastChild) {
+    parent.removeChild(parent.lastChild);
+  }
+}
