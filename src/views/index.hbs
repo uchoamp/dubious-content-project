@@ -8,11 +8,11 @@
             <div class="flex-center big-box">
                 {{#each games}}
                 <a href="/game/{{_id}}" class="block capa">
-                    <img src="{{img}}">
+                    <img src="/img/games/covers/{{imgs.cover}}">
                     <div class="legenda">
                         <h4> {{tittle}}</h4>
                         <p>Tipo: {{type}}</p>
-                        <p>Língua: {{lingue}} </p>
+                        <p>Língua: {{language}} </p>
                     </div>
                 </a>
                 {{/each}}

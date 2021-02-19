@@ -50,29 +50,26 @@ if (table_games) {
 
         let games = res.games
 
-
-
-
         removeAllChild(tbody)
-        let tr = clone.cloneNode(true);
 
+        let tr = clone.cloneNode(true);
         let td = undefined;
+
         games.forEach(game => {
           tr = tr.cloneNode(true)
 
-
-          tr.setAttribute("data-id", game._id)
-          tr.children[0].children[0].src = game.img
+          tr.children[0].children[0].src = "/img/games/covers/" + game.imgs.cover
           tr.children[1].innerHTML = game.tittle
           tr.children[2].children[0].innerHTML = game.description
           tr.children[3].innerHTML = game.type
-          tr.children[4].innerHTML = game.lingue
+          tr.children[4].innerHTML = game.language
           tr.children[5].innerHTML = game.tags
           tr.children[6].innerHTML = game.censorship
           tr.children[7].innerHTML = game.platform
           tr.children[8].innerHTML = game.release_date
           tr.children[9].innerHTML = game.size
-          tr.children[10].children[0].children[0].href = game.download
+          tr.children[10].children[0].children[0].href = game.link_download
+          tr.children[11].setAttribute("data-id", game._id)
 
           tbody.appendChild(tr)
 
@@ -118,6 +115,20 @@ if (table_games) {
     paginate.innerHTML = template
 
   }
+
+  // EDIT //
+
+  // DELETE //
+  function deleteGame(element) {
+    const id = element.parentElement.parentElement.getAttribute("data-id")
+    if (window.confirm("Confirme que o game deve ser apagado.")) {
+      fetch("/admin/game/" + id, { method: 'DELETE' })
+        .then((res) => {
+            console.log(res.text())
+        })
+    }
+  }
+
 }
 
 /////////////////////////////////
@@ -130,8 +141,11 @@ if (document.getElementById("form-create-game")) {
   //  Input  CAPA   //
   const cover = document.getElementById("cover");
   const img_cover = document.getElementById("img-cover")
-  cover.onchange = () => {
-    console.log("djalçsk")
+
+
+  cover.onchange = changeCover;
+  function changeCover() {
+
     let fr = new FileReader();
     fr.onload = () => {
       img_cover.src = fr.result;
@@ -172,35 +186,33 @@ if (document.getElementById("form-create-game")) {
 
   // Inputs events //
   const tittle = document.getElementById("tittle");
-  tittle.addEventListener("input", () => {
-    document.getElementById("tittle-here").innerText = tittle.value;
-  })
+  tittleChange()
+  tittle.addEventListener("input", tittleChange)
+  function tittleChange() {
+    if (tittle.value != "") { document.getElementById("tittle-here").innerText = tittle.value }
+    else { document.getElementById("tittle-here").innerText = "Tittle" };
+  }
 
   const size_game = document.getElementById("size-game");
-  size_game.addEventListener("input", () => {
+  sizeChange()
+  size_game.addEventListener("input", sizeChange)
+  function sizeChange() {
     document.getElementById("here-size-game").innerText = size_game.value;
-  })
+  }
 
   const link_download = document.getElementById("link_download");
-  link_download.addEventListener("input", ()=>{
+  linkChange()
+  link_download.addEventListener("input", linkChange)
+  function linkChange() {
     let btn_down = document.getElementById("btn-down");
-    if(link_download.value.length > 0){
+    if (link_download.value.length > 0) {
       btn_down.classList.remove("inative-btn-down");
       btn_down.href = link_download.value;
-    }else{
+    } else {
       btn_down.classList.add("inative-btn-down");
       btn_down.href = "javascript:void(0)"
     }
-  })
-
-
-
-
-
-
-
-
-
+  }
 }
 
 

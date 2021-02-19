@@ -61,10 +61,10 @@ if (closeMsg) {
         closeMsg[i].onclick = function () {
             this.parentElement.remove();
         };
-        // setTimeout(function () {
-        //     closeMsg[i].parentElement.remove();
+        setTimeout(function () {
+            closeMsg[i].parentElement.remove();
     
-        // }, 4000)
+        }, 4000)
         
     }
         

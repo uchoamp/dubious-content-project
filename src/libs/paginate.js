@@ -1,10 +1,10 @@
-const HGame = require("../models/Game");
+const Game = require("../models/Game");
 const modulo = {};
 modulo.paginate = async function (page, limit , query) {
     let games = {};
 
     if (query) {
-        games = await HGame.paginate({
+        games = await Game.paginate({
             $or: [{ $text: { $search: `${query}` } }, {
                 tittle
                     : { $regex: `${query}`, $options: "i" }
@@ -32,7 +32,7 @@ modulo.paginate = async function (page, limit , query) {
         });
 
     } else {
-    games = await HGame.paginate({}, { limit: limit || 9, page: page || 1, sort: { createdAt: "desc" } });
+    games = await Game.paginate({}, { limit: limit || 9, page: page || 1, sort: { createdAt: "desc" } });
     }
   
     return { games: games.docs, totalPages: games.totalPages }

@@ -1,18 +1,18 @@
 const { Schema, model } = require("mongoose");
 const mogoosePaginate = require("mongoose-paginate-v2");
 
-const hGameSchema = new Schema(
+const gameSchema = new Schema(
   {
     tittle: String,
     description: String,
     type: String,
-    lingue: String,
+    language: String,
     tags: String,
-    img: String,
+    imgs: {cover:String, screenshorts:[String]},
     censorship: String,
     platform: String,
-    release_date: Date, 
-    link_donwload: String, 
+    release_date: String, 
+    link_download: String, 
     size: String
   },
   {
@@ -20,10 +20,10 @@ const hGameSchema = new Schema(
   }
 );
 
-hGameSchema.plugin(mogoosePaginate)
+gameSchema.plugin(mogoosePaginate)
 
-const HGame = model("HGame", hGameSchema);
-module.exports = HGame;
+const game = model("Game", gameSchema);
+module.exports = game;
 
 
 // db.hgames.createIndexes([ {tittle:1},{description: 1}, {type:1}, {lingue:1}, {tags:1}, {censorship:1}, {platform:1}, 

@@ -1,14 +1,15 @@
-const adminCtrl = {}
-const User = require("../models/User")
-const Game = require("../models/Game")
-const Admin = require("../models/Admin")
+const adminCtrl = {};
+const User = require("../models/User");
+const Game = require("../models/Game");
+const Admin = require("../models/Admin");
+const { findOne } = require("../models/User");
 
 
 // Painel admin
 adminCtrl.panel = async (req, res) => {
     const quantUser = await User.count();
     const quantGame = await Game.count();
-    res.render("admin/", {quantUser, quantGame})
+    res.render("admin/", { quantUser, quantGame })
 }
 
 // Admin login
@@ -20,24 +21,53 @@ adminCtrl.login = async (req, res) => {
 }
 
 // Adiciona, alterar e delete game
-adminCtrl.newGame = async(req, res) => {
+adminCtrl.newGame = async (req, res) => {
     const quantUser = await User.count();
     const quantGame = await Game.count();
-    
-    res.render("admin/game", {quantUser, quantGame})
+
+    res.render("admin/game", { quantUser, quantGame })
 }
 adminCtrl.showGame = (req, res) => {
     res.send("Ok")
 }
 adminCtrl.createGame = async (req, res) => {
-    console.log(req.body)
-    res.send("Ok")
+    let { tittle, description, type, language,
+        censorship, release_date, size, platform, tags, link_download } = req.body;
+
+    
+    release_date = `${release_date.slice(8, 10)}/${release_date.slice(5, 7)}/${release_date.slice(0, 4)}`
+
+    const cover = req.files.cover[0].filename
+
+    const screenshortsFiles = req.files.screenshort;
+    const screenshorts = [undefined, undefined, undefined, undefined]
+
+    if (screenshortsFiles) { for (let i = 0; i < screenshortsFiles.length; i++) { screenshorts[i] = screenshortsFiles[i].filename; } }
+
+
+    const game = new Game({
+        tittle, description, type, size,
+        platform, release_date, tags, language, censorship, link_download,
+        imgs:{cover, screenshorts}
+    });
+
+    await game.save();
+
+    req.flash("success_msg", "Game adicionado com sucesso.")
+    res.redirect("/admin")
 }
 adminCtrl.alterGame = async (req, res) => {
     res.send("Ok")
 }
 adminCtrl.deleteGame = async (req, res) => {
-    res.send('jkas')
+    const game = await Game.findById(req.params.id);
+
+    if(false){
+        await Game.deleteOne(game);
+        return res.status(200).send("Game deleta com sucesso")
+    }
+    console.log(req.user)
+    res.status(200).end("Nenhum game foi apagado")
 }
 
 //logout 

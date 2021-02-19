@@ -6,11 +6,11 @@
         <section class="container">
 
             <div class="img">
-                <h1 id="tittle-here"></h1>
-                <img id="img-cover" src="/img/main/capa-exemple.png" alt="">
+                <h1 id="tittle-here">Tittle</h1>
+                <img id="img-cover" src="{{#if imgs.cover}}/img/games/covers/{{imgs.cover}}{{else}}/img/main/capa-exemple.png{{/if}}" alt="">
                 <div>
                     <label for="cover">Capa: </label>
-                    <input type="file" name="cover" id="cover" accept="image/png, image/jpeg">
+                    <input type="file" name="cover" id="cover" accept="image/png, image/jpeg" required>
                 </div>
 
                 <div>
@@ -18,7 +18,7 @@
                     <div>
                         <label for="link_download">Link para download: </label>
                         <input type="text" name="link_download" id="link_download"
-                            placeholder="https://download.h-natsu.com/windows/game">
+                            placeholder="https://download.h-natsu.com/windows/game" value="{{link_download}}">
                     </div>
                 </div>
             </div>
@@ -29,38 +29,38 @@
                             <legend>Informações</legend>
                             <div class="label-input-inline">
                                 <label for="tittle">Tittle: <br><span class="form-vali"></span></label>
-                                <textarea name="tittle" id="tittle" rows="2" required></textarea>
+                                <textarea name="tittle" id="tittle" placeholder="Tittle" rows="2" required>{{tittle}}</textarea>
                             </div>
                             <div class="label-input-inline">
                                 <label for="type">Type: <br><span class="form-vali"></span></label>
-                                <input type="text" name="type" placeholder="Type" value="" required>
+                                <input type="text" name="type" placeholder="Type" value="{{type}}" required>
                             </div>
                             <div class="label-input-inline">
                                 <label for="lingue">Language: <br><span class="form-vali"></span></label>
-                                <input type="text" name="Language" placeholder="Language" value="">
+                                <input type="text" name="language" placeholder="Language" value="{{language}}">
                             </div>
                             <div class="label-input-inline">
                                 <label for="censorship">Censorship: <br><span class="form-vali"></span></label>
-                                <input type="text" name="censorship" placeholder="Censorship" value="">
+                                <input type="text" name="censorship" placeholder="Censorship" value="{{censorship}}">
                             </div>
                             <div class="label-input-inline">
                                 <label for="release_date">Release Date: <br><span class="form-vali"></span></label>
-                                <input type="date" name="release_date" value="">
+                                <input type="date" name="release_date" value="{{release_date}}">
                             </div>
                             <div class="label-input-inline">
                                 <label for="size">Size: <br><span class="form-vali"></span></label>
-                                <input type="text" name="size" id="size-game" placeholder="100MB, 1.1GB..." value="">
+                                <input type="text" name="size" id="size-game" placeholder="100MB, 1.1GB..." value="{{size}}">
                             </div>
                             <div class="label-input-inline">
                                 <label for="tags">Tags: <br><span class="form-vali"></span></label>
-                                <input type="text" name="tags" placeholder="tag, tag, tag..." value="">
+                                <input type="text" name="tags" placeholder="tag, tag, tag..." value="{{tags}}">
                             </div>
                             <div class="label-input-inline">
                                 <label for="paltform">Platform: <br><span class="form-vali"></span></label>
-                                <div>
-                                    <input type="radio" name="paltform" id="windows" value="Windows" checked
+                                <div data-checked="{{platform}}">
+                                    <input type="radio" name="platform" id="windows" value="Windows" checked
                                         required><label for="windows">Windows</label>
-                                    <input type="radio" name="paltform" value="Android" id="android" required><label
+                                    <input type="radio" name="platform" value="Android" id="android" required><label
                                         for="windows">Android</label>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                         <fieldset>
                             <legend>Sinopse</legend>
 
-                            <textarea name="description" placeholder="Description..." rows="13" value="" required></textarea>
+                            <textarea name="description" placeholder="Description..." rows="13" required>{{description}}</textarea>
 
                         </fieldset>
                     </section>
@@ -81,16 +81,16 @@
                     <h1>Screnshorts</h1>
                     <div class="row-imgs" id="screenshorts">
                         <div class="column-imgs">
-                            <img class="hover-shadow cursor screenshort" src="/img/main/screenshort-exemple.png" alt="">
+                            <img class="hover-shadow cursor screenshort" src="{{#if imgs.tags.[0]}} {{imgs.tags.[0]}} {{else}}/img/main/screenshort-exemple.png{{/if}}" alt="">
                         </div>
                         <div class="column-imgs">
-                            <img class="hover-shadow cursor screenshort" src="/img/main/screenshort-exemple.png" alt="">
+                            <img class="hover-shadow cursor screenshort" src="{{#if imgs.tags.[1]}} {{imgs.tags.[1]}} {{else}}/img/main/screenshort-exemple.png{{/if}}" alt="">
                         </div>
                         <div class="column-imgs">
-                            <img class="hover-shadow cursor screenshort" src="/img/main/screenshort-exemple.png" alt="">
+                            <img class="hover-shadow cursor screenshort" src="{{#if imgs.tags.[2]}} {{imgs.tags.[2]}} {{else}}/img/main/screenshort-exemple.png{{/if}}" alt="">
                         </div>
                         <div class="column-imgs">
-                            <img class="hover-shadow cursor screenshort" src="/img/main/screenshort-exemple.png" alt="">
+                            <img class="hover-shadow cursor screenshort" src="{{#if imgs.tags.[3]}} {{imgs.tags.[3]}} {{else}}/img/main/screenshort-exemple.png{{/if}}" alt="">
                         </div>
                     </div>
                     <div id="myModal" class="modal">
@@ -101,22 +101,22 @@
                     </div>
                     <div id="inputs-sc">
                         <div>
-                            <input type="file" name="screenshorts" accept="image/png, image/jpeg">
+                            <input type="file" name="screenshort" accept="image/png, image/jpeg">
                             <button type="button" onclick="resetInFileImgs(0)"><i
                                     class="far fa-times-circle"></i></button>
                         </div>
                         <div>
-                            <input type="file" name="screenshorts" accept="image/png, image/jpeg">
+                            <input type="file" name="screenshort" accept="image/png, image/jpeg">
                             <button type="button" onclick="resetInFileImgs(1)"><i
                                     class="far fa-times-circle"></i></button>
                         </div>
                         <div>
-                            <input type="file" name="screenshorts" accept="image/png, image/jpeg">
+                            <input type="file" name="screenshort" accept="image/png, image/jpeg">
                             <button type="button" onclick="resetInFileImgs(2)"><i
                                     class="far fa-times-circle"></i></button>
                         </div>
                         <div>
-                            <input type="file" name="screenshorts" accept="image/png, image/jpeg">
+                            <input type="file" name="screenshort" accept="image/png, image/jpeg">
                             <button type="button" onclick="resetInFileImgs(3)"><i
                                     class="far fa-times-circle"></i></button>
                         </div>

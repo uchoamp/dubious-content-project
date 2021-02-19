@@ -1,0 +1,116 @@
+{{> header}}
+
+<main class="estatic-zoom  separete">
+
+    <section class="container">
+
+        <div class="img">
+            <h1>{{tittle}}</h1>
+            <img src="/img/games/covers/{{game.imgs.cover}}" alt="">
+            <div>
+                <a class="btn-down" href="#"><i class="fa fa-download"></i> DOWNLOAD <span>{{game.size}}</span></a>
+            </div>
+        </div>
+        <div class="info-desc-imgs-comments">
+            <div class="info-desc">
+                <section class="info">
+                    <fieldset>
+                        <legend>Informações</legend>
+                        <p><span class="">Titulo: </span> {{game.tittle}} </p>
+                        <p><span class="">Type: </span> {{game.type}} </p>
+                        <p><span class="">Language: </span> {{game.language}} </p>
+                        <p><span class="">Data de Lançamento: </span> {{game.release_date}} </p>
+                        <p><span class="">Size: </span> {{game.size}} </p>
+                        <p><span class="">Plataforma: </span> {{game.tittle}} </span></p>
+                    </fieldset>
+                </section>
+                <section class="desc">
+                    <fieldset>
+                        <legend>Sinopse</legend>
+                        <div class="texto">
+                            {{game.description}}
+                        </div>
+                    </fieldset>
+                </section>
+                {{!-- <div class="rating">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                </div> --}}
+
+
+            </div>
+            <div class="imgs-others">
+                <h1>Screenshorts</h1>
+                <div class="row-imgs">
+                    {{#each game.imgs.screenshorts}}
+                    {{#if this}}
+                    <div class="column-imgs">
+                        <img class="hover-shadow cursor screenshort" src="/img/games/screenshorts/{{this}}" alt="">
+                    </div>
+                    {{/if}}
+                    {{/each}}
+                </div>
+                <div id="myModal" class="modal">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <div id="modal-content">
+                        <img src="" id="modalImage" alt="">
+                    </div>
+                </div>
+                <h3>Mais {{game.type}}:</h3>
+                <div class="more-type">
+                    {{#each others}}
+                    <a href="/game/{{_id}}">
+                        <figure>
+                            <figure>
+                                <img src="/img/games/covers/{{imgs.cover}}" alt="Trulli" style="width:100%">
+                                <figcaption>
+                                    <h4> {{tittle}}</h4>
+                                    <p>{{language}} | <i class="fab fa-windows"></i> {{platform}}</p>
+                                </figcaption>
+                            </figure>
+                        </figure>
+                    </a>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="container-coments">
+                <h1>Comentarios </h1>
+                <div>
+                    <div id="comentar">
+
+                        {{#if user}}
+                        <textarea maxlength="250" id="commentText" placeholder="Crie um comentario..."
+                            rows="2"></textarea>
+                        {{else}}
+                        <div>
+                            Para comentar faça o <a href="/login">login</a> ou <a href="/signup">crie uma conta</a>.
+                        </div>
+                        {{/if}}
+                        <button id="btnComment" type='button' {{#unless user}}disabled{{/unless}} class="cursor">
+                            COMENTAR
+                        </button>
+                    </div>
+
+                    <div id="comments">
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+    </section>
+
+</main>
+
+{{> footer}}
