@@ -13,7 +13,8 @@ const gameSchema = new Schema(
     platform: String,
     release_date: String, 
     link_download: String, 
-    size: String
+    size: String, 
+    gameURL: {type: String, unique: true}
   },
   {
     timestamps: true,
@@ -26,5 +27,5 @@ const game = model("Game", gameSchema);
 module.exports = game;
 
 
-// db.hgames.createIndexes([ {tittle:1},{description: 1}, {type:1}, {lingue:1}, {tags:1}, {censorship:1}, {platform:1}, 
-// {tittle:"text", description:"text", type:"text", tags:"text", lingue:"text", censorship:"text", pletform:"text"} ])
+// db.games.createIndexes([ {tittle:1},{description: 1}, {type:1}, {language:1}, {tags:1}, {censorship:1}, {platform:1}, 
+// {tittle:"text", description:"text", type:"text", tags:"text", language:"text", censorship:"text", pletform:"text"} ])

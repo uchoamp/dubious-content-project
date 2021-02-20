@@ -1,15 +1,21 @@
-{{> header}}
-<section class="estatic-zoom max-window flex-center">
+<section class="estatic-zoom flex-center">
   <div class="form-container">
-  <h2>LOGIN</h2>
+    <a href="/" class="logo">H-Natsu</a>
+
+    <h2>LOGIN</h2>
+
     <form method="POST">
       <br>
-      <label for="fname">Email or username:</label>
+      <label for="fname">Email ou username:</label>
       <input type="text" id="fname" name="username" placeholder="username ou email" required>
       <label for="lname">Senha:</label>
       <input type="password" id="lname" name="password" placeholder="senha" required>
       <input type="submit" value="LOGIN">
     </form>
+    <div class="nav-hsl">
+      <a href="/"><i class="fas fa-arrow-left"></i> home</a><a href="/signup">inscrever-se <i
+          class="fas fa-arrow-right"></i></a>
+    </div>
   </div>
 </section>
 </section>

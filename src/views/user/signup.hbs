@@ -1,20 +1,24 @@
-{{> header}}
-
 <section class="estatic-zoom max-window flex-center">
   <div class="form-container">
-  <h2>SIGNUP</h2>
+    <a href="/" class="logo">H-Natsu</a>
+    <h2>SIGNUP</h2>
     <form method="POST">
       <br>
-      <label for="username">Username: <br><span class="form-vali" >{{errors.[0]}}</span></label>
-      <input type="text" name="username" placeholder="username" value="{{username}}"required>
-      <label for="email">Email: <br><span class="form-vali" >{{errors.[1]}}</span></label>
+      <label for="username">Username: <br><span class="form-vali">{{errors.[0]}}</span></label>
+      <input type="text" name="username" placeholder="username" value="{{username}}" required>
+      <label for="email">Email: <br><span class="form-vali">{{errors.[1]}}</span></label>
       <input type="email" name="email" placeholder="email" value="{{email}}" required>
-      <label for="password">Senha: <br><span class="form-vali" >{{errors.[2]}}</span></label>
-      <input type="password" id="VZbKZHXtqzx" minlength="6" placeholder="password"  name="password" value="{{password}}" required>
-      <label for="birthday">Data de Nascimento: <br><span class="form-vali" >{{errors.[3]}}</span></label> 
+      <label for="password">Senha: <br><span class="form-vali">{{errors.[2]}}</span></label>
+      <input type="password" id="VZbKZHXtqzx" minlength="6" placeholder="password" name="password" value="{{password}}"
+        required>
+      <label for="birthday">Data de Nascimento: <br><span class="form-vali">{{errors.[3]}}</span></label>
       <input type="date" name="birthday" value="{{birthday}}" required>
-      <input type="submit" value="Submit">
+      <input type="submit" value="INSCREVER-SE">
     </form>
+    <div class="nav-hsl">
+      <a href="/"><i class="fas fa-arrow-left"></i> home</a><a href="/login">login <i
+          class="fas fa-arrow-right"></i></a>
+    </div>
   </div>
 </section>
 </section>

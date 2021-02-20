@@ -18,7 +18,7 @@ modulo.paginate = async function (page, limit , query) {
                 tags
                     : { $regex: `${query}`, $options: "i" }
             }, {
-                lingue
+                language
                     : { $regex: `${query}`, $options: "i" }
             }, {
                 censorship

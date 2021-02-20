@@ -1,8 +1,8 @@
+const passport = require("passport")
 const adminCtrl = {};
 const User = require("../models/User");
 const Game = require("../models/Game");
 const Admin = require("../models/Admin");
-const { findOne } = require("../models/User");
 
 
 // Painel admin
@@ -14,12 +14,14 @@ adminCtrl.panel = async (req, res) => {
 
 // Admin login
 adminCtrl.showLogin = (req, res) => {
-    res.send("Ok")
+    res.render("admin/login")
 }
-adminCtrl.login = async (req, res) => {
-    res.send("login Ok")
-}
-
+adminCtrl.login = passport.authenticate("admin", {
+    successRedirect: "/admin",
+    failureRedirect: "/admin/login",
+    failureFlash: true,
+    successFlash: "Welcome!",
+  });
 // Adiciona, alterar e delete game
 adminCtrl.newGame = async (req, res) => {
     const quantUser = await User.count();
@@ -32,7 +34,7 @@ adminCtrl.showGame = (req, res) => {
 }
 adminCtrl.createGame = async (req, res) => {
     let { tittle, description, type, language,
-        censorship, release_date, size, platform, tags, link_download } = req.body;
+        censorship, release_date, size, platform, tags, link_download, gameURL } = req.body;
 
     
     release_date = `${release_date.slice(8, 10)}/${release_date.slice(5, 7)}/${release_date.slice(0, 4)}`
@@ -47,7 +49,7 @@ adminCtrl.createGame = async (req, res) => {
 
     const game = new Game({
         tittle, description, type, size,
-        platform, release_date, tags, language, censorship, link_download,
+        platform, release_date, tags, language, censorship, link_download, gameURL,
         imgs:{cover, screenshorts}
     });
 
@@ -60,14 +62,12 @@ adminCtrl.alterGame = async (req, res) => {
     res.send("Ok")
 }
 adminCtrl.deleteGame = async (req, res) => {
-    const game = await Game.findById(req.params.id);
+    const game = await Game.findByIdAndDelete(req.params.id);
 
-    if(false){
-        await Game.deleteOne(game);
-        return res.status(200).send("Game deleta com sucesso")
-    }
-    console.log(req.user)
-    res.status(200).end("Nenhum game foi apagado")
+    res.status(200).send("Game deleta com sucesso")
+
+    
+    // res.status(200).end("Nenhum game foi apagado")
 }
 
 //logout 

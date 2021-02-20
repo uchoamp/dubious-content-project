@@ -1,13 +1,15 @@
 // reponsividade
-function searchResp() {
-    let header_center = document.getElementsByClassName("header-center")[0];
-    if (window.matchMedia("(max-width: 900px)").matches) {
-        header_center.parentNode.append(header_center );
-    } else {
-        header_center .parentNode.insertBefore(header_center, header_center.parentNode.childNodes[3]);
+const header_center = document.getElementsByClassName("header-center")[0];
+if (header_center) {
+    function searchResp() {
+        if (window.matchMedia("(max-width: 900px)").matches) {
+            header_center.parentNode.append(header_center);
+        } else {
+            header_center.parentNode.insertBefore(header_center, header_center.parentNode.childNodes[3]);
+        }
     }
+    searchResp()
 }
-searchResp()
 // window.addEventListener("resize",searchResp)
 
 //User Profile
@@ -23,7 +25,7 @@ if (modal) {
 
     for (let i = 0; i < screenshorts.length; i++) {
         screenshorts[i].onclick = clickIamge;
-        
+
     }
 
     modal.onclick = function (event) {
@@ -63,14 +65,14 @@ if (closeMsg) {
         };
         setTimeout(function () {
             closeMsg[i].parentElement.remove();
-    
-        }, 4000)
-        
-    }
-        
-   
 
-    
+        }, 4000)
+
+    }
+
+
+
+
 
 
 }
@@ -84,7 +86,7 @@ var pagination = document.getElementById("pagination");
 
 
 if (pagination) {
-    
+
     const pageFinal = parseInt(pagination.getAttribute("data-pageFinal"))
     let url = new URL(window.location.href);
 

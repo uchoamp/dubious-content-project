@@ -28,6 +28,10 @@
                         <fieldset>
                             <legend>Informações</legend>
                             <div class="label-input-inline">
+                                <label for="gameURL">URL: <br><span class="form-vali"></span></label>
+                                <input type="text" name="gameURL" class="" id="gameURL" placeholder="tittle-subtittle-...-..." value="{{gameURL}}" required>
+                            </div>
+                            <div class="label-input-inline">
                                 <label for="tittle">Tittle: <br><span class="form-vali"></span></label>
                                 <textarea name="tittle" id="tittle" placeholder="Tittle" rows="2" required>{{tittle}}</textarea>
                             </div>
@@ -125,7 +129,7 @@
                 </div>
         </section>
         <div id="submit-container">
-            <input type="submit" value="CRIAR NOVO GAME">
+            <input type="submit" value="CRIAR NOVO GAME" id="create-new-game">
         </div>
     </main>
 </form>

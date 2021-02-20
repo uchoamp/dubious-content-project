@@ -59,7 +59,8 @@ if (table_games) {
           tr = tr.cloneNode(true)
 
           tr.children[0].children[0].src = "/img/games/covers/" + game.imgs.cover
-          tr.children[1].innerHTML = game.tittle
+          tr.children[1].children[0].innerHTML = game.tittle
+          tr.children[1].children[0].href = "/game/"+game.gameURL
           tr.children[2].children[0].innerHTML = game.description
           tr.children[3].innerHTML = game.type
           tr.children[4].innerHTML = game.language
@@ -124,7 +125,10 @@ if (table_games) {
     if (window.confirm("Confirme que o game deve ser apagado.")) {
       fetch("/admin/game/" + id, { method: 'DELETE' })
         .then((res) => {
-            console.log(res.text())
+          return res.text()
+        }).then((res)=>{
+          console.log(res);
+          renderGames(1);
         })
     }
   }
@@ -138,10 +142,45 @@ if (table_games) {
 
 
 if (document.getElementById("form-create-game")) {
+
+  // verifica se URL existe //
+  const gameURL = document.getElementById("gameURL");
+  fetch("/games?gameURL=true")
+    .then((res) => { return res.json() })
+    .then((resJSON) => {
+      const gameURLs = [];
+      resJSON.forEach(element => {
+        gameURLs.push(element.gameURL)
+      });
+
+      gameURLchange() 
+      gameURL.addEventListener("input", gameURLchange)
+
+      function gameURLchange() {
+        const value = gameURL.value;
+        
+        const TF = gameURLs.includes(value);;
+    
+        if (TF || value == "") {
+          document.getElementById("create-new-game").setAttribute("disabled","true")
+          gameURL.classList.remove("accepted")
+          gameURL.classList.add("refused")
+        } else {
+          document.getElementById("create-new-game").removeAttribute("disabled")
+          gameURL.classList.remove("refused")
+          gameURL.classList.add("accepted")
+        }
+        
+      }
+    })
+    .catch((err) => console.log(err))
+
+
+
+
   //  Input  CAPA   //
   const cover = document.getElementById("cover");
   const img_cover = document.getElementById("img-cover")
-
 
   cover.onchange = changeCover;
   function changeCover() {

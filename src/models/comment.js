@@ -1,11 +1,12 @@
 const { Schema, model } = require("mongoose");
+const Game = require("./Game");
 
 const ObjectId = Schema.ObjectId;
 
 
 const commentSchema = new Schema(
     {
-        game_id: { type: ObjectId },
+        gameURL: { $ref: Game, type: String },
         comment: { type: String, minlength: 1, maxlength: 250 },
         userCommenter: { username: String, user_id: ObjectId },
         reply: [Object],

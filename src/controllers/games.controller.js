@@ -3,7 +3,8 @@ const Game = require("../models/Game");
 const { paginate } = require("../libs/paginate");
 
 gamesCtrl.showGame = async (req, res) => {
-  const game = await Game.findOne({ _id: req.params.urlHgame }).catch((err) => {
+  const gameURL = req.params.gameURL;
+  const game = await Game.findOne({ gameURL }).catch((err) => {
     console.log(err)
   });
 
@@ -13,14 +14,19 @@ gamesCtrl.showGame = async (req, res) => {
 
   let others = await Game.find({ $and:[{type: game.type}, {_id: {$ne: game._id}}] }, "_id tittle platform language imgs")
   .sort({ createdAt: "desc" }).limit(4);
-  console.log(others)
+  
   res.render("game", { game, others }); 
 };
 
 gamesCtrl.getGames = async (req, res) => {
+  if(req.query.gameURL){
+    const gameURLs = await Game.find({}, {_id:0, gameURL:1});
+   
+    return res.json(gameURLs);
+  }
+
   const games = await paginate(req.query.page, req.query.limit, req.query.query);
-
-
+  
   res.json(games);
 }
 
