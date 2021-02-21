@@ -2,7 +2,7 @@ const { Router } = require("express");
 const {multer, upload} = require("../middlewares/middlewares");
 const {isAdmin} = require("../helpers/auth")
 
-const {panel, showLogin, login, logout,newGame,showGame, createGame, alterGame,deleteGame} = require("../controllers/admin.controller")
+const {panel, showLogin, login, logout,newGame,showGame, createGame, editGame,deleteGame} = require("../controllers/admin.controller")
 
 const router = Router();
 
@@ -17,7 +17,7 @@ router.post("/admin/login", login);
 router.get("/admin/new-game", isAdmin, newGame);
 router.get("/admin/game/:id", isAdmin, showGame);
 router.post("/admin/game", isAdmin, upload, createGame);
-router.put("/admin/game", isAdmin, alterGame);
+router.post("/admin/game/:id/edit", isAdmin, upload, editGame);
 router.delete("/admin/game/:id", isAdmin, deleteGame);
 
 

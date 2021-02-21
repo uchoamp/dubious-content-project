@@ -8,10 +8,9 @@
 }
 
 body {
-  display: block;
   overflow-x: hidden;
   height: 100%;
-  background-color: #1e1a25;
+  background-color: var(--roxo3);
 }
 
 .bold {
@@ -49,7 +48,8 @@ body {
   align-items: center;
   min-width: 400px;
   padding: 13px 13px;
-  margin-top: 150px;
+  margin-top: 6rem;
+  z-index: 5;
 }
 
 .msg span {

@@ -6,9 +6,11 @@
   margin:3rem auto 0 auto;
   padding: 20px;
   border-radius: 5px;
-
+  box-shadow: 0 0px 8px rgb(48, 46, 46);
 }
-
+.isLogin{
+  margin:7rem auto 0 auto;
+}
 .form-container>a{
   display: block;
   width: 100%;
@@ -49,7 +51,7 @@
 .form-container input[type="email"], .form-container input[type="text"], .form-container input[type="password"], .form-container input[type="date"] {
   font-size: 16px;
   width: 100%;
-  padding: 12px 20px;
+  padding: 11px 4px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;

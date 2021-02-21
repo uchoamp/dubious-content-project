@@ -14,7 +14,6 @@ body {
 
 main {
     padding-bottom: 50px;
-   
 }
 
 
@@ -33,6 +32,9 @@ header {
 .estatic-zoom {
     max-width: 98%;
 }
+a.logo{
+    color:#e26df0;
+}
 
 
 /* -------------------------------------------------------- */
@@ -41,10 +43,7 @@ header {
 
 /* -------------------------------------------------------- */
 
-.form-container{
-    margin:6rem auto 0 auto;
-    box-shadow: 0 0px 8px rgb(48, 46, 46);
-}
+
 
 /* -------------------------------------------------------- */
 
@@ -214,6 +213,7 @@ header {
 }
 
 #table-games #desc {
+    margin: 0 auto;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -222,7 +222,6 @@ header {
     -webkit-box-orient: vertical;
     width: 220px;
     text-align: justify;
-    transition: width 1.5s;
 }
 
 #td-desc:hover #desc {
@@ -446,4 +445,5 @@ form input[type="date"] {
 }
 #submit-container > input:disabled{
     background-color: #454b48;
+    cursor: inherit;
 }

@@ -5,6 +5,12 @@
 @import url("games.css");
 @import url("media.css");
 
-
+:root{
+    --preto: #101010;
+    --roxo1: #6859a7;
+    --roxo2: #8454a3;
+    --roxo3: #9751a0;
+    --branco: #eeeeee;
+}
 
 @viewport { width: auto; }

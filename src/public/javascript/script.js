@@ -64,15 +64,14 @@ if (closeMsg) {
             this.parentElement.remove();
         };
         setTimeout(function () {
-            closeMsg[i].parentElement.remove();
+            if(closeMsg[i]){
+                closeMsg[i].parentElement.remove();
+            }
+            
 
         }, 4000)
 
     }
-
-
-
-
 
 
 }

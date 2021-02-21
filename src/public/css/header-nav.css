@@ -1,7 +1,7 @@
 /* Header and Navbar */
 header,
 .header {
-  background-color: #020021;
+  background-color: var(--roxo1);
 }
 .header {
   padding: 20px 0px;
@@ -18,7 +18,7 @@ header,
   border: none;
   cursor: pointer;
   outline: none;
-  color: rgb(255, 255, 255);
+  color: var(--branco);
 }
 .header-center form{
   display: flex;
@@ -68,11 +68,11 @@ header,
 a.logo {
   font-size: 35px;
   font-weight: bold;
-  color: #9851a0;
+  color: #310236;
 }
 
 .header a.active {
-  background-color: rgb(255, 0, 255);
+  background-color: rgb(27, 0, 27);
   color: white;
 }
 
@@ -91,7 +91,7 @@ a.logo {
   font-size: 18px;
   padding: 8px;
   outline: none;
-  background-color: white;
+  background-color: var(--branco);
   border: none;
   cursor: pointer;
 }
@@ -137,6 +137,9 @@ a.logo {
 }
 
 /* Navbar */
+.nav-container{
+  background-color: var(--branco);
+}
 .navbar {
   width: 100%;
   align-items: center;
@@ -145,7 +148,7 @@ a.logo {
 
 .navbar a {
   padding: 12px;
-  color: black;
+  color: var(--preto);
   text-decoration: none;
   line-height: 25px;
   font-size: 20px;

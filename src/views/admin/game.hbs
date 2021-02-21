@@ -1,20 +1,29 @@
 {{> admin/header}}
 
-<form action="/admin/game" method="post" id="form-create-game" enctype="multipart/form-data">
+<form {{#if _id}}action="{{_id}}/edit"{{else}}action="/admin/game"{{/if}}  method="post" id="form-create-game"
+    enctype="multipart/form-data">
+
+    {{#if _id}}
+    <input type="text" name="_id" value="{{_id}}" hidden>
+    {{/if}}
+
     <main class="estatic-zoom  separete">
 
         <section class="container">
 
             <div class="img">
                 <h1 id="tittle-here">Tittle</h1>
-                <img id="img-cover" src="{{#if imgs.cover}}/img/games/covers/{{imgs.cover}}{{else}}/img/main/capa-exemple.png{{/if}}" alt="">
+                <img id="img-cover"
+                    src="{{#if imgs.cover}}/img/games/covers/{{imgs.cover}}{{else}}/img/main/capa-exemple.png{{/if}}"
+                    alt="">
                 <div>
                     <label for="cover">Capa: </label>
-                    <input type="file" name="cover" id="cover" accept="image/png, image/jpeg" required>
+                    <input type="file" name="cover" id="cover" accept="image/png, image/jpeg">
                 </div>
 
                 <div>
-                    <a class="btn-down inative-btn-down" id="btn-down" href="javascript:void(0)"><i class="fa fa-download"></i> DOWNLOAD <span id="here-size-game"></span></a>
+                    <a class="btn-down inative-btn-down" id="btn-down" href="javascript:void(0)" target="_blank"><i
+                            class="fa fa-download"></i> DOWNLOAD <span id="here-size-game"></span></a>
                     <div>
                         <label for="link_download">Link para download: </label>
                         <input type="text" name="link_download" id="link_download"
@@ -29,11 +38,13 @@
                             <legend>Informações</legend>
                             <div class="label-input-inline">
                                 <label for="gameURL">URL: <br><span class="form-vali"></span></label>
-                                <input type="text" name="gameURL" class="" id="gameURL" placeholder="tittle-subtittle-...-..." value="{{gameURL}}" required>
+                                <input type="text" name="gameURL" id="gameURL" placeholder="tittle-subtittle-...-..."
+                                    value="{{gameURL}}" required>
                             </div>
                             <div class="label-input-inline">
                                 <label for="tittle">Tittle: <br><span class="form-vali"></span></label>
-                                <textarea name="tittle" id="tittle" placeholder="Tittle" rows="2" required>{{tittle}}</textarea>
+                                <textarea name="tittle" id="tittle" placeholder="Tittle" rows="2"
+                                    required>{{tittle}}</textarea>
                             </div>
                             <div class="label-input-inline">
                                 <label for="type">Type: <br><span class="form-vali"></span></label>
@@ -53,7 +64,8 @@
                             </div>
                             <div class="label-input-inline">
                                 <label for="size">Size: <br><span class="form-vali"></span></label>
-                                <input type="text" name="size" id="size-game" placeholder="100MB, 1.1GB..." value="{{size}}">
+                                <input type="text" name="size" id="size-game" placeholder="100MB, 1.1GB..."
+                                    value="{{size}}">
                             </div>
                             <div class="label-input-inline">
                                 <label for="tags">Tags: <br><span class="form-vali"></span></label>
@@ -75,7 +87,8 @@
                         <fieldset>
                             <legend>Sinopse</legend>
 
-                            <textarea name="description" placeholder="Description..." rows="13" required>{{description}}</textarea>
+                            <textarea name="description" placeholder="Description..." rows="13"
+                                required>{{description}}</textarea>
 
                         </fieldset>
                     </section>
@@ -85,16 +98,24 @@
                     <h1>Screnshorts</h1>
                     <div class="row-imgs" id="screenshorts">
                         <div class="column-imgs">
-                            <img class="hover-shadow cursor screenshort" src="{{#if imgs.tags.[0]}} {{imgs.tags.[0]}} {{else}}/img/main/screenshort-exemple.png{{/if}}" alt="">
+                            <img class="hover-shadow cursor screenshort"
+                                src="{{#if imgs.screenshorts.[0]}}/img/games/screenshorts/{{imgs.screenshorts.[0]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"
+                                alt="">
                         </div>
                         <div class="column-imgs">
-                            <img class="hover-shadow cursor screenshort" src="{{#if imgs.tags.[1]}} {{imgs.tags.[1]}} {{else}}/img/main/screenshort-exemple.png{{/if}}" alt="">
+                            <img class="hover-shadow cursor screenshort"
+                                src="{{#if imgs.screenshorts.[1]}}/img/games/screenshorts/{{imgs.screenshorts.[1]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"
+                                alt="">
                         </div>
                         <div class="column-imgs">
-                            <img class="hover-shadow cursor screenshort" src="{{#if imgs.tags.[2]}} {{imgs.tags.[2]}} {{else}}/img/main/screenshort-exemple.png{{/if}}" alt="">
+                            <img class="hover-shadow cursor screenshort"
+                                src="{{#if imgs.screenshorts.[2]}}/img/games/screenshorts/{{imgs.screenshorts.[2]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"
+                                alt="">
                         </div>
                         <div class="column-imgs">
-                            <img class="hover-shadow cursor screenshort" src="{{#if imgs.tags.[3]}} {{imgs.tags.[3]}} {{else}}/img/main/screenshort-exemple.png{{/if}}" alt="">
+                            <img class="hover-shadow cursor screenshort"
+                                src="{{#if imgs.screenshorts.[3]}}/img/games/screenshorts/{{imgs.screenshorts.[3]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"
+                                alt="">
                         </div>
                     </div>
                     <div id="myModal" class="modal">
@@ -106,23 +127,39 @@
                     <div id="inputs-sc">
                         <div>
                             <input type="file" name="screenshort" accept="image/png, image/jpeg">
-                            <button type="button" onclick="resetInFileImgs(0)"><i
+                            <button type="button" onclick="resetInFileImgs(0, this)"
+                                data-img="{{#if imgs.screenshorts.[0]}}/img/games/screenshorts/{{imgs.screenshorts.[0]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"><i
                                     class="far fa-times-circle"></i></button>
+                            {{#if _id}}
+                            <input type="checkbox" name="imgModified" value="0" hidden>
+                            {{/if}}
                         </div>
                         <div>
                             <input type="file" name="screenshort" accept="image/png, image/jpeg">
-                            <button type="button" onclick="resetInFileImgs(1)"><i
+                            <button type="button" onclick="resetInFileImgs(1, this)"
+                                data-img="{{#if imgs.screenshorts.[1]}}/img/games/screenshorts/{{imgs.screenshorts.[1]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"><i
                                     class="far fa-times-circle"></i></button>
+                            {{#if _id}}
+                            <input type="checkbox" name="imgModified" value="1" hidden>
+                            {{/if}}
                         </div>
                         <div>
                             <input type="file" name="screenshort" accept="image/png, image/jpeg">
-                            <button type="button" onclick="resetInFileImgs(2)"><i
+                            <button type="button" onclick="resetInFileImgs(2, this)"
+                                data-img="{{#if imgs.screenshorts.[2]}}/img/games/screenshorts/{{imgs.screenshorts.[2]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"><i
                                     class="far fa-times-circle"></i></button>
+                            {{#if _id}}
+                            <input type="checkbox" name="imgModified" value="2" hidden>
+                            {{/if}}
                         </div>
                         <div>
                             <input type="file" name="screenshort" accept="image/png, image/jpeg">
-                            <button type="button" onclick="resetInFileImgs(3)"><i
+                            <button type="button" onclick="resetInFileImgs(3, this)"
+                                data-img="{{#if imgs.screenshorts.[3]}}/img/games/screenshorts/{{imgs.screenshorts.[3]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"><i
                                     class="far fa-times-circle"></i></button>
+                            {{#if _id}}
+                            <input type="checkbox" name="imgModified" value="3" hidden>
+                            {{/if}}
                         </div>
                     </div>
 

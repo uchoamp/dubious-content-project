@@ -2,7 +2,6 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 const handlebars = require("express-handlebars");
-const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const expSession = require("express-session");
 const passport = require("passport");
@@ -43,7 +42,6 @@ app.use(expSession({
 }))
 
 app.use(flash());
-app.use(methodOverride("_method"));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -71,7 +69,7 @@ app.use(require("./routes/admin.routes"))
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res) => {
-  res.send("404");
+  res.redirect("/");
 });
 
 module.exports = app;

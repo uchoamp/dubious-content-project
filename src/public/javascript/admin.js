@@ -60,7 +60,7 @@ if (table_games) {
 
           tr.children[0].children[0].src = "/img/games/covers/" + game.imgs.cover
           tr.children[1].children[0].innerHTML = game.tittle
-          tr.children[1].children[0].href = "/game/"+game.gameURL
+          tr.children[1].children[0].href = "/game/" + game.gameURL
           tr.children[2].children[0].innerHTML = game.description
           tr.children[3].innerHTML = game.type
           tr.children[4].innerHTML = game.language
@@ -118,22 +118,55 @@ if (table_games) {
   }
 
   // EDIT //
+  function editGame(btn) {
+    const id = btn.parentElement.parentElement.getAttribute("data-id");
+    window.location.href = "/admin/game/" + id;
+  }
+
+
 
   // DELETE //
-  function deleteGame(element) {
-    const id = element.parentElement.parentElement.getAttribute("data-id")
+  function deleteGame(btn) {
+    const id = btn.parentElement.parentElement.getAttribute("data-id")
     if (window.confirm("Confirme que o game deve ser apagado.")) {
       fetch("/admin/game/" + id, { method: 'DELETE' })
         .then((res) => {
-          return res.text()
-        }).then((res)=>{
-          console.log(res);
-          renderGames(1);
-        })
+          if (!res.ok) {
+            return new Error('falhou a requisição')
+          }
+
+          if (res.status === 404) {
+            return new Error('não encontrou qualquer resultado')
+          }
+          return res.json()
+        }).then((res) => {
+          let classe = "success";
+          if (res.deleted) {
+            let quantGame = document.getElementById("quantGame");
+            quantGame.innerText = parseInt(quantGame.textContent) - 1;
+            renderGames(1);
+          } else {
+            classe = "error"
+          }
+
+          let divMsg = document.createElement("div"); divMsg.setAttribute("class", `${classe} msg`);
+          let spanMsg = document.createElement("span").appendChild(document.createTextNode(res.message));
+          let closeMsg = document.createElement("i"); closeMsg.setAttribute("class", "closeMsg far fa-window-close");
+          divMsg.appendChild(spanMsg); divMsg.appendChild(closeMsg);
+          document.body.prepend(divMsg)
+
+          setTimeout(() => {
+            divMsg.remove();
+          }, 4000)
+
+          closeMsg.onclick = () => divMsg.remove();
+
+        }).catch(err => console.error(err))
     }
   }
 
 }
+
 
 /////////////////////////////////
 //          NEW GAME          //
@@ -144,25 +177,29 @@ if (table_games) {
 if (document.getElementById("form-create-game")) {
 
   // verifica se URL existe //
+
   const gameURL = document.getElementById("gameURL");
-  fetch("/games?gameURL=true")
+  fetch("/games?gameURL=" + gameURL.value)
     .then((res) => { return res.json() })
     .then((resJSON) => {
       const gameURLs = [];
+ 
       resJSON.forEach(element => {
         gameURLs.push(element.gameURL)
       });
-
-      gameURLchange() 
+      
+      let testIsURL = / /
+      
+      gameURLchange()
       gameURL.addEventListener("input", gameURLchange)
-
+      
       function gameURLchange() {
         const value = gameURL.value;
-        
+
         const TF = gameURLs.includes(value);;
-    
-        if (TF || value == "") {
-          document.getElementById("create-new-game").setAttribute("disabled","true")
+
+        if (TF || value == "" || testIsURL.test(value)) {
+          document.getElementById("create-new-game").setAttribute("disabled", "true")
           gameURL.classList.remove("accepted")
           gameURL.classList.add("refused")
         } else {
@@ -170,7 +207,7 @@ if (document.getElementById("form-create-game")) {
           gameURL.classList.remove("refused")
           gameURL.classList.add("accepted")
         }
-        
+
       }
     })
     .catch((err) => console.log(err))
@@ -209,14 +246,19 @@ if (document.getElementById("form-create-game")) {
           screenshorts_children[i].children[0].src = fr.result;
         }
         fr.readAsDataURL(inputs_file[i].children[0].files[0])
+        if (inputs_file[i].children[2]) {
+          inputs_file[i].children[2].setAttribute("checked","checked");
+        }
       }
-
     }
 
-    function resetInFileImgs(index) {
+    function resetInFileImgs(index, ele) {
       inputs_file[index].children[0].type = "";
       inputs_file[index].children[0].type = "file";
-      screenshorts_children[index].children[0].src = "/img/main/screenshort-exemple.png"
+      if (inputs_file[index].children[2]) {
+        inputs_file[index].children[2].removeAttribute("checked");
+      }
+      screenshorts_children[index].children[0].src = ele.getAttribute("data-img");
 
     }
 

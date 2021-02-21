@@ -19,9 +19,9 @@ gamesCtrl.showGame = async (req, res) => {
 };
 
 gamesCtrl.getGames = async (req, res) => {
-  if(req.query.gameURL){
-    const gameURLs = await Game.find({}, {_id:0, gameURL:1});
-   
+  if(req.query.gameURL || req.query.gameURL === ''){
+    const gameURLs = await Game.find({gameURL: {$ne: req.query.gameURL}}, {_id:0, gameURL:1});
+
     return res.json(gameURLs);
   }
 
