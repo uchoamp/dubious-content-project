@@ -188,7 +188,7 @@ if (document.getElementById("form-create-game")) {
         gameURLs.push(element.gameURL)
       });
       
-      let testIsURL = / /
+      let testIsURL = /^[a-z0-9_-]{1,50}$/i
       
       gameURLchange()
       gameURL.addEventListener("input", gameURLchange)
@@ -196,9 +196,9 @@ if (document.getElementById("form-create-game")) {
       function gameURLchange() {
         const value = gameURL.value;
 
-        const TF = gameURLs.includes(value);;
+        const TF = gameURLs.includes(value);
 
-        if (TF || value == "" || testIsURL.test(value)) {
+        if (TF || value == "" || !(testIsURL.test(value))) {
           document.getElementById("create-new-game").setAttribute("disabled", "true")
           gameURL.classList.remove("accepted")
           gameURL.classList.add("refused")

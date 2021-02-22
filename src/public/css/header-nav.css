@@ -146,23 +146,26 @@ a.logo {
   flex-wrap: wrap;
 }
 
-.navbar a {
+
+.dropdown {
+  display: flex;
+  width: 14rem;
+  justify-content: center;
+}
+.dropdown> a {
   padding: 12px;
   color: var(--preto);
   text-decoration: none;
   line-height: 25px;
   font-size: 20px;
-  display: inline-block;
+  display: block;
   text-align: center;
+  width: 100%;
 }
 
-.navbar a:hover {
+.dropdown> a:hover {
   background-color: #000;
   color: white;
-}
-
-.dropdown {
-  display: inline-block;
 }
 
 .dropdown-content {
