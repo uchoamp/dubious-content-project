@@ -437,11 +437,20 @@ form input[type="date"] {
     color: #fcfcfc;
     border-color: #0f0f0f;
 }
+#submit-container > input.editar{
+    background-color: #747200;
+    color: #fcfcfc;
+    border-color: #0f0f0f;
+}
+
+#submit-container > input.editar:hover{
+    background-color: #9aa500;
+    color: #f0eaea;
+}
 
 #submit-container > input:hover{
     background-color: #038b21;
     color: #f0eaea;
-    
 }
 #submit-container > input:disabled{
     background-color: #454b48;

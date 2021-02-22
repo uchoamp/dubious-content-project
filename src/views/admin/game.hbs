@@ -166,7 +166,7 @@
                 </div>
         </section>
         <div id="submit-container">
-            <input type="submit" value="CRIAR NOVO GAME" id="create-new-game">
+            <input type="submit" class="{{#if _id}}editar{{/if}}"value="{{#if _id}}EDITAR{{else}}CRIAR NOVO{{/if}}  GAME" id="create-new-game">
         </div>
     </main>
 </form>

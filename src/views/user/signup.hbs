@@ -4,14 +4,14 @@
     <h2>SIGNUP</h2>
     <form method="POST">
       <br>
-      <label for="username">Username: <br><span class="form-vali">{{errors.[0]}}</span></label>
+      <label for="username">Username: <br><span class="form-vali">{{#if errors.username}}{{errors.username}}{{/if}}</span></label>
       <input type="text" name="username" placeholder="username" value="{{username}}" required>
-      <label for="email">Email: <br><span class="form-vali">{{errors.[1]}}</span></label>
+      <label for="email">Email: <br><span class="form-vali">{{#if errors.email}}{{errors.email}}{{/if}}</span></label>
       <input type="email" name="email" placeholder="email" value="{{email}}" required>
-      <label for="password">Senha: <br><span class="form-vali">{{errors.[2]}}</span></label>
+      <label for="password">Senha: <br><span class="form-vali">{{#if errors.password}}{{errors.password}}{{/if}}</span></label>
       <input type="password" id="VZbKZHXtqzx" minlength="6" placeholder="password" name="password" value="{{password}}"
         required>
-      <label for="birthday">Data de Nascimento: <br><span class="form-vali">{{errors.[3]}}</span></label>
+      <label for="birthday">Data de Nascimento: <br><span class="form-vali">{{#if errors.birthday}}{{errors.birthday}}{{/if}}</span></label>
       <input type="date" name="birthday" value="{{birthday}}" required>
       <input type="submit" value="INSCREVER-SE">
     </form>

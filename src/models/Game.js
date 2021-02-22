@@ -27,5 +27,5 @@ const game = model("Game", gameSchema);
 module.exports = game;
 
 
-// db.games.createIndexes([ {tittle:1},{description: 1}, {type:1}, {language:1}, {tags:1}, {censorship:1}, {platform:1}, 
-// {tittle:"text", description:"text", type:"text", tags:"text", language:"text", censorship:"text", pletform:"text"} ])
+// db.games.createIndexes([ {tittle:1},{description: 1}, {type:1}, {language:1}, {tags:1}, {censorship:1}, {platform:1}])
+// db.games.cretaIndex({tittle:"text", description:"text", type:"text", tags:"text", language:"text", censorship:"text", pletform:"text"}, {language_override: "pt"})

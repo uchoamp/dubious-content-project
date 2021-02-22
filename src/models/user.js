@@ -3,7 +3,7 @@ const passport = require("passport");
 const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
-  username: { type: String, required: true, unique:true},
+  username: { type: String, required: true, unique:true, min: 4},
   email: { type: String, required:true, unique:true},
   password: { type: String, required: true, min: 6 },
   birthday: {type: Date, required: true},

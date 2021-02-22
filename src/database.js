@@ -13,7 +13,7 @@ mongoose.connect(mongodb_URI, {
   useCreateIndex: true,
 }).
 then(db => {console.log(DATABASE, 'is conected')}).
-catch(err => {console.log(err)});
+catch(err => {console.error(err)});
 
 
 
