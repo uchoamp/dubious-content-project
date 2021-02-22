@@ -20,13 +20,15 @@ userCtrl.signup = async (req, res) => {
 
 
   if (!errors.username && !errors.email && !errors.password && !errors.birthday ) {
-    // const newUser = await new User({ username, email, password, birthday });
-    // newUser.password = await newUser.encryptPassword(password);
-    // await newUser.save();
+    const newUser = await new User({ username, email, password, birthday });
+    newUser.password = await newUser.encryptPassword(password);
+    await newUser.save();
 
     req.flash('success_msg', 'Usuário cadastrado com sucesso')
     return res.redirect('/login');
   }
+  birthday = birthday.toISOString().slice(0, 10);
+
 
   res.render("user/signup", { username, password,  email, errors, birthday})
 

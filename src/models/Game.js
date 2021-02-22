@@ -14,7 +14,7 @@ const gameSchema = new Schema(
     release_date: String, 
     link_download: String, 
     size: String, 
-    gameURL: {type: String, required:true}
+    gameURL: {type: String, required:true, unique: true}
   },
   {
     timestamps: true,

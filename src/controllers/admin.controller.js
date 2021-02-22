@@ -55,15 +55,15 @@ adminCtrl.createGame = async (req, res) => {
     let { tittle, description, type, language,
         censorship, release_date, size, platform, tags, link_download, gameURL } = req.body;
 
-    const URLExist = await Game.find({gameURL});
-    if(URLExist.length != 0){
+    const URLExist = await Game.find({ gameURL });
+    if (URLExist.length != 0) {
         req.flash("error", "URL já existe");
         return res.redirect("/admin")
     }
 
     release_date = `${release_date.slice(8, 10)}/${release_date.slice(5, 7)}/${release_date.slice(0, 4)}`
 
-    const cover = (req.files.cover)? req.files.cover[0].filename:undefined;
+    const cover = (req.files.cover) ? req.files.cover[0].filename : undefined;
 
     const screenshortsFiles = req.files.screenshort;
     const screenshorts = [undefined, undefined, undefined, undefined]
@@ -146,11 +146,12 @@ adminCtrl.editGame = async (req, res) => {
         release_date = `${release_date.slice(8, 10)}/${release_date.slice(5, 7)}/${release_date.slice(0, 4)}`
 
 
-        let oldGame = await Game.findOneAndUpdate(_id, {
-            tittle, description, type, language,
-            censorship, release_date, size, platform, tags,
-            link_download, imgs, gameURL
-        }).catch(err => console.error(err));
+        let oldGame = await Game.findByIdAndUpdate(_id, {
+                tittle, description, type, language,
+                censorship, release_date, size, platform, tags,
+                link_download, imgs, gameURL
+            }).catch(err => console.error(err));
+
 
         if (oldGame) {
             await removeImgs(oldCover, oldScreenshorts);

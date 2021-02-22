@@ -188,7 +188,7 @@ if (document.getElementById("form-create-game")) {
         gameURLs.push(element.gameURL)
       });
       
-      let testIsURL = /^[a-z0-9_-]{1,50}$/i
+      let testIsURL = /^[a-z0-9]{1}[\w-]*$/i
       
       gameURLchange()
       gameURL.addEventListener("input", gameURLchange)
@@ -212,8 +212,14 @@ if (document.getElementById("form-create-game")) {
     })
     .catch((err) => console.log(err))
 
-
-
+  // CHECK PLATAFORMA //
+  const platforms = document.getElementById("platforms");
+  const platform = platforms.getAttribute("data-checked");
+  if(platform == "Android"){
+    platforms.children[0].removeAttribute("checked")
+    platforms.children[2].setAttribute("checked", "true")
+    
+  }
 
   //  Input  CAPA   //
   const cover = document.getElementById("cover");

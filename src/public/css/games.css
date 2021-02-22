@@ -67,6 +67,7 @@ section > fieldset,
   background-color: rgb(73, 11, 0);
   font-size: 15px;
   pointer-events: none;
+  height: 24px;
 }
 
 /* ########################################## */

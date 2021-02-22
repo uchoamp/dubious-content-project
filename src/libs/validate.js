@@ -3,7 +3,7 @@ validate = {};
 const User = require("../models/User")
 
 validate.validateUsername = async (username)=>{
-    const re = /^[a-z0-9_-]{4,16}$/igm
+    const re = /^[a-z0-9]{1}[a-z0-9_-]{3,16}$/i
     if(re.test(username)){
         const user = await User.findOne({username});
         if(user){
@@ -16,7 +16,7 @@ validate.validateUsername = async (username)=>{
 }
 
 validate.validateEmail = async (email)=>{
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     if(re.test(String(email).toLowerCase())){
         const user = await User.findOne({email});
         if(user){
