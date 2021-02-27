@@ -14,7 +14,7 @@
             <div class="img">
                 <h1 id="tittle-here">Tittle</h1>
                 <img id="img-cover"
-                    src="{{#if imgs.cover.imgURL}}{{imgs.cover.imgURL}}{{else}}/img/main/capa-exemple.png{{/if}}"
+                    src="{{#if imgs.cover.imgURL}}{{imgs.cover.imgURL}}{{else}}/img/uploads/capa-exemple.png{{/if}}"
                     alt="">
                 <div>
                     <label for="cover">Capa: </label>
@@ -99,22 +99,22 @@
                     <div class="row-imgs" id="screenshorts">
                         <div class="column-imgs">
                             <img class="hover-shadow cursor screenshort"
-                                src="{{#if imgs.screenshorts.[0].imgURL}}{{imgs.screenshorts.[0].imgURL}}{{else}}/img/main/screenshort-exemple.png{{/if}}"
+                                src="{{#if imgs.screenshorts.[0].imgURL}}{{imgs.screenshorts.[0].imgURL}}{{else}}/img/uploads/screenshort-exemple.png{{/if}}"
                                 alt="">
                         </div>
                         <div class="column-imgs">
                             <img class="hover-shadow cursor screenshort"
-                                src="{{#if imgs.screenshorts.[1].imgURL}}{{imgs.screenshorts.[1].imgURL}}{{else}}/img/main/screenshort-exemple.png{{/if}}"
+                                src="{{#if imgs.screenshorts.[1].imgURL}}{{imgs.screenshorts.[1].imgURL}}{{else}}/img/uploads/screenshort-exemple.png{{/if}}"
                                 alt="">
                         </div>
                         <div class="column-imgs">
                             <img class="hover-shadow cursor screenshort"
-                                src="{{#if imgs.screenshorts.[2].imgURL}}{{imgs.screenshorts.[2].imgURL}}{{else}}/img/main/screenshort-exemple.png{{/if}}"
+                                src="{{#if imgs.screenshorts.[2].imgURL}}{{imgs.screenshorts.[2].imgURL}}{{else}}/img/uploads/screenshort-exemple.png{{/if}}"
                                 alt="">
                         </div>
                         <div class="column-imgs">
                             <img class="hover-shadow cursor screenshort"
-                                src="{{#if imgs.screenshorts.[3].imgURL}}{{imgs.screenshorts.[3].imgURL}}{{else}}/img/main/screenshort-exemple.png{{/if}}"
+                                src="{{#if imgs.screenshorts.[3].imgURL}}{{imgs.screenshorts.[3].imgURL}}{{else}}/img/uploads/screenshort-exemple.png{{/if}}"
                                 alt="">
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                         <div>
                             <input type="file" name="screenshort" accept="image/png, image/jpeg">
                             <button type="button" onclick="resetInFileImgs(0, this)"
-                                data-img="{{#if imgs.screenshorts.[0]}}/img/games/screenshorts/{{imgs.screenshorts.[0]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"><i
+                                data-img="{{#if imgs.screenshorts.[0].imgURL}}{{imgs.screenshorts.[0].imgURL}}{{else}}/img/uploads/screenshort-exemple.png{{/if}}"><i
                                     class="far fa-times-circle"></i></button>
                             {{#if _id}}
                             <input type="checkbox" name="imgModified" value="0" hidden>
@@ -137,7 +137,7 @@
                         <div>
                             <input type="file" name="screenshort" accept="image/png, image/jpeg">
                             <button type="button" onclick="resetInFileImgs(1, this)"
-                                data-img="{{#if imgs.screenshorts.[1]}}/img/games/screenshorts/{{imgs.screenshorts.[1]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"><i
+                                data-img="{{#if imgs.screenshorts.[1].imgURL}}{{imgs.screenshorts.[1].imgURL}}{{else}}/img/uploads/screenshort-exemple.png{{/if}}"><i
                                     class="far fa-times-circle"></i></button>
                             {{#if _id}}
                             <input type="checkbox" name="imgModified" value="1" hidden>
@@ -146,7 +146,7 @@
                         <div>
                             <input type="file" name="screenshort" accept="image/png, image/jpeg">
                             <button type="button" onclick="resetInFileImgs(2, this)"
-                                data-img="{{#if imgs.screenshorts.[2]}}/img/games/screenshorts/{{imgs.screenshorts.[2]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"><i
+                                data-img="{{#if imgs.screenshorts.[2].imgURL}}{{imgs.screenshorts.[2].imgURL}}{{else}}/img/uploads/screenshort-exemple.png{{/if}}"><i
                                     class="far fa-times-circle"></i></button>
                             {{#if _id}}
                             <input type="checkbox" name="imgModified" value="2" hidden>
@@ -155,7 +155,7 @@
                         <div>
                             <input type="file" name="screenshort" accept="image/png, image/jpeg">
                             <button type="button" onclick="resetInFileImgs(3, this)"
-                                data-img="{{#if imgs.screenshorts.[3]}}/img/games/screenshorts/{{imgs.screenshorts.[3]}}{{else}}/img/main/screenshort-exemple.png{{/if}}"><i
+                                data-img="{{#if imgs.screenshorts.[3].imgURL}}{{imgs.screenshorts.[3].imgURL}}{{else}}/img/uploads/screenshort-exemple.png{{/if}}"><i
                                     class="far fa-times-circle"></i></button>
                             {{#if _id}}
                             <input type="checkbox" name="imgModified" value="3" hidden>

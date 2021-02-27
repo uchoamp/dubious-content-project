@@ -77,32 +77,35 @@ adminCtrl.createGame = async (req, res) => {
     // Manipular IMGs //
     const toDestroy = []
 
+    let imgs = {cover:{imgURL: "/img/uploads/testC.png", public_id: 0}, 
+    screenshorts:[{imgURL: "/img/uploads/testSC.png", public_id: 0}, {imgURL: "/img/uploads/testSC.png", public_id: 0}, 
+                  {imgURL: "/img/uploads/testSC.png", public_id: 0}, {imgURL: "/img/uploads/testSC.png", public_id: 0}]}
     try {
 
 
-        let coversFiles = req.files.cover,
-            cover = undefined;
-        if (coversFiles) {
-            const resultCover = await cloudinary.uploader.upload(coversFiles[0].path, { folder: "games/covers", tags: imgTags });
-            cover = { imgURL: resultCover.url, public_id: resultCover.public_id };
-            toDestroy.push(cover.public_id);
-            await removeImg(coversFiles[0].path);
-        }
+        // let coversFiles = req.files.cover,
+        //     cover = undefined;
+        // if (coversFiles) {
+        //     const resultCover = await cloudinary.uploader.upload(coversFiles[0].path, { folder: "games/covers", tags: imgTags });
+        //     cover = { imgURL: resultCover.url, public_id: resultCover.public_id };
+        //     toDestroy.push(cover.public_id);
+        //     await removeImg(coversFiles[0].path);
+        // }
 
 
-        const screenshortsFiles = req.files.screenshort;
-        const screenshorts = [{ imgURL: undefined, public_id: undefined }, { imgURL: undefined, public_id: undefined }, { imgURL: undefined, public_id: undefined }, { imgURL: undefined, public_id: undefined }]
+        // const screenshortsFiles = req.files.screenshort;
+        // const screenshorts = [{ imgURL: undefined, public_id: undefined }, { imgURL: undefined, public_id: undefined }, { imgURL: undefined, public_id: undefined }, { imgURL: undefined, public_id: undefined }]
 
-        if (screenshortsFiles) {
-            for (let i = 0; i < screenshortsFiles.length; i++) {
-                let screenshortPath = screenshortsFiles[i].path;
-                const resultScreenshort = await cloudinary.uploader.upload(screenshortPath, { folder: "games/screenshorts", tags: imgTags })
-                screenshorts[i] = { imgURL: resultScreenshort.url, public_id: resultScreenshort.public_id };
-                toDestroy.push(screenshorts[i].public_id);
+        // if (screenshortsFiles) {
+        //     for (let i = 0; i < screenshortsFiles.length; i++) {
+        //         let screenshortPath = screenshortsFiles[i].path;
+        //         const resultScreenshort = await cloudinary.uploader.upload(screenshortPath, { folder: "games/screenshorts", tags: imgTags })
+        //         screenshorts[i] = { imgURL: resultScreenshort.url, public_id: resultScreenshort.public_id };
+        //         toDestroy.push(screenshorts[i].public_id);
 
-                await removeImg(screenshortPath)
-            }
-        }
+        //         await removeImg(screenshortPath)
+        //     }
+        // }
 
         if (!URLVerify) {
             const game = new Game({
