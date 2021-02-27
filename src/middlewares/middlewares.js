@@ -6,12 +6,9 @@ const middlewares = {};
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        if (file.fieldname == "screenshort") {
-            cb(null, path.join(__dirname, "../public/img/games/screenshorts"))
-        }
-        if (file.fieldname == "cover") {
-            cb(null, path.join(__dirname, "../public/img/games/covers"));
-        }
+
+        cb(null, path.join(__dirname, "../public/img/uploads"))
+
     },
     filename: (req, file, cb) => {
         cb(null, uuid() + path.extname(file.originalname));

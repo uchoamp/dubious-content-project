@@ -7,6 +7,6 @@ const {showGame, getGames}= require('../controllers/games.controller')
 router.get('/game/:gameURL', showGame);
 
 // Pegando games
-router.get("/games", isAdmin,getGames);
+router.get("/getGamesJSON", isAdmin,getGames);
 
 module.exports = router;

@@ -1,8 +1,9 @@
 /* Header and Navbar */
-header,
-.header {
+
+header, .header {
   background-color: var(--roxo1);
 }
+
 .header {
   padding: 20px 0px;
   display: flex;
@@ -10,6 +11,7 @@ header,
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
 .header-center button {
   padding: 7px;
   background: rgb(74, 0, 148);
@@ -20,10 +22,12 @@ header,
   outline: none;
   color: var(--branco);
 }
-.header-center form{
+
+.header-center form {
   display: flex;
   justify-content: center;
 }
+
 .header .header-center button:hover {
   background: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
@@ -39,16 +43,14 @@ header,
   outline: none;
 }
 
-
-.header-center > .info span{
+.header-center>.info span {
   padding: 8px;
   background-color: #ffffff;
   color: rgb(0, 0, 0);
-  border-radius:0 2px 2px 0;
+  border-radius: 0 2px 2px 0;
 }
 
-
-.header-center > .info .active{
+.header-center>.info .active {
   border-radius: 2px 0 0 2px;
   margin-left: 5px;
   color: #f7f7f7;
@@ -69,6 +71,8 @@ a.logo {
   font-size: 35px;
   font-weight: bold;
   color: #310236;
+  width: 13.38%;
+  text-align: start;
 }
 
 .header a.active {
@@ -76,17 +80,19 @@ a.logo {
   color: white;
 }
 
-.logout{
+.logout {
   background-color: rgb(95, 6, 6);
-  padding:9px 18px!important;
+  padding: 9px 18px!important;
   margin-right: 5px;
 }
 
 /* Userprofile */
+
 .userProfile {
   position: relative;
   display: inline-block;
 }
+
 .userProfile button {
   font-size: 18px;
   padding: 8px;
@@ -95,8 +101,9 @@ a.logo {
   border: none;
   cursor: pointer;
 }
+
 .userProfile-content {
-  visibility: hidden;
+  display: none;
   overflow: hidden;
   position: absolute;
   background-color: white;
@@ -105,13 +112,10 @@ a.logo {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   border-radius: 4px 0px 4px 4px;
   background-color: #e6e6e6;
-  transition-delay: 0.13s; 
+  transition-delay: 0.13s;
 }
 
-.show {
-  visibility: visible;
-  
-}
+
 .userProfile-content a {
   border-radius: 0px;
   width: 100%;
@@ -122,9 +126,11 @@ a.logo {
   text-align: left;
   border-bottom: 1px solid whitesmoke;
 }
+
 .userProfile-content a:hover {
   background-color: #d9d9d9;
 }
+
 .userProfile-content #myUsername {
   border-bottom: 1px solid whitesmoke;
   background-color: #cccccc;
@@ -137,33 +143,38 @@ a.logo {
 }
 
 /* Navbar */
-.nav-container{
+
+.nav-container {
   background-color: var(--branco);
 }
+
 .navbar {
+  display: flex;
   width: 100%;
   align-items: center;
   flex-wrap: wrap;
 }
 
-
 .dropdown {
-  display: flex;
-  width: 14rem;
-  justify-content: center;
+  display: inline-block;
+  position: relative;
+  width: 200px;
 }
-.dropdown> a {
+
+.dropdown> button {
   padding: 12px;
   color: var(--preto);
   text-decoration: none;
   line-height: 25px;
-  font-size: 20px;
+  font-size: 1.4rem;
   display: block;
   text-align: center;
   width: 100%;
+  border: none;
+  cursor: pointer;
 }
 
-.dropdown> a:hover {
+.dropdown>button:hover {
   background-color: #000;
   color: white;
 }
@@ -172,11 +183,10 @@ a.logo {
   display: none;
   position: absolute;
   background-color: #c7b9b9;
-  min-width: 150px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  margin-left: -19px;
-  font-size: 20px;
+  font-size: 1rem;
+  width: 100%;
 }
 
 .dropdown-content a {
@@ -185,16 +195,14 @@ a.logo {
   text-decoration: none;
   display: block;
   text-align: left;
-  
+  width: 100%;
+  font-size: 1.2rem;
 }
 
 .dropdown-content a:hover {
   background-color: #f1f1f1;
 }
 
-.dropdown:hover .dropdown-content {
+.show {
   display: block;
 }
-
-
-

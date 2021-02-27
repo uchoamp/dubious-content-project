@@ -9,13 +9,17 @@
 .container > div {
   flex: 1 1 400px;
 }
+.info-desc, .imgs-others, .container-coments {
+  padding:var(--game-center-right-conts);  
+}
+
 section > fieldset,
 .row-imgs,
 .more-type,
 #comentar,
 #comments {
   border: 3px solid rgb(99, 0, 0);
-  background-color: rgb(22, 22, 22);
+  background-color: var(--preto);
 }
 
 /* ########################################## */
@@ -25,20 +29,20 @@ section > fieldset,
   max-width: 400px;
   text-align: center;
   color: white;
-  background-image: linear-gradient(to top, #0e061b, rgb(15, 15, 15));
+  background-image: linear-gradient(to top, var(--roxo3),var(--preto));
   border: slateblue;
-  border-radius: 13px;
+  /* border-radius: 3px; */
 }
 .checked {
   color: rgb(238, 255, 0);
 }
 .img > img {
   border-radius: 3px;
-  width: 80%;
-  image-resolution: 300dpi;
+  width: 85%;
   margin: 20px 0 8px 0;
   border: 1px solid;
   box-shadow: 8px 10px rgba(71, 66, 66, 0.767);
+  min-height: 33rem ;
 }
 .img > div {
   margin-top: 30px;
@@ -73,7 +77,7 @@ section > fieldset,
 /* ########################################## */
 .info-desc-imgs-comments {
   height: 100%;
-  padding: 0 15px 15px 15px;
+  padding-left: 0.1rem;
   background-color: rgba(95, 158, 160, 0);
 }
 
@@ -87,30 +91,28 @@ section > fieldset,
   flex-wrap: wrap;
 }
 .info-desc > section {
-  flex: 1 1 298px;
-  padding: 4px;
-  min-height: 300px;
+  width: 100%;
+  margin-top: 0.4rem;
 }
 section > fieldset {
   border-radius: 0px 21px 0 21px;
   color: white;
-  padding-left: 6px;
-  height: 100%;
+  padding: 0 6px 20px 6px;  
 }
 section > fieldset p {
   color: white;
   margin: 8px 0 0 13px;
-  font-size: 16px;
+  font-size: 1rem;
 }
-section > fieldset span {
-  font-size: 18px;
+fieldset .field {
+  font-size: 1.2rem;
   font-weight: inherit;
 }
 
 legend {
   background-color: rgb(41, 41, 41);
   color: white;
-  font-size: 19px;
+  font-size: 1.4rem;
   padding: 5px 10px;
 }
 
@@ -122,10 +124,10 @@ legend {
 }
 
 .texto {
-  font-size: 15px;
+  font-size: 1.1rem;
   text-indent: 50px;
   text-align: justify;
-  letter-spacing: 3px;
+  /* letter-spacing: 1px; */
   display: block;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -138,7 +140,6 @@ legend {
 .imgs-others {
   box-shadow: 8px 8px rgb(8, 8, 8);
   color: rgb(255, 255, 255);
-  margin-top: 3%;
   width: 100%;
   background-color: rgb(26, 22, 22);
 }
@@ -236,56 +237,19 @@ img.hover-shadow {
   border-radius: 6px;
 }
 
-.more-type > a {
-  flex: 1 1 140px;
-  max-width: 200px;
-  background-color: rgb(33, 33, 33);
-  padding: 10px;
-  margin: 6px;
-  border: 1px solid black;
-  border-radius: 8px;
-  display: block;
+.more-type>a {
+  width: 23%;
 }
-.more-type img {
-  width: 100%;
-}
-.more-type a:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: rgb(20, 20, 20);
-  border-bottom-color: red;
+.more-type img{
+  height: 240px;
 }
 
-.more-type a:hover img {
-  filter: opacity(50%);
-}
-
-figure {
-  color: #f1f1f1;
-}
-
-figcaption {
-  display: block;
-  width: 100%;
-  font-size: 13px;
-}
-figcaption > h4 {
-  font-size: 1rem;
-  display: block;
-  white-space: nowrap;
-  width: 140px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-bottom: 1px;
-}
 
 /* ########################################## */
 .container-coments {
   box-shadow: 8px 8px rgb(8, 8, 8);
   color: rgb(255, 255, 255);
-  margin-top: 3%;
   background-color: rgb(26, 22, 22);
-  padding: 8px 13px 13px 13px;
-
 }
 
 .container-coments > h1 {
@@ -294,7 +258,6 @@ figcaption > h4 {
   text-align: center;
   margin: 0 0 8px 0;
 }
-
 
 /* criar comentario */
 #comentar {
@@ -420,7 +383,7 @@ figcaption > h4 {
   outline: none;
   cursor: pointer;
   align-items: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .comment-actions button .fa-reply {

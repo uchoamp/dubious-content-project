@@ -8,7 +8,7 @@ const gameSchema = new Schema(
     type: String,
     language: String,
     tags: String,
-    imgs: {cover:String, screenshorts:[String]},
+    imgs: {cover:{imgURL: String, public_id: String}, screenshorts:[{imgURL: String, public_id: String}]},
     censorship: String,
     platform: String,
     release_date: String, 
@@ -28,4 +28,4 @@ module.exports = game;
 
 
 // db.games.createIndexes([ {tittle:1},{description: 1}, {type:1}, {language:1}, {tags:1}, {censorship:1}, {platform:1}])
-// db.games.cretaIndex({tittle:"text", description:"text", type:"text", tags:"text", language:"text", censorship:"text", pletform:"text"}, {language_override: "pt"})
+// db.games.createIndex({tittle:"text", description:"text", type:"text", tags:"text", language:"text", censorship:"text", pletform:"text"}, {language_override: "pt"})

@@ -10,6 +10,7 @@ if (table_games) {
   const paginate = document.getElementById("paginate")
   const tbody = table_games.children[1];
   const clone = tbody.children[0].cloneNode(true);
+  tbody.children[0].remove();
 
   const searchInput = search.children[0];
 
@@ -34,7 +35,7 @@ if (table_games) {
 
   // buscar o games no backend //
   function renderGames(page, query) {
-    fetch(`/games?page=${page || ""}&limit=10&query=${query || ""}`).then(res => {
+    fetch(`/getGamesJSON?page=${page || ""}&limit=10&query=${query || ""}`).then(res => {
 
       if (!res.ok) {
         return new Error('falhou a requisição')
@@ -58,7 +59,7 @@ if (table_games) {
         games.forEach(game => {
           tr = tr.cloneNode(true)
 
-          tr.children[0].children[0].src = "/img/games/covers/" + game.imgs.cover
+          tr.children[0].children[0].src = game.imgs.cover.imgURL
           tr.children[1].children[0].innerHTML = game.tittle
           tr.children[1].children[0].href = "/game/" + game.gameURL
           tr.children[2].children[0].innerHTML = game.description
@@ -179,7 +180,7 @@ if (document.getElementById("form-create-game")) {
   // verifica se URL existe //
 
   const gameURL = document.getElementById("gameURL");
-  fetch("/games?gameURL=" + gameURL.value)
+  fetch("/getGamesJSON?gameURL=" + gameURL.value)
     .then((res) => { return res.json() })
     .then((resJSON) => {
       const gameURLs = [];

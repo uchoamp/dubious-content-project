@@ -1,6 +1,8 @@
 validate = {};
 
 const User = require("../models/User")
+const Game = require("../models/Game")
+
 
 validate.validateUsername = async (username)=>{
     const re = /^[a-z0-9]{1}[a-z0-9_-]{3,16}$/i
@@ -41,6 +43,20 @@ validate.validatePassword = (password)=>{
         return "A senha deve possui 6 ou mais caracteres.";
       }
     return false;
+}
+
+
+
+validate.validateURL = async (gameURL)=>{
+    const re = /^[a-z0-9]{1}[\w-]*$/i
+    if(re.test(gameURL)){
+       const game = await Game.findOne({ gameURL });
+       if(game){
+            return "URL já existe"
+       }
+       return false
+    }
+    return "URL inválida"
 }
 
 module.exports = validate;

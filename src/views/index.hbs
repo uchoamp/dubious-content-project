@@ -4,27 +4,29 @@
     <section class="big-center separete flex-center">
 
         <div class="center-left">
-
-            <div class="flex-center big-box">
+            <h1>Mais recentes:</h1>
+            <div class="flex-center games-container">
                 {{#each games}}
-                <a href="/game/{{gameURL}}" class="block capa">
-                    <img src="/img/games/covers/{{imgs.cover}}">
-                    <div class="legenda">
-                        <h4> {{tittle}}</h4>
-                        <p>Tipo: {{type}}</p>
-                        <p>Língua: {{language}} </p>
-                    </div>
+                <a href="/game/{{gameURL}}">
+                    <figure>
+                        <figure>
+                            <img src="{{imgs.cover.imgURL}}" alt="Trulli" style="width:100%">
+                            <figcaption>
+                                <h4> {{tittle}}</h4>
+                                <p>{{type}}</p>
+                                <p class="swap-platform-icon">{{language}} | <i class="fab "></i> <span>{{platform}}</span></p>
+                            </figcaption>
+                        </figure>
+                    </figure>
                 </a>
                 {{/each}}
 
             </div>
-
             <div class="div-paginate flex-center">
                 <div id="pagination" data-pageFinal="{{totalPages}}">
                     <a href="#">&laquo;</a>
                     <a href="#">&raquo;</a>
                 </div>
-
             </div>
         </div>
 
@@ -34,6 +36,7 @@
 
     </section>
 </main>
+
 <div class="banner estatic-zoom separete">
     <img src="/img/main/banner.jpg">
 </div>

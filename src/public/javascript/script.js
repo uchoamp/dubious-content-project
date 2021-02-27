@@ -17,6 +17,37 @@ function dropProfileOptions() {
     document.getElementById("userOptions").classList.toggle("show");
 }
 
+// nav dropdown
+
+function dropDropdown(btn){
+    let dropdown = btn.parentElement;
+    let dropdown_content = btn.parentElement.children[1];
+    dropdown_content.classList.toggle("show");
+}
+
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+
+// Swap icon platform
+const platforms_games = document.getElementsByClassName("swap-platform-icon");
+
+for( element of platforms_games){
+    let platform = element.children[1].textContent;
+    element.children[0].classList.add("fa-"+platform.toLowerCase());
+}
+
+
 
 // Modal screenShorts
 var modal = document.getElementById("myModal");

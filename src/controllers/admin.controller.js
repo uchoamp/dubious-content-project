@@ -1,12 +1,19 @@
+
 const passport = require("passport");
+const cloudinary = require("cloudinary").v2
 
 const adminCtrl = {};
 const User = require("../models/User");
 const Game = require("../models/Game");
 const Admin = require("../models/Admin");
+const Comment = require("../models/Comment")
 
-const { removeImgs } = require("../libs/removeFiles");
+const { validateURL } = require("../libs/validate")
 
+const { removeImg } = require("../libs/removeFiles");
+
+//Cloudinary config//
+cloudinary.config(process.env.CLOUDINARY_URL);
 
 // Painel admin
 adminCtrl.panel = async (req, res) => {
@@ -55,53 +62,80 @@ adminCtrl.createGame = async (req, res) => {
     let { tittle, description, type, language,
         censorship, release_date, size, platform, tags, link_download, gameURL } = req.body;
 
-    const URLExist = await Game.find({ gameURL });
-    if (URLExist.length != 0) {
-        req.flash("error", "URL já existe");
-        return res.redirect("/admin")
+    // URL é válida? //
+    const URLVerify = await validateURL(gameURL);
+    if (URLVerify) {
+        req.flash("error_msg", URLVerify);
+        return res.redirect("/admin/new-game")
     }
 
+    // Formatar data//
     release_date = `${release_date.slice(8, 10)}/${release_date.slice(5, 7)}/${release_date.slice(0, 4)}`
 
-    const cover = (req.files.cover) ? req.files.cover[0].filename : undefined;
+    let imgTags = [tittle, type];
 
-    const screenshortsFiles = req.files.screenshort;
-    const screenshorts = [undefined, undefined, undefined, undefined]
+    // Manipular IMGs //
+    const toDestroy = []
 
-    if (screenshortsFiles) { for (let i = 0; i < screenshortsFiles.length; i++) { screenshorts[i] = screenshortsFiles[i].filename; } }
-
-
-    const game = new Game({
-        tittle, description, type, size,
-        platform, release_date, tags, language, censorship, link_download, gameURL,
-        imgs: { cover, screenshorts }
-    });
+    try {
 
 
-    if (gameURL && gameURL != "") {
-
-
-        const newGame = await game.save()
-            .catch(err => console.error(err));
-
-        if (newGame) {
-            req.flash("success_msg", "Game adicionado com sucesso.");
-            return res.redirect("/admin");
-        } else {
-            // apagando as imagens caso não seja salvo no banco de dados
-            await removeImgs(game.imgs.cover, screenshorts)
-            /////////////////
-
-            console.error(error)
-            req.flash("error_msg", "O game não foi adicionado")
-            return res.redirect("/admin/new-game")
+        let coversFiles = req.files.cover,
+            cover = undefined;
+        if (coversFiles) {
+            const resultCover = await cloudinary.uploader.upload(coversFiles[0].path, { folder: "games/covers", tags: imgTags });
+            cover = { imgURL: resultCover.url, public_id: resultCover.public_id };
+            toDestroy.push(cover.public_id);
+            await removeImg(coversFiles[0].path);
         }
 
+
+        const screenshortsFiles = req.files.screenshort;
+        const screenshorts = [{ imgURL: undefined, public_id: undefined }, { imgURL: undefined, public_id: undefined }, { imgURL: undefined, public_id: undefined }, { imgURL: undefined, public_id: undefined }]
+
+        if (screenshortsFiles) {
+            for (let i = 0; i < screenshortsFiles.length; i++) {
+                let screenshortPath = screenshortsFiles[i].path;
+                const resultScreenshort = await cloudinary.uploader.upload(screenshortPath, { folder: "games/screenshorts", tags: imgTags })
+                screenshorts[i] = { imgURL: resultScreenshort.url, public_id: resultScreenshort.public_id };
+                toDestroy.push(screenshorts[i].public_id);
+
+                await removeImg(screenshortPath)
+            }
+        }
+
+        if (!URLVerify) {
+            const game = new Game({
+                tittle, description, type, size,
+                platform, release_date, tags, language, censorship, link_download, gameURL,
+                imgs: { cover, screenshorts }
+            });
+
+            const newGame = await game.save()
+                .catch(err => console.error(err));
+
+            if (newGame) {
+                req.flash("success_msg", "Game adicionado com sucesso.");
+                return res.redirect("/admin");
+            } else {
+                for (public_id of toDestroy) {
+                    await cloudinary.uploader.destroy(public_id)
+                }
+                req.flash("error_msg", "O game não foi adicionado")
+                return res.redirect("/admin/new-game")
+            }
+        }
+
+    } catch (error) {
+        console.error(error);
     }
 
-    await removeImgs(game.imgs.cover, screenshorts)
-    req.flash("error_msg", "O game não foi adicionado o titulo está vazio")
-    res.redirect("/admin/new-game")
+    for (public_id of toDestroy) {
+        await cloudinary.uploader.destroy(public_id)
+    }
+    req.flash("error_msg", "O game não foi adicionado")
+    return res.redirect("/admin/new-game")
+
 }
 ///////////////////////
 
@@ -109,34 +143,38 @@ adminCtrl.createGame = async (req, res) => {
 // EDTAR GAME //
 adminCtrl.editGame = async (req, res) => {
     const { _id, gameURL } = req.body;
-    let game = await Game.find({ $or: [{ _id }, { gameURL }] });
+    let game = await Game.findById(_id);
 
-    if (game.length == 1 && gameURL != "") {
-        game = game[0]
+    const URLVerify = await validateURL(gameURL);
+
+    if (game) {
 
         const imgModified = (Array.isArray(req.body.imgModified)) ? new Array(req.body.imgModified) : req.body.imgModified;
-        const newCover = (req.files.cover) ? req.files.cover[0].filename : undefined;
+        const newCoverPath = (req.files.cover) ? req.files.cover[0].path : undefined;
         const newScreenshorts = req.files.screenshort;
         const imgs = game.imgs;
-        let oldCover = undefined, oldScreenshorts = [];
 
-        if (imgs && ((imgModified && newScreenshorts.length > 0) || newCover)) {
-            if (newCover) {
-                oldCover = imgs.cover;
-                imgs.cover = newCover;
+        if (imgs && ((imgModified && newScreenshorts.length > 0) || newCoverPath)) {
+            if (newCoverPath) {
+                let result = await cloudinary.uploader.upload(newCoverPath, { public_id: imgs.cover.public_id });
+                imgs.cover.imgURL = result.url
+                await removeImg(newCoverPath);
             }
 
             if (imgModified) {
-
+                let screenshorts = imgs.screenshorts;
                 let indexMOD = null;
                 for (let i = 0; i < newScreenshorts.length; i++) {
-                    indexMOD = imgModified[i]
-                    oldScreenshorts.push(imgs.screenshorts[indexMOD]);
-                    imgs.screenshorts[indexMOD] = newScreenshorts[i].filename;
+                    indexMOD = imgModified[i];
+                    let result = (screenshorts[indexMOD].public_id) ? await cloudinary.uploader.upload(newScreenshorts[i].path, { public_id: screenshorts[indexMOD].public_id })
+                        :
+                        await cloudinary.uploader.upload(newScreenshorts[i].path);
+
+                    imgs.screenshorts[indexMOD].imgURL = result.url;
+
+                    await removeImg(newScreenshorts[i].path);
                 }
             }
-
-            await removeImgs(oldCover, oldScreenshorts);
 
         }
 
@@ -147,24 +185,24 @@ adminCtrl.editGame = async (req, res) => {
 
 
         let oldGame = await Game.findByIdAndUpdate(_id, {
-                tittle, description, type, language,
-                censorship, release_date, size, platform, tags,
-                link_download, imgs, gameURL
-            }).catch(err => console.error(err));
+            tittle, description, type, language,
+            censorship, release_date, size, platform, tags,
+            link_download, imgs, gameURL
+        }).catch(err => console.error(err));
 
 
         if (oldGame) {
-            await removeImgs(oldCover, oldScreenshorts);
             req.flash("success_msg", "Game editado com sucesso;")
             return res.redirect("/admin")
+
         } else {
             await removeImgs(newCover, newScreenshorts);
-            req.flash("error", "Não foi póssivel edita o game");
+            req.flash("error", "Não foi póssivel edita o game.");
             return res.redirect("/admin")
         }
 
     } else {
-        req.flash("error", "Não foi póssivel edita o game");
+        req.flash("error_msg", URLVerify);
         res.redirect("/admin")
     }
 
@@ -176,9 +214,16 @@ adminCtrl.editGame = async (req, res) => {
 adminCtrl.deleteGame = async (req, res) => {
     try {
         const game = await Game.findByIdAndDelete(req.params.id);
+        await Comment.deleteMany({gameURL: game.gameURL});
         const screenshorts = game.imgs.screenshorts;
 
-        await removeImgs(game.imgs.cover, screenshorts)
+        if (game.imgs.cover.public_id) await cloudinary.uploader.destroy(game.imgs.cover.public_id);
+
+        for (screenshort of screenshorts) {
+
+            if (screenshort.public_id) await cloudinary.uploader.destroy(screenshort.public_id);
+
+        }
 
         res.status(200).json({ deleted: true, message: "Game deletado com sucesso" })
 

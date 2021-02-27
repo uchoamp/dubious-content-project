@@ -34,6 +34,7 @@ header {
 }
 a.logo{
     color:#e26df0;
+    width: 20%;
 }
 
 
@@ -215,22 +216,22 @@ a.logo{
 #table-games #desc {
     margin: 0 auto;
     overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
+    /* text-overflow: ellipsis; */
+    /* display: -webkit-box; */
+    /* -webkit-line-clamp: 5; */
     /* number of lines to show */
-    -webkit-box-orient: vertical;
-    width: 220px;
+    /* -webkit-box-orient: vertical; */
+    width: 300px;
     text-align: justify;
 }
-
+/* 
 #td-desc:hover #desc {
     width: 300px;
     overflow: initial;
     text-overflow: initial;
     display: block;
     -webkit-line-clamp: initial;
-}
+} */
 
 #table-games #options, .td-center {
     display: flex;
@@ -344,7 +345,7 @@ input.accepted, input.accepted:focus{
     border-color: #038b21;
     box-shadow: 0px 0px 0px 1.5px rgb(0, 168, 65);
 }
-input.refused input, input.refused:focus{
+input.refused, input.refused:focus{
     border-color: #a70000;
     box-shadow: 0px 0px 0px 1.5px rgb(161, 0, 13);
 }
@@ -358,7 +359,7 @@ form input:focus, form textarea:focus {
 }
 
 .info input:not([type="date"], [type="radio"]), .info textarea,.label-input-inline > div {
-    width: 347.97px;
+    width: 90%;
 }
 form input[type="radio"]{
     width: auto;
@@ -368,7 +369,7 @@ form input[type="radio"]{
     margin: 0 13px 0 2px ;
 }
 form input[type="date"] {
-    width: 35%;
+    width: 14%;
     margin-right: auto;
 }
 
@@ -413,14 +414,12 @@ form input[type="date"] {
 }
 
 
-
-
 #submit-container{
     display: flex;
     background-color: rgb(26, 22, 22);
-    
     border: 3px solid rgb(99, 0, 0);
     border-radius: 6px;
+    margin-top: 0.8rem;
 
 }
 
