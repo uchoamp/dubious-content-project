@@ -16,11 +16,12 @@
                 <section class="info">
                     <fieldset>
                         <legend>Informações</legend>
-                        <p><span class="field">Titulo: </span> {{game.tittle}} </p>
-                        <p><span class="field">Type: </span> {{game.type}} </p>
-                        <p><span class="field">Language: </span> {{game.language}} </p>
+                        <p><span class="field">Título: </span> {{game.tittle}} </p>
+                        <p><span class="field">Tipo: </span> {{game.type}} </p>
+                        <p><span class="field">Língia: </span> {{game.language}} </p>
+                        <p><span class="field">Censura: </span> {{game.censorship}} </p>
                         <p><span class="field">Data de Lançamento: </span> {{game.release_date}} </p>
-                        <p><span class="field">Size: </span> {{game.size}} </p>
+                        <p><span class="field">Tamanho: </span> {{game.size}} </p>
                         <p><span class="field">Plataforma: </span> <span class="swap-platform-icon"> <i class="fab"></i> <span>{{game.platform}}</span> </span></p>
                     </fieldset>
                 </section>
@@ -70,7 +71,7 @@
                             <figure>
                                 <img src="{{imgs.cover.imgURL}}" alt="Trulli" style="width:100%">
                                 <figcaption>
-                                    <h4> {{tittle}}</h4>
+                                    <h2> {{tittle}}</h2>
                                     <p class="swap-platform-icon">{{language}} | <i class="fab"></i> <span>{{platform}}</span></p>
                                 </figcaption>
                             </figure>

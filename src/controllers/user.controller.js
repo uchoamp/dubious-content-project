@@ -39,7 +39,7 @@ userCtrl.loginForm = (req, res) => {
   res.render('user/login');
 }
 
-userCtrl.login = passport.authenticate("user", {
+userCtrl.login = passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/login",
   failureFlash: true,

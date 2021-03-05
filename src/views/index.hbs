@@ -4,7 +4,8 @@
     <section class="big-center separete flex-center">
 
         <div class="center-left">
-            <h1>Mais recentes:</h1>
+            <h1 class="capitalize">{{#if desc}}{{desc}}{{else}}Mais recentes:{{/if}}</h1>
+
             <div class="flex-center games-container">
                 {{#each games}}
                 <a href="/game/{{gameURL}}">
@@ -12,9 +13,11 @@
                         <figure>
                             <img src="{{imgs.cover.imgURL}}" alt="Trulli" style="width:100%">
                             <figcaption>
-                                <h4> {{tittle}}</h4>
+                                <h2> {{tittle}}</h2>
                                 <p>{{type}}</p>
-                                <p class="swap-platform-icon">{{language}} | <i class="fab "></i> <span>{{platform}}</span></p>
+                                <p class="swap-platform-icon">{{language}} | <i class="fab "></i>
+                                    <span>{{platform}}</span>
+                                </p>
                             </figcaption>
                         </figure>
                     </figure>
@@ -31,14 +34,14 @@
         </div>
 
         <div class="center-right">
-            <img src="/img/main/logo.png">
+            <img src="/img/main/logo.png" alt="h-natsu">
         </div>
 
     </section>
 </main>
 
 <div class="banner estatic-zoom separete">
-    <img src="/img/main/banner.jpg">
+    <img src="/img/main/banner.jpg" alt="h-natsu">
 </div>
-
+            
 {{> footer}}

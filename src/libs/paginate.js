@@ -1,6 +1,7 @@
 const Game = require("../models/Game");
-const modulo = {};
-modulo.paginate = async function (page, limit , query) {
+const paginate = {};
+
+paginate.paginate = async function (page, limit , query) {
     let games = {};
 
     if (query) {
@@ -38,4 +39,11 @@ modulo.paginate = async function (page, limit , query) {
     return { games: games.docs, totalPages: games.totalPages }
 }
 
-module.exports = modulo;
+paginate.paginateCategory = async (page, limit, query)=>{
+
+    const games = await Game.paginate(query, { limit: limit || 9, page: page || 1, collation:{locale: "pt", strength:1},sort: { createdAt: "desc" } });
+    
+    return { games: games.docs, totalPages: games.totalPages }
+}
+
+module.exports = paginate;

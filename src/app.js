@@ -1,5 +1,5 @@
 const express = require("express");
-const morgan = require("morgan");
+// const morgan = require("morgan");
 const path = require("path");
 const handlebars = require("express-handlebars");
 const flash = require("connect-flash");
@@ -34,7 +34,7 @@ app.set("view engine", "hbs");
 //middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 app.use(expSession({
   secret: 'hetai',
   resave: true,
@@ -44,6 +44,15 @@ app.use(expSession({
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(function (req, res, next) {
+    if ((req.get('X-Forwarded-Proto') !== 'https')) {
+      res.redirect('https://' + req.get('Host') + req.url);
+    } else
+      next();
+  });
+}
 
 // Golbal Varibles
 app.use((req, res, next) => {
@@ -59,17 +68,16 @@ app.use((req, res, next) => {
 app.use(require("./routes/index.routes"));
 app.use(require("./routes/page.routes"));
 app.use(require("./routes/user.routes"));
-app.use(require("./routes/games.routes"));
+app.use(require("./routes/game.routes"));
 app.use(require("./routes/comments.routes"));
 app.use(require("./routes/category.routes"));
 app.use(require("./routes/search.routes"));
-app.use(require("./routes/admin.routes"))
 
 // static files
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res) => {
-  res.redirect("/");
+  res.status(404).send("Error 404");
 });
 
 module.exports = app;

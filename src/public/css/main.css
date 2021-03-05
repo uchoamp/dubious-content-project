@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url("geral.css");
 @import url("header-nav.css");
 @import url("home-pages.css");
@@ -12,7 +13,7 @@
     --roxo2: #8454a3;
     --roxo3: #9751a0;
     --branco: #eeeeee;
-    --footer-color: #8454a3;
+    --footer-color: #a675c7;
 
     /* espaçamentos */
     --game-center-right-conts: 0.4rem;

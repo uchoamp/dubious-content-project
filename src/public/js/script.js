@@ -19,32 +19,32 @@ function dropProfileOptions() {
 
 // nav dropdown
 
-function dropDropdown(btn){
+function dropDropdown(btn) {
     let dropdown = btn.parentElement;
     let dropdown_content = btn.parentElement.children[1];
     dropdown_content.classList.toggle("show");
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
         }
-      }
     }
-  }
+}
 
 
 // Swap icon platform
 const platforms_games = document.getElementsByClassName("swap-platform-icon");
 
-for( element of platforms_games){
+for (element of platforms_games) {
     let platform = element.children[1].textContent;
-    element.children[0].classList.add("fa-"+platform.toLowerCase());
+    element.children[0].classList.add("fa-" + platform.toLowerCase());
 }
 
 
@@ -95,10 +95,10 @@ if (closeMsg) {
             this.parentElement.remove();
         };
         setTimeout(function () {
-            if(closeMsg[i]){
+            if (closeMsg[i]) {
                 closeMsg[i].parentElement.remove();
             }
-            
+
 
         }, 4000)
 
@@ -120,14 +120,23 @@ if (pagination) {
     const pageFinal = parseInt(pagination.getAttribute("data-pageFinal"))
     let url = new URL(window.location.href);
 
-    let pageCurrent = parseInt(location.pathname.slice(6))
-    let pathIni = "/page/"
+    let pageCurrent = parseInt(location.pathname.slice(6));
+    let pathIni = "/page/";
+    let pathURL = url.pathname;
 
-    if (url.pathname == "/search") {
+    if (pathURL == "/search") {
         pageCurrent = parseInt(url.searchParams.get("p"))
         pathIni = "/search?q=" + url.searchParams.get("q") + "&l=9&p="
     }
+    else {
+        let regexPathC = /^\/c\/[a-z]+\/[a-z]+\/\d+/i;
+        if (regexPathC.test(pathURL)) {
+            pathIni = pathURL.match(/^\/c\/[a-z]+\/[a-z]+\//i).toString()
+            pageCurrent = parseInt(pathURL.slice(pathIni.length))
+        }
+    }
 
+    
     if (!pageCurrent || pageCurrent == 1) {
         pageCurrent = 1;
         tempPagination = `<a href="${pathIni}${pageFinal}" >&laquo;</a>`

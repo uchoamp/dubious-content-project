@@ -1,0 +1,7 @@
+# Group 1
+User-agent: *
+
+Disallow: /search?*=*
+Disallow: /c/
+
+Sitemap: https://www.h-natsu.com.br/sitemap.xml

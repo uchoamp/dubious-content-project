@@ -16,7 +16,9 @@ body {
 .bold {
   font-weight: bold;
 }
-
+.capitalize {
+  text-transform: capitalize;
+}
 .flex-center {
   display: flex;
   justify-content: center;

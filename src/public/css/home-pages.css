@@ -104,7 +104,7 @@ figcaption {
     font-size: 13px;
 }
 
-figcaption>h4 {
+figcaption>h2 {
     font-size: 1rem;
     display: block;
     white-space: nowrap;
@@ -196,5 +196,5 @@ footer {
     padding: 0.9rem;
     text-align: center;
     font-size: 0.9rem;
-    opacity: 0.7;
+    color: rgba(0, 0, 0, 0.781);
 }
