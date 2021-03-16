@@ -1,41 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
 <url>
-  <loc>https://www.h-natsu.com.br/</loc>
-  <lastmod>2021-03-05T05:05:16+00:00</lastmod>
-  <priority>1.00</priority>
+    <loc>https://www.h-natsu.com.br/</loc>
+    <lastmod>2021-03-23T01:03:38+00:00</lastmod>
+    <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.h-natsu.com.br/login</loc>
-  <lastmod>2021-03-05T05:05:16+00:00</lastmod>
-  <priority>0.80</priority>
+    <loc>https://www.h-natsu.com.br/login</loc>
+    <lastmod>2021-03-05T05:05:16+00:00</lastmod>
+    <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.h-natsu.com.br/signup</loc>
-  <lastmod>2021-03-05T05:05:16+00:00</lastmod>
-  <priority>0.80</priority>
+    <loc>https://www.h-natsu.com.br/signup</loc>
+    <lastmod>2021-03-05T05:05:16+00:00</lastmod>
+    <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.h-natsu.com.br/game/kunoichibotan</loc>
-  <lastmod>2021-03-05T05:05:16+00:00</lastmod>
-  <priority>0.80</priority>
+    <loc>https://www.h-natsu.com.br/tutorial/textractor</loc>
+    <lastmod>2021-03-06T04:39:39+00:00</lastmod>
+    <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.h-natsu.com.br/game/explorerofiggdrasil</loc>
-  <lastmod>2021-03-05T05:05:16+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.h-natsu.com.br/game/exiledsummonerprincesspristella</loc>
+<lastmod>2021-02-25T01:58:58+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.h-natsu.com.br/game/exiledsummonerprincesspristella</loc>
-  <lastmod>2021-03-05T05:05:16+00:00</lastmod>
-  <priority>0.80</priority>
+<loc>https://www.h-natsu.com.br/game/explorerofiggdrasil</loc>
+<lastmod>2021-03-06T04:39:39+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://www.h-natsu.com.br/game/kunoichibotan</loc>
+<lastmod>2021-03-04T20:21:57+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 
 

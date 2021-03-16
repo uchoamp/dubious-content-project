@@ -15,7 +15,8 @@ gameCtrl.showGame = async (req, res) => {
   let others = await Game.find({ $and:[{type: game.type}, {_id: {$ne: game._id}}] }, {_id: 0, gameURL:1, tittle:1, platform:1, language:1, imgs:1})
   .sort({ createdAt: "desc" }).limit(4);
   
-  res.render("game", { game, others, tittle:game.tittle }); 
+  res.render("game", { game, others, tittle:game.tittle, 
+    canonical:"game/"+game.gameURL , meta_description:`Baixar ${game.tittle}, ${game.type}, ${game.platform}, ${game.language}`, meta_keywords:game.tittle+", "+game.tags+", "+game.platform}); 
 };
 
 

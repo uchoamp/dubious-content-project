@@ -72,6 +72,8 @@ app.use(require("./routes/game.routes"));
 app.use(require("./routes/comments.routes"));
 app.use(require("./routes/category.routes"));
 app.use(require("./routes/search.routes"));
+app.use(require("./routes/tutorial.routes"));
+
 
 // static files
 app.use(express.static(path.join(__dirname, "public")));

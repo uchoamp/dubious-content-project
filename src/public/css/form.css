@@ -2,15 +2,18 @@
 
 .form-container {
   background-color: rgb(252, 252, 255);
-  width: 350px;
-  margin:3rem auto 0 auto;
+  width: 344px;
+  margin:1rem auto 1rem auto;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0px 8px rgb(48, 46, 46);
 }
+
 .isLogin{
   margin:7rem auto 0 auto;
 }
+
+
 .form-container>a{
   display: block;
   width: 100%;
@@ -28,7 +31,7 @@
   font-size: 2rem;
 }
 .form-container form {
-  font-size: 18px;
+  font-size: 1.1rem;
   width: 100%;
 }
 .form-container .nav-hsl{
@@ -48,8 +51,8 @@
   color: rgb(15, 15, 15);
 }
 
-.form-container input[type="email"], .form-container input[type="text"], .form-container input[type="password"], .form-container input[type="date"] {
-  font-size: 16px;
+.form-container input:not([type=submit]){
+  font-size: 1rem;
   width: 100%;
   padding: 11px 4px;
   margin: 8px 0;
@@ -57,10 +60,12 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.form-container input[type="date"], input[type="time"] {
-  font-family: Arial, sans-serif;
+.form-container input:not([type=submit]):focus{
+  box-shadow: 0 0 0.4em rgb(0, 124, 196);
+  border-color: rgb(0, 124, 196);
 }
 
 .form-container input[type=submit] {

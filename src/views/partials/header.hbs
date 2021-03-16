@@ -1,7 +1,7 @@
 <header>
     <div class="header estatic-zoom">
         <div class="header-left">
-             <a href="/" class="logo">H-Natsu</a>
+             <a href="/" class="logo" title="H-Natsu">H-Natsu</a>
         </div>
        
         <div class="header-center">
@@ -9,16 +9,16 @@
                 <input type="search" placeholder="Search.." value="{{q}}" name="q">
                 <input type="number" value="9" hidden name="l">
                 <input type="number" value="1" hidden name="p">
-                <button type="submit"><i class="fa fa-search"></i> Buscar</button>
+                <button type="submit"  title="Busca"><i class="fa fa-search"></i> Busca</button>
             </form>
         </div>
 
         {{#if user}}
         <div class="userProfile">
-            <button onclick="dropProfileOptions()">
-                Meu Perfil <i class="fas fa-user"></i>
+            <button title="Meu Perfil">
+                Meu Perfil <i class="fas fa-user" ></i>
             </button>
-            <div id='userOptions' class="userProfile-content">
+            <div id="user-options" class="userProfile-content">
                 <a id='myUsername'>{{user.username}}</a>
                 <a href="#about">Settings</a>
                 <a href="/logout">Logout</a>
@@ -27,8 +27,8 @@
         </div>
         {{else}}
         <div class="header-right">
-            <a class="active" href="/login">LOGIN</a>
-            <a href="/signup">REGISTRE-SE</a>
+            <a class="active" title="Login" href="/login">LOGIN</a>
+            <a href="/signup" title="Registre-se">REGISTRE-SE</a>
         </div>
         {{/if}}
     </div>

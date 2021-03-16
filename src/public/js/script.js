@@ -12,31 +12,30 @@ if (header_center) {
 }
 // window.addEventListener("resize",searchResp)
 
-//User Profile
-function dropProfileOptions() {
-    document.getElementById("userOptions").classList.toggle("show");
-}
-
 // nav dropdown
 
 function dropDropdown(btn) {
     let dropdown = btn.parentElement;
     let dropdown_content = btn.parentElement.children[1];
+    if (document.getElementsByClassName("show")[0] && document.getElementsByClassName("show")[0] != dropdown_content) {
+        document.getElementsByClassName("show")[0].classList.remove("show");
+        document.getElementsByClassName("show-to-btn")[0].classList.remove("show-to-btn");
+    }
     dropdown_content.classList.toggle("show");
+    btn.classList.toggle("show-to-btn")
 }
 
 window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
+
+        if (document.getElementsByClassName("show")[0]) {
+            document.getElementsByClassName("show")[0].classList.remove('show');
+            document.getElementsByClassName("show-to-btn")[0].classList.remove('show-to-btn');
+
         }
     }
 }
+
 
 
 // Swap icon platform
@@ -100,7 +99,7 @@ if (closeMsg) {
             }
 
 
-        }, 4000)
+        }, 7000)
 
     }
 
@@ -136,7 +135,7 @@ if (pagination) {
         }
     }
 
-    
+
     if (!pageCurrent || pageCurrent == 1) {
         pageCurrent = 1;
         tempPagination = `<a href="${pathIni}${pageFinal}" >&laquo;</a>`

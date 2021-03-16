@@ -7,9 +7,11 @@
   outline: none;
 }
 
+html, body{
+  height: 100%;
+}
 body {
   overflow-x: hidden;
-  height: 100%;
   background-color: var(--roxo3);
 }
 
@@ -24,7 +26,7 @@ body {
   justify-content: center;
 }
 
-.estatic-zoom {
+.estatic-zoom, .article-container {
   margin: 0 auto;
   max-width: 90%;
 }
@@ -73,5 +75,26 @@ body {
 }
 .error{
   background-color:  #dc3545 ;
+}
+
+
+/* IFRAME RESPONSIVO */
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 75%;
+  height: 75%;
+  border: none;
+  margin: 0 auto;
+}
+
+.container-iframe {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
 }
 

@@ -124,6 +124,9 @@ a.logo {
   z-index: 3;
 }
 
+.userProfile:focus-within .userProfile-content{
+  display: block;
+}
 
 .userProfile-content a {
   border-radius: 0px;
@@ -171,31 +174,33 @@ a.logo {
 }
 
 .dropdown> button {
-  padding: 12px;
+  padding: 0.6rem;
   color: var(--preto);
   text-decoration: none;
-  line-height: 25px;
-  font-size: 1.4rem;
+  font-size: 1.32rem;
   display: block;
   text-align: center;
   width: 100%;
   border: none;
   cursor: pointer;
+  font-weight:500;
+
 }
 
-.dropdown>button:hover {
-  background-color: #000;
-  color: white;
+.dropdown>button:hover, .show-to-btn {
+  background-color: var(--roxo1);
+  color: white !important;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #c7b9b9;
+  background-color: var(--branco);
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   font-size: 1rem;
-  width: 100%;
+  min-width: 15rem;
+  border-radius: 0 0 7px 7px;
 }
 
 .dropdown-content a {
@@ -204,13 +209,24 @@ a.logo {
   text-decoration: none;
   display: block;
   text-align: left;
-  width: 100%;
   font-size: 1.2rem;
+  white-space: nowrap;
+  background-color: rgb(255, 255, 255);
+}
+.dropdown-content a:not(.dropdown-content a:last-child) {
+  margin-bottom: 1px;
+}
+
+.dropdown-content a:last-child{
+  border-radius: 0 0 5px 5px;
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  color: white;
+  background-color: var(--preto);
 }
+
+
 
 .show {
   display: block;

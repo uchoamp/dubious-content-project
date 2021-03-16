@@ -40,4 +40,8 @@
   .games-container img {
     height: 310px;
   }
+
+  .footer-mid{
+    padding: 0 1rem 0 1rem;
+ }
 }

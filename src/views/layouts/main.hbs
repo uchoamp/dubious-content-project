@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta name="copyright" content="© 2021 H-Natsu" />
@@ -21,24 +21,43 @@
   {{!-- Search meta tags --}}
   <meta name='robots' content='index, follow' />
   <meta name='country' content='Brazil' />
+  {{!--
   <meta name="description"
-    content="{{#if game.tittle}} Downlaod {{game.tittle}}, {{game.type}}, {{game.platform}}, {{game.language}} 
-    {{else}}H-Natsu a collection of Adult and Sex Games for PC/Android. Download Hentai games Free. You can find uncensored hentai games on English or Japanese.{{/if}}">
+    content="{{#if game.tittle}} Downlaod {{game.tittle}}, {{game.type}}, {{game.platform}}, {{game.language}} {{else}}H-Natsu a collection of Adult and Sex Games for PC/Android. Download Hentai games Free. You can find uncensored hentai games on English or Japanese.{{/if}}">
+  --}}
   <meta name="description"
-    content="{{#if game.tittle}} Baixar {{game.tittle}}, {{game.type}}, {{game.platform}}, {{game.language}} 
-    {{else}}H-Natsu é uma coleção de games adultos para PC e Andoird. Baixe hentai games grátis. Games sem censura em inglês ou japones{{/if}}">
-
-  <meta name="keywords" content="hentai game, h-natsu, visual novel, RPG, english, inglês, download, baixar, {{#if game.tags}}{{game.tags}}{{/if}}">
+    content="{{#if meta_description}}{{meta_description}}{{else}}H-Natsu é uma coleção de games adultos para PC e Andoird. Baixe hentai games grátis. Games sem censura em inglês ou japones{{/if}}">
+  <meta name="keywords"
+    content="hentai game, free, grátis, h-natsu, visual novel, RPG, english, inglês, download, baixar, {{#if meta_keywords}}{{meta_keywords}}{{/if}}">
   <meta http-equiv="expires" content="0">
   <meta name="distribution" content="global">
   <meta name="language" content='pt-BR' />
 
-  {{#if game.gameURL}}
-  <link rel="canonical" href="http://www.h-natsu.com.br/game/{{game.gameURL}}" />
+  <link rel="canonical" href="https://www.h-natsu.com.br/{{#if canonical}}{{canonical}}{{/if}}" />
+
+  {{!-- META TAG OPENGRAPH --}}
+  <meta property='og:url' content='https://www.h-natsu.com.br/{{#if canonical}}{{canonical}}{{/if}}' />
+  <meta property='og:title'
+    content='{{#if tittle}}{{tittle}}{{else}}H-NATSU | BAIXAR GRÁTIS HENTAI GAMES{{/if}}' />
+  <meta property='og:description'
+    content='{{#if meta_description}}{{meta_description}}{{else}}H-Natsu é uma coleção de games adultos para PC e Andoird. Baixe hentai games grátis. Games sem censura em inglês ou japones{{/if}}' />
+  <meta property='article:publisher' content='https://www.h-natsu.com.br/' />
+  <meta property='og:site_name' content='H-NATSU | BAIXAR GRÁTIS HENTAI GAMES' />
+  <meta property="og:type" content="website">
+  <meta property='og:locale' content='pt_BR' />
+
+  <meta property='og:image' content='{{#if game.imgs.cover.imgURL}}{{game.imgs.cover.imgURL}}{{else}}https://www.h-natsu.com.br/img/main/logo.jpg{{/if}}' />
+  <meta property='og:image:secure_url' content='{{#if game.imgs.cover.imgURL}}{{game.imgs.cover.imgURL}}{{else}}https://www.h-natsu.com.br/img/main/logo.jpg{{/if}}' />
+	<meta property='og:image:type' content='image/jpeg'>
+  {{#if game.imgs.cover.imgURL}}
+	<meta property='og:image:width' content='350'>
+	<meta property='og:image:height' content='500'>
   {{else}}
-  <link rel="canonical" href="http://www.h-natsu.com.br/" />
+	<meta property='og:image:width' content='1000'>
+	<meta property='og:image:height' content='1000'>
   {{/if}}
 
+  <meta property='og:type' content='website'>
   {{!-- PRELOAD --}}
   <link rel="preload" href="/css/main.css" as="style">
   <link rel="preload" href="/js/app.js" as="script">
@@ -48,7 +67,8 @@
   <!-- FONTE AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
   <!-- FONTE ROBOTO -->
-  {{!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+  {{!--
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> --}}
 
   <!-- PUBLIC CSS-->

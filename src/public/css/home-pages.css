@@ -94,17 +94,17 @@
     filter: opacity(50%);
 }
 
-figure {
+.estatic-zoom figure {
     color: #f1f1f1;
 }
 
-figcaption {
+.estatic-zoom figcaption {
     display: block;
     width: 100%;
     font-size: 13px;
 }
 
-figcaption>h2 {
+.estatic-zoom figcaption>h2 {
     font-size: 1rem;
     display: block;
     white-space: nowrap;
