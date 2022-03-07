@@ -11,9 +11,9 @@ const gameSchema = new Schema(
     imgs: {cover:{imgURL: String, public_id: String}, screenshorts:[{imgURL: String, public_id: String}]},
     censorship: String,
     platform: String,
-    release_date: String, 
-    link_download: String, 
-    size: String, 
+    release_date: String,
+    link_download: String,
+    size: String,
     gameURL: {type: String, required:true, unique: true}
   },
   {
